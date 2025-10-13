@@ -10,15 +10,27 @@ use App\Http\Controllers\Admin\ProkerController;
 use App\Http\Controllers\Admin\SambutanController;
 use App\Http\Controllers\Admin\VisiMisiController;
 use App\Http\Controllers\Admin\AlumniPathController;
+use App\Http\Controllers\DivisiController as ControllersDivisiController;
+use App\Http\Controllers\PageController;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+// Route::get('/', function () {
+//     return Inertia::render('Welcome', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
+
+Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/galeri', [PageController::class, 'galeri'])->name('galeri');
+Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::get('/divisi/{divisi}/', [ControllersDivisiController::class, 'show'])->name('divisi.show');
+Route::get('/profil-organisasi', [PageController::class, 'profilOrganisasi'])->name('profil-organisasi');
+Route::get('/sejarah', [PageController::class, 'sejarah'])->name('sejarah');
+Route::get('/jejak-alumni,', [PageController::class, 'jejakAlumni'])->name('jejak-alumni');
+Route::get('/struktur-organisasi', [PageController::class, 'strukturOrganisasi'])->name('struktur-organisasi');
+Route::get('/pengurus-inti', [PageController::class, 'pengurusInti'])->name('pengurus-inti');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
