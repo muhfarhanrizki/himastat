@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Inertia\Inertia;
+use App\Models\Divisi;
+use App\Models\Proker;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class ProkerController extends Controller
 {
@@ -12,7 +16,13 @@ class ProkerController extends Controller
      */
     public function index()
     {
-        //
+        $prokers = Proker::with('divisi')->get();
+        $divisis = Divisi::all();
+
+        return Inertia::render('Admin/Proker/Index', [
+            'prokers' => $prokers,
+            'divisis' => $divisis, // pake dropdown filter nah sundala
+        ]);
     }
 
     /**
@@ -20,7 +30,11 @@ class ProkerController extends Controller
      */
     public function create()
     {
-        //
+        $divisis = Divisi::all();
+
+        return Inertia::render('Admin/Proker/Create',[
+            'divisis' => $divisis  // ini jg pake dropwon untuk formna sundala
+        ]);
     }
 
     /**
@@ -28,38 +42,82 @@ class ProkerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'divisi_id' => 'required|exists:divisi,id',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'tanggal' => 'required|string|max:255',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('proker', 'public');
+        }
+
+        Proker::create($validated);
+
+        return redirect()->route('proker.index')->with('success', 'Proker berhasil ditambahkan');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Proker $proker)
     {
-        //
+        return Inertia::render('Admin/Proker/Show', [
+            'proker' => $proker
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Proker $proker)
     {
-        //
+        $divisis = Divisi::all();
+
+        return Inertia::render('Admin/Proker/Edit', [
+            'proker' => $proker,
+            'divisis' => $divisis
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Proker $proker)
     {
-        //
+        $validated = $request->validate([
+            'nama' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'divisi_id' => 'required|exists:divisi,id',
+            'tanggal' => 'required|string|max:255',
+        ]);
+
+        if ($request->hasFile('image')) {
+            if ($proker->image && Storage::disk('public')->exists($proker->image)) {
+                Storage::disk('public')->delete($proker->image);
+            }
+
+            $validated['image'] = $request->file('image')->store('proker', 'public');
+        }
+
+        $proker->update($validated);
+
+        return redirect()->route('proker.index')->with('success', 'Proker berhasil diperbarui');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Proker $proker)
     {
-        //
+        if ($proker->image && Storage::disk('public')->exists($proker->image)) {
+            Storage::disk('public')->delete($proker->image);
+        }
+
+        $proker->delete();
+
+        return redirect()->route('proker.index')->with('success', 'Proker berhasil dihapus');
     }
 }

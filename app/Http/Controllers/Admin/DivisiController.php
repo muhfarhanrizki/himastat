@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Inertia\Inertia;
 use App\Models\Divisi;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class DivisiController extends Controller
 {
@@ -81,6 +82,10 @@ class DivisiController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
+            if ($divisi->image && Storage::disk('public')->exists($divisi->image)) {
+                Storage::disk('public')->delete($divisi->image);
+            }
+            
             $validated['image'] = $request->file('image')->store('divisi', 'public');
         }
 
@@ -95,6 +100,11 @@ class DivisiController extends Controller
     public function destroy(Divisi $divisi)
     {
         $divisi->delete();
+
+        if ($divisi->image && Storage::disk('public')->exists($divisi->image)) {
+            Storage::disk('public')->delete($divisi->image);
+        }
+
         return redirect()->route('divisi.index')->with('success', 'Divisi berhasil dihapus');
     }
 }

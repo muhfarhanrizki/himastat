@@ -12,5 +12,6 @@ class Galeri extends Model
         'name',
         'image',
         'description',
+        'tanggal',
     ];
 }

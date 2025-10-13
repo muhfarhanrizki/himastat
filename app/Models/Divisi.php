@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Model;
 
 class Divisi extends Model
 {
+    use HasSlug;
     protected $table = 'divisi';
 
     protected $fillable = [

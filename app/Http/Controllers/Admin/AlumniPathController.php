@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Models\AlumniPath;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class AlumniPathController extends Controller
 {
@@ -72,16 +73,39 @@ class AlumniPathController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, AlumniPath $alumniPath)
     {
-        
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'pesan' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($request->hasFile('image')) {
+
+            if ($alumniPath->image && Storage::disk('public')->exists($alumniPath->image)) {
+                Storage::disk('public')->delete($alumniPath->image);
+            }
+
+            $validated['image'] = $request->file('image')->store('alumni_path', 'public');
+        }
+
+        $alumniPath->update($validated);
+
+        return redirect()->route('alumniPath.index')->with('success', 'Alumni Path berhasil diperbarui');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(AlumniPath $alumniPath)
     {
-        //
+        $alumniPath->delete();
+
+        if ($alumniPath->image && Storage::disk('public')->exists($alumniPath->image)) {
+            Storage::disk('public')->delete($alumniPath->image);
+        }
+
+        return redirect()->route('alumniPath.index')->with('success', 'Alumni Path berhasil dihapus');
     }
 }

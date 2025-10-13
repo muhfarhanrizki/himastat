@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('prokers', function (Blueprint $table) {
             $table->id();
             $table->string('nama')->nullable();
+            $table->string('slug')->unique();
             $table->foreignId('divisi_id')->constrained('divisis')->onDelete('cascade');
             $table->text('deskripsi')->nullable();
             $table->string('image')->nullable();

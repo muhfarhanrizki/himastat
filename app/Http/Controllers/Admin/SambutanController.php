@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Inertia\Inertia;
+use App\Models\Sambutan;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class SambutanController extends Controller
 {
@@ -12,7 +15,11 @@ class SambutanController extends Controller
      */
     public function index()
     {
-        //
+        $sambutans = Sambutan::all();
+
+        return Inertia::render('Admin/Sambutan/Index', [
+            'sambutans' => $sambutans
+        ]);
     }
 
     /**
@@ -20,7 +27,7 @@ class SambutanController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Admin/Sambutan/Create');
     }
 
     /**
@@ -28,38 +35,74 @@ class SambutanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+           'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+           'sambutan' => 'required|string|max:255',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('sambutan', 'public');
+        }
+
+        Sambutan::create($validated);
+
+        return redirect()->route('sambutan.index')->with('success', 'Sambutan berhasil ditambahkan');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Sambutan $sambutan)
     {
-        //
+        return Inertia::render('Admin/Sambutan/Show', [
+            'sambutan' => $sambutan
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Sambutan $sambutan)
     {
-        //
+        return Inertia::render('Admin/Sambutan/Edit', [
+            'sambutan' => $sambutan
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Sambutan $sambutan)
     {
-        //
+        $validated = $request->validate([
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'sambutan' => 'required|string|max:255',
+        ]);
+
+        if ($request->hasFile('image')) {
+            if ($sambutan->image && Storage::disk('public')->exists($sambutan->image)) {
+                Storage::disk('public')->delete($sambutan->image);
+            }
+
+            $validated['image'] = $request->file('image')->store('sambutan', 'public');
+        }
+
+        $sambutan->update($validated);
+
+        return redirect()->route('sambutan.index')->with('success', 'Sambutan berhasil diperbarui');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Sambutan $sambutan)
     {
-        //
+        if ($sambutan->image && Storage::disk('public')->exists($sambutan->image)) {
+            Storage::disk('public')->delete($sambutan->image);
+        }
+
+        $sambutan->delete();
+
+        return redirect()->route('sambutan.index')->with('success', 'Sambutan berhasil dihapus');
     }
 }
