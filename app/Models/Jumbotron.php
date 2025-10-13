@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Jumbotron extends Model
 {
-    protected $table = 'jumbotron';
+    protected $table = 'jumbotrons';
 
     protected $fillable = [
         'image',

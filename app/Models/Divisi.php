@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Divisi extends Model
 {
     use HasSlug;
-    protected $table = 'divisi';
+    protected $table = 'divisis';
 
     protected $fillable = [
         'name',
