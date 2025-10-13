@@ -4,13 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AlumniPath extends Model
+class Sambutan extends Model
 {
-    protected $table = 'alumni_paths';
-     
+    protected $table = 'sambutan';
+
     protected $fillable = [
-        'nama',
-        'pesan',
         'image',
+        'sambutan'
     ];
 }
