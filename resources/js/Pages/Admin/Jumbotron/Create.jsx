@@ -31,7 +31,7 @@ export default function Create() {
                             Tambah Jumbotron
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
-                            Buat tampilan utama website desa kamu biar makin kece ✨
+                            Buat header website kamu.
                         </p>
                     </div>
 
@@ -61,11 +61,11 @@ export default function Create() {
                                 {/* Overlay teks di atas gambar */}
                                 <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
                                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-3 drop-shadow-lg">
-                                        {data.title || "Judul Jumbotron Kamu ✍️"}
+                                        {data.title || "Judul Jumbotron Kamu"}
                                     </h2>
                                     <p className="text-white text-base md:text-lg max-w-2xl drop-shadow-md">
                                         {data.description ||
-                                            "Tulis deskripsi singkat biar makin menarik 😎"}
+                                            "Tulis deskripsi singkat"}
                                     </p>
                                 </div>
                             </>

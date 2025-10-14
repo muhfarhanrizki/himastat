@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, useForm, Link, usePage } from "@inertiajs/react";
-import { Save, ArrowLeft, Edit, ImagePlus, Upload, Image as ImageIcon } from "lucide-react";
+import { Save, ArrowLeft, ImagePlus, Upload, Image as ImageIcon } from "lucide-react";
 import { route } from "ziggy-js";
 
 export default function EditJumbotron() {
@@ -39,31 +39,47 @@ export default function EditJumbotron() {
                             <ImageIcon className="text-sky-600" size={28} />
                             Edit Jumbotron
                         </h1>
+                        <p className="text-gray-500 text-sm mt-1">
+                            Ubah header website kamu.
+                        </p>
                     </div>
 
                     <Link
                         href={route("jumbotron.index")}
-                        className="text-gray-600 hover:text-sky-600 flex items-center gap-1 transition"
+                        className="text-gray-600 hover:text-sky-600 flex items-center gap-1 font-medium transition"
                     >
                         <ArrowLeft size={16} /> Kembali
                     </Link>
                 </div>
 
-                {/* Card Form */}
+                {/* Form Card */}
                 <form
                     onSubmit={handleSubmit}
-                    className="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100"
+                    className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100"
                 >
                     {/* Preview Gambar */}
-                    <div className="relative bg-gray-50">
+                    <div className="relative w-full h-96">
                         {preview ? (
-                            <img
-                                src={preview}
-                                alt="Preview"
-                                className="w-full h-72 object-cover"
-                            />
+                            <>
+                                <img
+                                    src={preview}
+                                    alt="Preview"
+                                    className="w-full h-full object-cover brightness-50 transition-all duration-300"
+                                />
+
+                                {/* Overlay teks di atas gambar */}
+                                <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
+                                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-3 drop-shadow-lg">
+                                        {data.title || "Judul Jumbotron Kamu"}
+                                    </h2>
+                                    <p className="text-white text-base md:text-lg max-w-2xl drop-shadow-md">
+                                        {data.description ||
+                                            "Tulis deskripsi singkat"}
+                                    </p>
+                                </div>
+                            </>
                         ) : (
-                            <div className="w-full h-72 flex flex-col items-center justify-center text-gray-400">
+                            <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 text-gray-400">
                                 <Upload size={40} className="mb-3" />
                                 <p className="text-gray-500">Belum ada gambar dipilih</p>
                             </div>
@@ -72,7 +88,7 @@ export default function EditJumbotron() {
                         {/* Tombol Ganti Gambar */}
                         <label
                             htmlFor="image"
-                            className="absolute top-3 right-3 bg-white/90 hover:bg-white text-sky-600 hover:text-sky-700 px-4 py-2 rounded-lg cursor-pointer text-sm font-medium flex items-center gap-2 transition"
+                            className="absolute top-3 right-3 bg-white/80 hover:bg-white text-sky-600 hover:text-sky-700 px-4 py-2 rounded-lg cursor-pointer text-sm font-medium flex items-center gap-2 transition"
                         >
                             <ImagePlus size={16} />
                             Ganti Gambar
@@ -135,8 +151,8 @@ export default function EditJumbotron() {
                             <p className="text-red-500 text-sm">{errors.image}</p>
                         )}
 
-                        {/* Tombol Submit */}
-                        <div className="pt-2 flex justify-end">
+                        {/* Tombol Simpan */}
+                        <div className="pt-4 flex justify-end">
                             <button
                                 type="submit"
                                 disabled={processing}

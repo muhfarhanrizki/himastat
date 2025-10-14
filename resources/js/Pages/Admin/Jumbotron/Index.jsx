@@ -5,7 +5,7 @@ import { Edit, Trash2, Image, PlusCircle } from "lucide-react";
 import { route } from "ziggy-js";
 
 export default function Index({ jumbotrons }) {
-    const jumbotron = jumbotrons[0]; // Karena cuma 1 jumbotron yang dipakai
+    const jumbotron = jumbotrons[0];
 
     return (
         <AuthenticatedLayout>
@@ -20,7 +20,7 @@ export default function Index({ jumbotrons }) {
                             Jumbotron
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
-                            Kelola tampilan utama website desa kamu 🎯
+                            Kelola tampilan header website kamu.
                         </p>
                     </div>
                 </div>
