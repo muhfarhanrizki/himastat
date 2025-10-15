@@ -88,6 +88,8 @@ class JumbotronController extends Controller
             }
 
             $validated['image'] = $request->file('image')->store('jumbotron', 'public');
+        } else {
+            unset($validated['image']);
         }
 
         $jumbotron->update($validated);
