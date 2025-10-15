@@ -10,8 +10,13 @@ use App\Http\Controllers\Admin\ProkerController;
 use App\Http\Controllers\Admin\SambutanController;
 use App\Http\Controllers\Admin\VisiMisiController;
 use App\Http\Controllers\Admin\AlumniPathController;
+use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\JumbotronController;
+use App\Http\Controllers\Admin\PengurusIntiController;
+use App\Http\Controllers\Admin\StrukturController;
 use App\Http\Controllers\DivisiController as ControllersDivisiController;
 use App\Http\Controllers\PageController;
+use App\Models\PengurusInti;
 
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [
@@ -47,6 +52,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('sambutan', SambutanController::class);
     Route::resource('visimisi', VisiMisiController::class);
     Route::resource('proker', ProkerController::class);
+    Route::resource('jumbotron', JumbotronController::class);
+    Route::resource('struktur', StrukturController::class);
+    Route::resource('pengurusinti', PengurusIntiController::class);
+    Route::resource('contact', ContactController::class);
 });
 
 require __DIR__.'/auth.php';
