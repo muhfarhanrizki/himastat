@@ -89,7 +89,7 @@ class ProkerController extends Controller
     {
         $validated = $request->validate([
             'nama' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
+            'description' => 'required|string',
             'divisi_id' => 'required|exists:divisi,id',
             'tanggal' => 'required|string|max:255',
         ]);

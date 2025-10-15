@@ -37,7 +37,7 @@ class AlumniPathController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'pesan' => 'required|string|max:255',
+            'pesan' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 

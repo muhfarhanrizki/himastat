@@ -4,6 +4,16 @@ import { Head, Link } from "@inertiajs/react";
 import { Edit, Trash2, Image, PlusCircle } from "lucide-react";
 import { route } from "ziggy-js";
 
+/**
+ * Index page for Jumbotron
+ *
+ * This page displays the jumbotron's image, title, and description.
+ * If the jumbotron doesn't exist, it will display a message and a button to create a new jumbotron.
+ * The page also includes a button to edit the jumbotron and a button to delete it.
+ *
+ * @param {Object} jumbotrons - The jumbotron object to display.
+ * @returns {JSX.Element} - The JSX element to render.
+ */
 export default function Index({ jumbotrons }) {
     const jumbotron = jumbotrons[0];
 
@@ -64,7 +74,10 @@ export default function Index({ jumbotrons }) {
                                 <Link
                                     as="button"
                                     method="delete"
-                                    href={route("jumbotron.destroy", jumbotron.id)}
+                                    href={route(
+                                        "jumbotron.destroy",
+                                        jumbotron.id
+                                    )}
                                     className="p-2 rounded-lg bg-white/80 hover:bg-red-100 text-red-600 transition"
                                     title="Hapus"
                                 >

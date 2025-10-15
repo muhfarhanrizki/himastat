@@ -10,6 +10,8 @@ class Sambutan extends Model
 
     protected $fillable = [
         'image',
+        'nama',
+        'jabatan',
         'sambutan'
     ];
 }

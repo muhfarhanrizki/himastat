@@ -79,7 +79,7 @@ class GaleriController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'description' => 'required|string|max:255',
+            'description' => 'required|string|',
             'tanggal' => 'required|string|max:255',
         ]);
 

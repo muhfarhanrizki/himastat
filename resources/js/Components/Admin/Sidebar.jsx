@@ -24,22 +24,24 @@ import {
     Columns3,
 } from "lucide-react";
 import NavLink from "@/Components/NavLink";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
     const { user } = usePage().props.auth;
 
-    // Submenu toggle state
-    const [openMenu, setOpenMenu] = useState(null);
     const toggleMenu = (menu) => {
         setOpenMenu(openMenu === menu ? null : menu);
     };
 
     const handleLogout = (e) => {
         e.preventDefault();
-        router.post(route("logout"), {}, {
-            onSuccess: () => router.visit(route("login")),
-        });
+        router.post(
+            route("logout"),
+            {},
+            {
+                onSuccess: () => router.visit(route("login")),
+            }
+        );
     };
 
     // Main & Submenu items
@@ -130,15 +132,41 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
         },
     ];
 
+    const [openMenu, setOpenMenu] = useState(() => {
+        const activeMenu = menuItems.find((item) =>
+            item.submenu?.some((sub) => sub.active)
+        );
+        return activeMenu ? activeMenu.name : null;
+    });
+    useEffect(() => {
+        const activeMenu = menuItems.find((item) =>
+            item.submenu?.some((sub) => sub.active)
+        );
+        if (activeMenu) {
+            setOpenMenu(activeMenu.name);
+        }
+    }, [route().current()]);
+
     return (
         <aside
             className={`fixed md:static inset-y-0 left-0 z-30 bg-white flex flex-col shadow-lg transition-all duration-500
-            ${isSidebarOpen ? "translate-x-0 w-64" : "-translate-x-56 md:translate-x-0 md:w-20"}`}
+            ${
+                isSidebarOpen
+                    ? "translate-x-0 w-64"
+                    : "-translate-x-56 md:translate-x-0 md:w-20"
+            }`}
         >
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-4 bg-gray-600">
-                <Link href={route("dashboard")} className="flex items-center gap-2">
-                    <img src="/favicon.svg" alt="Logo" className="h-10 w-10 object-contain" />
+                <Link
+                    href={route("dashboard")}
+                    className="flex items-center gap-2"
+                >
+                    <img
+                        src="/favicon.svg"
+                        alt="Logo"
+                        className="h-10 w-10 object-contain"
+                    />
                     {isSidebarOpen && (
                         <span className="text-lg font-bold text-white tracking-wide">
                             Himastat FMIPA
@@ -160,46 +188,55 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
                     <div key={i}>
                         {/* Main Item */}
                         <button
-                            onClick={() => (item.submenu ? toggleMenu(item.name) : router.visit(item.href))}
+                            onClick={() =>
+                                item.submenu
+                                    ? toggleMenu(item.name)
+                                    : router.visit(item.href)
+                            }
                             className={`w-full flex items-center justify-between px-4 py-2 rounded-lg font-medium transition-all
-                            ${item.active
-                                ? "bg-gray-600 text-white"
-                                : "text-gray-700 hover:bg-gray-100 hover:text-gray-800"
+                            ${
+                                item.active
+                                    ? "bg-gray-600 text-white"
+                                    : "text-gray-700 hover:bg-gray-100 hover:text-gray-800"
                             }`}
                         >
                             <div className="flex items-center gap-3">
                                 {item.icon}
                                 {isSidebarOpen && item.name}
                             </div>
-                            {item.submenu && isSidebarOpen && (
-                                openMenu === item.name
-                                    ? <ChevronDown size={16} />
-                                    : <ChevronRight size={16} />
-                            )}
+                            {item.submenu &&
+                                isSidebarOpen &&
+                                (openMenu === item.name ? (
+                                    <ChevronDown size={16} />
+                                ) : (
+                                    <ChevronRight size={16} />
+                                ))}
                         </button>
 
-                {item.submenu && openMenu === item.name && (
-                    <div className="mt-1 space-y-1">
-                        {item.submenu.map((sub, j) => (
-                            <NavLink
-                                key={j}
-                                href={sub.href}
-                                active={sub.active}
-                                className={`flex items-center gap-2 pl-8 px-4 py-2 w-full rounded-md text-sm font-medium transition-all duration-200
+                        {item.submenu && openMenu === item.name && (
+                            <div className="mt-1 space-y-1">
+                                {item.submenu.map((sub, j) => (
+                                    <NavLink
+                                        key={j}
+                                        href={sub.href}
+                                        active={sub.active}
+                                        className={`flex items-center gap-2 pl-8 px-4 py-2 w-full rounded-md text-sm font-medium transition-all duration-200
                                     ${
                                         sub.active
                                             ? "bg-gray-600 text-white"
                                             : "text-gray-600 hover:bg-gray-100 hover:text-gray-800"
                                     }`}
-                            >
-                                <span className="flex items-center gap-2 w-full">
-                                    {sub.icon}
-                                    {isSidebarOpen && <span>{sub.name}</span>}
-                                </span>
-                            </NavLink>
-                        ))}
-                    </div>
-                )}
+                                    >
+                                        <span className="flex items-center gap-2 w-full">
+                                            {sub.icon}
+                                            {isSidebarOpen && (
+                                                <span>{sub.name}</span>
+                                            )}
+                                        </span>
+                                    </NavLink>
+                                ))}
+                            </div>
+                        )}
                     </div>
                 ))}
             </nav>
@@ -210,11 +247,18 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
                     href={route("profile.edit")}
                     className="flex items-center gap-3 group hover:bg-gray-50 px-3 py-2 rounded-md transition"
                 >
-                    <User size={20} className="text-gray-500 group-hover:text-gray-600" />
+                    <User
+                        size={20}
+                        className="text-gray-500 group-hover:text-gray-600"
+                    />
                     {isSidebarOpen && (
                         <div>
-                            <p className="text-sm font-semibold text-gray-800">{user.name}</p>
-                            <p className="text-xs text-gray-500">{user.email}</p>
+                            <p className="text-sm font-semibold text-gray-800">
+                                {user.name}
+                            </p>
+                            <p className="text-xs text-gray-500">
+                                {user.email}
+                            </p>
                         </div>
                     )}
                 </Link>
