@@ -87,6 +87,8 @@ class DivisiController extends Controller
             }
             
             $validated['image'] = $request->file('image')->store('divisi', 'public');
+        } else {
+            unset($validated['image']);
         }
 
         $divisi->update($validated);

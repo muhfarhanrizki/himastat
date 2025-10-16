@@ -88,6 +88,8 @@ class AlumniPathController extends Controller
             }
 
             $validated['image'] = $request->file('image')->store('alumni_path', 'public');
+        } else {
+            unset($validated['image']);
         }
 
         $alumniPath->update($validated);

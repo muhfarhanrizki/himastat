@@ -97,6 +97,8 @@ class StrukturController extends Controller
                     Storage::disk('public')->delete($struktur->thumbnail);
                 }
                 $validated['thumbnail'] = $request->file('thumbnail')->store('strukturs/thumbnails', 'public');
+            } else {
+                unset($validated['thumbnail']);
             }
 
             if ($request->hasFile('struktur')) {
@@ -104,6 +106,8 @@ class StrukturController extends Controller
                     Storage::disk('public')->delete($struktur->struktur);
                 }
                 $validated['struktur'] = $request->file('struktur')->store('strukturs/images', 'public');
+            } else {
+                unset($validated['struktur']);
             }
 
             $struktur->update($validated);

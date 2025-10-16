@@ -89,6 +89,8 @@ class GaleriController extends Controller
             }
 
             $validated['image'] = $request->file('image')->store('galeri', 'public');
+        } else {
+            unset($validated['image']);
         }
 
         $galeri->update($validated);

@@ -89,6 +89,8 @@ class PengurusIntiController extends Controller
             }
 
             $validated['image'] = $request->file('image')->store('pengurusinti', 'public');
+        } else {
+            unset($validated['image']);
         }
 
         $pengurusInti->update($validated);

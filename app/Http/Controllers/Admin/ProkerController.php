@@ -100,6 +100,8 @@ class ProkerController extends Controller
             }
 
             $validated['image'] = $request->file('image')->store('proker', 'public');
+        } else {
+            unset($validated['image']);
         }
 
         $proker->update($validated);
