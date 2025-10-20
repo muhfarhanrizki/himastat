@@ -20,25 +20,17 @@ export default function Index({ sambutans }) {
                 <div className="flex items-center justify-between mb-10">
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
-                            <MessageSquare className="text-sky-600" size={28} />
+                            <MessageSquare className="text-gray-600" size={28} />
                             Daftar Sambutan
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
                             Kelola sambutan untuk pengunjung website.
                         </p>
                     </div>
-
-                    <Link
-                        href={route("sambutan.create")}
-                        className="bg-sky-600 hover:bg-sky-700 text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium transition"
-                    >
-                        <Plus size={18} />
-                        Tambah Sambutan
-                    </Link>
                 </div>
 
                 {/* List Sambutan */}
-                <div className="space-y-6">
+                <div className="space-y-6 ">
                     {sambutans.map((sambutan) => (
                         <div
                             key={sambutan.id}
@@ -51,7 +43,7 @@ export default function Index({ sambutans }) {
                                     <img
                                         src={`/storage/${sambutan.image}`}
                                         alt={sambutan.nama}
-                                        className="w-full h-full object-cover object-center"
+                                        className="w-full h-[500px] object-cover object-center"
                                     />
                                 </div>
 
@@ -105,7 +97,7 @@ export default function Index({ sambutans }) {
 
                 {/* Empty State */}
                 {sambutans.length === 0 && (
-                    <div className="text-center py-16">
+                    <div className="text-center py-16 bg-white rounded-2xl">
                         <MessageSquare
                             size={64}
                             className="mx-auto text-gray-300 mb-4"
@@ -118,10 +110,10 @@ export default function Index({ sambutans }) {
                         </p>
                         <Link
                             href={route("sambutan.create")}
-                            className="inline-flex items-center gap-2 bg-sky-600 hover:bg-sky-700 text-white px-6 py-3 rounded-lg font-medium transition"
+                            className="inline-flex items-center gap-2 bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition"
                         >
                             <Plus size={18} />
-                            Tambah Sambutan Pertama
+                            Tambah Sambutan
                         </Link>
                     </div>
                 )}

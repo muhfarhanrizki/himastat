@@ -27,7 +27,7 @@ export default function Create() {
                 <div className="flex items-center justify-between mb-10">
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
-                            <ImagePlus className="text-sky-600" size={28} />
+                            <ImagePlus className="text-gray-600" size={28} />
                             Tambah Jumbotron
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
@@ -109,7 +109,7 @@ export default function Create() {
                             </label>
                             <input
                                 type="text"
-                                className="w-full border-gray-300 rounded-lg focus:ring-sky-500 focus:border-sky-500"
+                                className="w-full border-gray-300 rounded-lg focus:ring-gray-500 focus:border-gray-500"
                                 value={data.title}
                                 onChange={(e) => setData("title", e.target.value)}
                                 placeholder="Masukkan judul jumbotron..."
@@ -125,7 +125,7 @@ export default function Create() {
                                 Deskripsi
                             </label>
                             <textarea
-                                className="w-full border-gray-300 rounded-lg focus:ring-sky-500 focus:border-sky-500"
+                                className="w-full border-gray-300 rounded-lg focus:ring-gray-500 focus:border-gray-500"
                                 value={data.description}
                                 onChange={(e) =>
                                     setData("description", e.target.value)
@@ -150,7 +150,7 @@ export default function Create() {
                             <button
                                 type="submit"
                                 disabled={processing}
-                                className="bg-sky-600 hover:bg-sky-700 text-white px-6 py-2 rounded-lg transition flex items-center gap-2 font-medium"
+                                className="bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg transition flex items-center gap-2 font-medium"
                             >
                                 <Save size={18} /> Simpan
                             </button>

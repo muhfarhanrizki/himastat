@@ -26,7 +26,7 @@ export default function Index({ jumbotrons }) {
                 <div className="flex justify-between items-center mb-10">
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
-                            <Image className="text-sky-600" size={28} />
+                            <Image className="text-gray-600" size={28} />
                             Jumbotron
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
@@ -46,7 +46,7 @@ export default function Index({ jumbotrons }) {
                                     className="w-full h-full object-cover brightness-50"
                                 />
                             ) : (
-                                <div className="w-full h-full bg-gray-100 flex items-center justify-center text-sky-400 text-lg">
+                                <div className="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400 text-lg">
                                     Tidak ada gambar 🖼️
                                 </div>
                             )}

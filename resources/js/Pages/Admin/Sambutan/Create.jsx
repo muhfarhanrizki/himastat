@@ -28,7 +28,7 @@ export default function Create() {
                 <div className="flex items-center justify-between mb-10">
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
-                            <ImagePlus className="text-sky-600" size={28} />
+                            <ImagePlus className="text-gray-600" size={28} />
                             Tambah Sambutan
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
@@ -50,14 +50,14 @@ export default function Create() {
                     className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100"
                 >
                     {/* Preview Section - Split Layout */}
-                    <div className="flex flex-col md:flex-row min-h-[400px]">
+                    <div className="flex flex-col md:flex-row min-h-[500px]">
                         {/* Gambar di kiri */}
-                        <div className="relative w-full md:w-1/2 h-[400px]">
+                        <div className="relative w-full md:w-1/2 h-[500px]">
                             {preview ? (
                                 <img
                                     src={preview}
                                     alt="Preview"
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-[500px] object-cover object-center"
                                 />
                             ) : (
                                 <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 text-gray-400">
@@ -125,7 +125,7 @@ export default function Create() {
                                 Sambutan
                             </label>
                             <textarea
-                                className="w-full border-gray-300 rounded-lg focus:ring-sky-500 focus:border-sky-500"
+                                className="w-full border-gray-300 rounded-lg focus:ring-gray-500 focus:border-gray-500"
                                 value={data.sambutan}
                                 onChange={(e) =>
                                     setData("sambutan", e.target.value)
@@ -146,7 +146,7 @@ export default function Create() {
                             </label>
                             <input
                                 type="text"
-                                className="w-full border-gray-300 rounded-lg focus:ring-sky-500 focus:border-sky-500"
+                                className="w-full border-gray-300 rounded-lg focus:ring-gray-500 focus:border-gray-500"
                                 value={data.nama}
                                 onChange={(e) =>
                                     setData("nama", e.target.value)
@@ -167,7 +167,7 @@ export default function Create() {
                             </label>
                             <input
                                 type="text"
-                                className="w-full border-gray-300 rounded-lg focus:ring-sky-500 focus:border-sky-500"
+                                className="w-full border-gray-300 rounded-lg focus:ring-gray-500 focus:border-gray-500"
                                 value={data.jabatan}
                                 onChange={(e) =>
                                     setData("jabatan", e.target.value)
@@ -193,7 +193,7 @@ export default function Create() {
                             <button
                                 type="submit"
                                 disabled={processing}
-                                className="bg-sky-600 hover:bg-sky-700 text-white px-6 py-2 rounded-lg transition flex items-center gap-2 font-medium"
+                                className="bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg transition flex items-center gap-2 font-medium"
                             >
                                 <Save size={18} /> Simpan
                             </button>

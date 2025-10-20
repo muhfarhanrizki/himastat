@@ -1,73 +1,111 @@
 import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head } from "@inertiajs/react";
-import { Plus, Edit, Trash2 } from "lucide-react";
+import { Head, Link, router } from "@inertiajs/react";
+import { Plus, Image, Calendar, Pencil, Trash2 } from "lucide-react";
+import { route } from "ziggy-js";
+import ModalImage from "react-modal-image"; // 🧩 Preview gambar (zoom)
 
-export default function Index({ title = "Jumbotron", data = [] }) {
+export default function Index({ galeris = [] }) {
+    const handleDelete = (id) => {
+        if (confirm("Apakah kamu yakin ingin menghapus galeri ini?")) {
+            router.delete(route("galeri.destroy", id));
+        }
+    };
+
     return (
         <AuthenticatedLayout>
-            <Head title={title} />
+            <Head title="Galeri Himpunan" />
 
-            <div className="p-12 min-h-screen">
-                {/* Header Section */}
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-                    <h1 className="text-4xl font-bold text-gray-800 tracking-tight mb-4 md:mb-0">
-                        {title}
-                    </h1>
-                    <div className="flex items-center gap-3">
-                        <button className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl shadow-md transition">
-                            <Plus size={18} /> Tambah
-                        </button>
+            <div className="p-8 max-w-6xl mx-auto">
+                {/* Header */}
+                <div className="flex items-center justify-between mb-10">
+                    <div>
+                        <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
+                            <Image className="text-gray-600" size={26} />
+                            Galeri Himpunan
+                        </h1>
+                        <p className="text-gray-500 text-sm mt-1">
+                            Dokumentasi kegiatan dan momen penting.
+                        </p>
                     </div>
+
+                    <Link
+                        href={route("galeri.create")}
+                        className="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-800 text-white px-5 py-2.5 rounded-lg shadow transition"
+                    >
+                        <Plus size={18} /> Tambah Galeri
+                    </Link>
                 </div>
 
-                {/* Content Card */}
-                <div className="bg-white rounded-2xl shadow-md p-5 border border-gray-100">
-                    {data.length === 0 ? (
-                        <div className="text-center text-gray-500 py-16">
-                            <p className="text-lg">Belum ada data untuk ditampilkan 😅</p>
-                        </div>
-                    ) : (
-                        <div className="overflow-x-auto">
-                            <table className="min-w-full text-sm text-left text-gray-600">
-                                <thead>
-                                    <tr className="bg-gray-100 border-b text-gray-700">
-                                        <th className="px-4 py-3 font-semibold">#</th>
-                                        <th className="px-4 py-3 font-semibold">Nama</th>
-                                        <th className="px-4 py-3 font-semibold">Deskripsi</th>
-                                        <th className="px-4 py-3 font-semibold text-center">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {data.map((item, i) => (
-                                        <tr
-                                            key={i}
-                                            className="border-b hover:bg-blue-50 transition"
-                                        >
-                                            <td className="px-4 py-3">{i + 1}</td>
-                                            <td className="px-4 py-3 font-medium text-gray-800">
-                                                {item.nama}
-                                            </td>
-                                            <td className="px-4 py-3 text-gray-600">
-                                                {item.deskripsi || "-"}
-                                            </td>
-                                            <td className="px-4 py-3 text-center">
-                                                <div className="flex justify-center gap-2">
-                                                    <button className="p-2 rounded-lg bg-blue-100 hover:bg-blue-200 text-blue-600 transition">
-                                                        <Edit size={16} />
-                                                    </button>
-                                                    <button className="p-2 rounded-lg bg-red-100 hover:bg-red-200 text-red-600 transition">
-                                                        <Trash2 size={16} />
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    )}
-                </div>
+                {/* Daftar Galeri */}
+                {galeris.length > 0 ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                        {galeris.map((galeri) => (
+                            <div
+                                key={galeri.id}
+                                className="relative group overflow-hidden rounded-2xl shadow-md border border-gray-100"
+                            >
+                                {/* Gambar */}
+                                {galeri.image ? (
+                                    <ModalImage
+                                        small={`/storage/${galeri.image}`}
+                                        large={`/storage/${galeri.image}`}
+                                        alt={galeri.name}
+                                        hideDownload={true}
+                                        hideZoom={false}
+                                        className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                                    />
+                                ) : (
+                                    <div className="w-full h-64 bg-gray-100 flex items-center justify-center">
+                                        <Image size={42} className="text-gray-300" />
+                                    </div>
+                                )}
+
+                                {/* Overlay (gradasi + teks + tombol) */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end p-4 opacity-100 transition">
+                                    <h2 className="text-white font-semibold text-lg line-clamp-1">
+                                        {galeri.name}
+                                    </h2>
+                                    <p className="text-gray-200 text-sm line-clamp-2 mb-2">
+                                        {galeri.description}
+                                    </p>
+                                    <div className="flex items-center justify-between text-xs text-gray-300">
+                                        <div className="flex items-center gap-1">
+                                            <Calendar size={14} /> {galeri.tanggal}
+                                        </div>
+                                        <div className="flex gap-2">
+                                            <Link
+                                                href={route("galeri.edit", galeri.id)}
+                                                className="bg-white/20 hover:bg-white/30 text-white p-1.5 rounded-md transition"
+                                                title="Edit galeri"
+                                            >
+                                                <Pencil size={15} />
+                                            </Link>
+                                            <button
+                                                onClick={() => handleDelete(galeri.id)}
+                                                className="bg-red-500/70 hover:bg-red-600 text-white p-1.5 rounded-md transition"
+                                                title="Hapus galeri"
+                                            >
+                                                <Trash2 size={15} />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    // Empty state
+                    <div className="text-center py-20 bg-white rounded-2xl border border-gray-100">
+                        <Image size={60} className="mx-auto text-gray-300 mb-4" />
+                        <h3 className="text-xl font-semibold text-gray-700 mb-2">
+                            Belum Ada Galeri
+                        </h3>
+                        <p className="text-gray-500">
+                            Tambahkan dokumentasi kegiatan desa sekarang.
+                        </p>
+                    </div>
+                )}
             </div>
         </AuthenticatedLayout>
     );

@@ -29,6 +29,7 @@
         "lucide-react": "^0.545.0",
         "react": "^19.2.0",
         "react-dom": "^19.2.0",
+        "react-modal-image": "^2.6.0",
         "ziggy-js": "^2.6.0"
     }
 }

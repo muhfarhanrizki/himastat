@@ -1,73 +1,111 @@
 import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head } from "@inertiajs/react";
-import { Plus, Edit, Trash2 } from "lucide-react";
+import { Head, Link, router } from "@inertiajs/react";
+import { Plus, Pencil, Trash2, User } from "lucide-react";
+import { route } from "ziggy-js";
 
-export default function Index({ title = "Jumbotron", data = [] }) {
+export default function Index({ alumnis = [] }) {
+    const handleDelete = (id) => {
+        if (confirm("Apakah kamu yakin ingin menghapus data alumni ini?")) {
+            router.delete(route("alumniPath.destroy", id));
+        }
+    };
+
     return (
         <AuthenticatedLayout>
-            <Head title={title} />
+            <Head title="Jejak Alumni" />
 
-            <div className="p-12 min-h-screen">
-                {/* Header Section */}
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-                    <h1 className="text-4xl font-bold text-gray-800 tracking-tight mb-4 md:mb-0">
-                        {title}
-                    </h1>
-                    <div className="flex items-center gap-3">
-                        <button className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl shadow-md transition">
-                            <Plus size={18} /> Tambah
-                        </button>
+            <div className="p-8 max-w-6xl mx-auto">
+                {/* Header */}
+                <div className="flex items-center justify-between mb-10">
+                    <div>
+                        <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
+                            <User className="text-gray-600" size={28} />
+                            Jejak Alumni
+                        </h1>
+                        <p className="text-gray-500 text-sm mt-1">
+                            Cerita dan pesan alumni dari berbagai generasi.
+                        </p>
                     </div>
+
+                    {/* Tombol Tambah */}
+                    <Link
+                        href={route("alumniPath.create")}
+                        className="inline-flex items-center gap-2 bg-gray-600 hover:bg-gray-700 text-white px-5 py-2.5 rounded-lg shadow transition"
+                    >
+                        <Plus size={18} /> Tambah Alumni
+                    </Link>
                 </div>
 
-                {/* Content Card */}
-                <div className="bg-white rounded-2xl shadow-md p-5 border border-gray-100">
-                    {data.length === 0 ? (
-                        <div className="text-center text-gray-500 py-16">
-                            <p className="text-lg">Belum ada data untuk ditampilkan 😅</p>
-                        </div>
-                    ) : (
-                        <div className="overflow-x-auto">
-                            <table className="min-w-full text-sm text-left text-gray-600">
-                                <thead>
-                                    <tr className="bg-gray-100 border-b text-gray-700">
-                                        <th className="px-4 py-3 font-semibold">#</th>
-                                        <th className="px-4 py-3 font-semibold">Nama</th>
-                                        <th className="px-4 py-3 font-semibold">Deskripsi</th>
-                                        <th className="px-4 py-3 font-semibold text-center">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {data.map((item, i) => (
-                                        <tr
-                                            key={i}
-                                            className="border-b hover:bg-blue-50 transition"
-                                        >
-                                            <td className="px-4 py-3">{i + 1}</td>
-                                            <td className="px-4 py-3 font-medium text-gray-800">
-                                                {item.nama}
-                                            </td>
-                                            <td className="px-4 py-3 text-gray-600">
-                                                {item.deskripsi || "-"}
-                                            </td>
-                                            <td className="px-4 py-3 text-center">
-                                                <div className="flex justify-center gap-2">
-                                                    <button className="p-2 rounded-lg bg-blue-100 hover:bg-blue-200 text-blue-600 transition">
-                                                        <Edit size={16} />
-                                                    </button>
-                                                    <button className="p-2 rounded-lg bg-red-100 hover:bg-red-200 text-red-600 transition">
-                                                        <Trash2 size={16} />
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    )}
-                </div>
+                {/* Data Alumni */}
+                {alumnis.length > 0 ? (
+                    <div className="grid grid-cols-1 gap-8">
+                        {alumnis.map((alumni) => (
+                            <div
+                                key={alumni.id}
+                                className="relative bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden"
+                            >
+                                <div className="flex flex-col md:flex-row gap-6 p-6 md:p-8">
+                                    {/* Foto */}
+                                    <div className="flex-shrink-0 mx-auto md:mx-0">
+                                        {alumni.image ? (
+                                            <img
+                                                src={`/storage/${alumni.image}`}
+                                                alt={alumni.nama}
+                                                className="w-40 h-40 object-cover rounded-xl shadow-md border border-gray-200"
+                                            />
+                                        ) : (
+                                            <div className="w-40 h-40 flex items-center justify-center bg-gray-100 rounded-xl border border-gray-200">
+                                                <User size={40} className="text-gray-400" />
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    {/* Isi */}
+                                    <div className="flex-1 flex flex-col justify-between relative">
+                                        <div className="pb-12"> {/* biar nggak ketimpa tombol */}
+                                            <h2 className="text-2xl font-semibold text-gray-800 mb-2">
+                                                {alumni.nama}
+                                            </h2>
+                                            <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                                                {alumni.pesan || "Belum ada pesan dari alumni ini."}
+                                            </p>
+                                        </div>
+
+                                        {/* Tombol Edit & Hapus (pojok kanan bawah) */}
+                                        <div className="absolute bottom-0 right-0 flex gap-2 px-4 pt-4">
+                                            <Link
+                                                href={route("alumniPath.edit", alumni.id)}
+                                                className="p-2.5 rounded-lg bg-sky-100 hover:bg-sky-200 text-sky-700 transition"
+                                                title="Edit"
+                                            >
+                                                <Pencil size={18} />
+                                            </Link>
+                                            <button
+                                                onClick={() => handleDelete(alumni.id)}
+                                                className="p-2.5 rounded-lg bg-red-100 hover:bg-red-200 text-red-700 transition"
+                                                title="Hapus"
+                                            >
+                                                <Trash2 size={18} />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    // Empty state
+                    <div className="text-center py-20 bg-white rounded-2xl border border-gray-100">
+                        <User size={60} className="mx-auto text-gray-300 mb-4" />
+                        <h3 className="text-xl font-semibold text-gray-700 mb-2">
+                            Belum Ada Data Alumni
+                        </h3>
+                        <p className="text-gray-500">
+                            Tambahkan kisah dan pesan inspiratif dari mereka.
+                        </p>
+                    </div>
+                )}
             </div>
         </AuthenticatedLayout>
     );

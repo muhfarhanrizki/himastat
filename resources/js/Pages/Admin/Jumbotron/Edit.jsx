@@ -36,7 +36,7 @@ export default function EditJumbotron() {
                 <div className="flex justify-between items-center mb-10">
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
-                            <ImageIcon className="text-sky-600" size={28} />
+                            <ImageIcon className="text-gray-600" size={28} />
                             Edit Jumbotron
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
@@ -117,7 +117,7 @@ export default function EditJumbotron() {
                             </label>
                             <input
                                 type="text"
-                                className="w-full border-gray-300 rounded-lg focus:ring-sky-500 focus:border-sky-500"
+                                className="w-full border-gray-300 rounded-lg focus:ring-gray-500 focus:border-gray-500"
                                 value={data.title}
                                 onChange={(e) => setData("title", e.target.value)}
                                 placeholder="Masukkan judul jumbotron..."
@@ -133,7 +133,7 @@ export default function EditJumbotron() {
                                 Deskripsi
                             </label>
                             <textarea
-                                className="w-full border-gray-300 rounded-lg focus:ring-sky-500 focus:border-sky-500"
+                                className="w-full border-gray-300 rounded-lg focus:ring-gray-500 focus:border-gray-500"
                                 value={data.description}
                                 onChange={(e) => setData("description", e.target.value)}
                                 placeholder="Masukkan deskripsi singkat..."
@@ -156,7 +156,7 @@ export default function EditJumbotron() {
                             <button
                                 type="submit"
                                 disabled={processing}
-                                className="bg-sky-600 hover:bg-sky-700 text-white px-6 py-2 rounded-lg transition flex items-center gap-2 font-medium disabled:opacity-60"
+                                className="bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg transition flex items-center gap-2 font-medium disabled:opacity-60"
                             >
                                 <Save size={18} />
                                 {processing ? "Menyimpan..." : "Update"}

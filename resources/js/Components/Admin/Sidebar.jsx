@@ -220,7 +220,7 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
                                         key={j}
                                         href={sub.href}
                                         active={sub.active}
-                                        className={`flex items-center gap-2 pl-8 px-4 py-2 w-full rounded-md text-sm font-medium transition-all duration-200
+                                        className={`flex items-center gap-2 pl-8 px-4 py-2 pt-2 w-full rounded-md text-sm font-medium transition-all duration-200
                                     ${
                                         sub.active
                                             ? "bg-gray-600 text-white"
