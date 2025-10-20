@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ProkerController;
 use App\Http\Controllers\Admin\SambutanController;
 use App\Http\Controllers\Admin\VisiMisiController;
 use App\Http\Controllers\Admin\AlumniPathController;
+use App\Http\Controllers\Admin\AnggotaDivController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\JumbotronController;
 use App\Http\Controllers\Admin\PengurusIntiController;
@@ -56,6 +57,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('struktur', StrukturController::class);
     Route::resource('pengurusinti', PengurusIntiController::class);
     Route::resource('contact', ContactController::class);
+    Route::resource('anggotaDiv', AnggotaDivController::class);
 });
 
 require __DIR__.'/auth.php';
