@@ -13,12 +13,24 @@ class GaleriController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $galeris = Galeri::orderBy('tanggal', 'desc')->get();
+        $search = $request->input('search');
+
+        $galeris = Galeri::query()
+            ->when($search, function ($query, $search) {
+                $query->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('description', 'like', '%' . $search . '%');
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate(9)
+            ->withQueryString();
 
         return Inertia::render('Admin/Galeri/Index', [
-            'galeris' => $galeris
+            'galeris' => $galeris,
+            'filters' => [
+                'search' => $search
+            ]
         ]);
     }
 

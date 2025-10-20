@@ -1,7 +1,14 @@
 import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
-import { Edit, Trash2, Image, PlusCircle } from "lucide-react";
+import {
+    Edit,
+    Trash2,
+    Image,
+    PlusCircle,
+    ImageIcon,
+    PlusIcon,
+} from "lucide-react";
 import { route } from "ziggy-js";
 
 /**
@@ -87,16 +94,23 @@ export default function Index({ jumbotrons }) {
                         </div>
                     </div>
                 ) : (
-                    <div className="bg-white rounded-2xl shadow-md p-10 text-center border border-gray-100">
-                        <p className="text-gray-500 text-lg">
-                            Belum ada jumbotron yang dibuat 😅
+                    <div className="text-center py-16 bg-white rounded-2xl">
+                        <ImageIcon
+                            size={64}
+                            className="mx-auto text-gray-300 mb-4"
+                        />
+                        <h3 className="text-xl font-semibold text-gray-700 mb-2">
+                            Belum Ada Jumbotron
+                        </h3>
+                        <p className="text-gray-500 mb-6">
+                            tambahkan jumbotron untuk header website
                         </p>
                         <Link
                             href={route("jumbotron.create")}
-                            className="inline-flex items-center gap-2 mt-6 bg-sky-600 text-white px-5 py-2 rounded-lg hover:bg-sky-700 transition font-medium"
+                            className="inline-flex items-center gap-2 bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition"
                         >
-                            <PlusCircle size={18} />
-                            Tambah Sekarang
+                            <PlusIcon size={18} />
+                            Tambah Jumbotron
                         </Link>
                     </div>
                 )}

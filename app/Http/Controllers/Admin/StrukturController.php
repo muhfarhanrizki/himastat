@@ -38,7 +38,7 @@ class StrukturController extends Controller
         $validated = $request->validate([
         'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'struktur' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        'deskripsi' => 'nullable|string|max:255',
+        'deskripsi' => 'nullable|string',
         ]);
 
         try {

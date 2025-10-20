@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link, useForm } from "@inertiajs/react";
-import { ArrowLeft, Save, UploadCloud, X } from "lucide-react";
+import { ArrowLeft, Save, UploadCloud, X, ImagePlus } from "lucide-react";
 import { route } from "ziggy-js";
 
 export default function Create() {
     const { data, setData, post, processing, errors } = useForm({
         nama: "",
         pesan: "",
+        angkatan: "",
+        kontak: "",
         image: null,
     });
 
@@ -74,7 +76,45 @@ export default function Create() {
                             placeholder="Masukkan nama alumni"
                         />
                         {errors.nama && (
-                            <p className="text-red-500 text-sm mt-1">{errors.nama}</p>
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.nama}
+                            </p>
+                        )}
+                    </div>
+                    <div>
+                        <label className="block font-medium text-gray-700 mb-2">
+                            Angkatan
+                        </label>
+                        <input
+                            type="text"
+                            value={data.angkatan}
+                            onChange={(e) =>
+                                setData("angkatan", e.target.value)
+                            }
+                            className="w-full rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-300 text-sm shadow-sm"
+                            placeholder="Masukkan Angkatan alumni"
+                        />
+                        {errors.nama && (
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.angkatan}
+                            </p>
+                        )}
+                    </div>
+                    <div>
+                        <label className="block font-medium text-gray-700 mb-2">
+                            Kontak Alumni
+                        </label>
+                        <input
+                            type="text"
+                            value={data.kontak}
+                            onChange={(e) => setData("kontak", e.target.value)}
+                            className="w-full rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-300 text-sm shadow-sm"
+                            placeholder="Masukkan kontak alumni"
+                        />
+                        {errors.nama && (
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.nama}
+                            </p>
                         )}
                     </div>
 
@@ -91,7 +131,9 @@ export default function Create() {
                             placeholder="Tulis pesan atau cerita singkat..."
                         />
                         {errors.pesan && (
-                            <p className="text-red-500 text-sm mt-1">{errors.pesan}</p>
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.pesan}
+                            </p>
                         )}
                     </div>
 
@@ -135,7 +177,10 @@ export default function Create() {
                                 htmlFor="image"
                                 className="flex flex-col items-center justify-center gap-3 border-2 border-dashed border-gray-300 rounded-xl p-8 bg-gray-50 hover:bg-gray-100 cursor-pointer transition text-center"
                             >
-                                <UploadCloud className="text-gray-400" size={42} />
+                                <UploadCloud
+                                    className="text-gray-400"
+                                    size={42}
+                                />
                                 <span className="text-gray-600 font-medium">
                                     Klik untuk upload atau drag gambar ke sini
                                 </span>
@@ -153,7 +198,9 @@ export default function Create() {
                         )}
 
                         {errors.image && (
-                            <p className="text-red-500 text-sm mt-2">{errors.image}</p>
+                            <p className="text-red-500 text-sm mt-2">
+                                {errors.image}
+                            </p>
                         )}
                     </div>
 

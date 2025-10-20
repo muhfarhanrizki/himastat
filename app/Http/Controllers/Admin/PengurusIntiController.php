@@ -80,7 +80,7 @@ class PengurusIntiController extends Controller
             'name' => 'required|string|max:255',
             'jabatan' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'deskripsi' => 'nullable|string|max:255',
+            'deskripsi' => 'nullable|string',
         ]);
 
         if ($request->hasFile('image')) {

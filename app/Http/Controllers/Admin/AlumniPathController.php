@@ -13,12 +13,27 @@ class AlumniPathController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $alumnis = AlumniPath::orderBy('created_at', 'desc')->get();
+        $search = $request->input('search');
+
+        $alumnis = AlumniPath::query()
+            ->when($search, function ($query, $search) {
+                $query->where('nama', 'like', '%' . $search . '%')
+                    ->orWhere('pesan', 'like', '%' . $search . '%')
+                    ->orWhere('angkatan', 'like', '%' . $search . '%');
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate(5)
+            ->withQueryString();
+        
 
         return Inertia::render('Admin/AlumniPath/Index', [
-            'alumnis' => $alumnis
+            'alumnis' => $alumnis,
+            'filters' => 
+            [
+                'search' => $search
+            ]
         ]);
     }
 
@@ -37,6 +52,8 @@ class AlumniPathController extends Controller
     {
         $validated = $request->validate([
             'nama' => 'required|string|max:255',
+            'angkatan' => 'required|string|max:255',
+            'kontak' => 'required|string|max:255',
             'pesan' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -77,6 +94,8 @@ class AlumniPathController extends Controller
     {
         $validated = $request->validate([
             'nama' => 'required|string|max:255',
+            'angkatan' => 'required|string|max:255',
+            'kontak' => 'required|string|max:255',
             'pesan' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);

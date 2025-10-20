@@ -44,7 +44,7 @@ class ProkerController extends Controller
     {
         $validated = $request->validate([
             'nama' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
+            'description' => 'required|string',
             'divisi_id' => 'required|exists:divisi,id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'tanggal' => 'required|string|max:255',

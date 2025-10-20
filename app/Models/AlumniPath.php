@@ -10,6 +10,8 @@ class AlumniPath extends Model
      
     protected $fillable = [
         'nama',
+        'angkatan',
+        'kontak',
         'pesan',
         'image',
     ];

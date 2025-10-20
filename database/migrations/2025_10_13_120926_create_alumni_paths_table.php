@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('alumni_paths', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('angkatan');
+            $table->string('kontak');
             $table->text('pesan');
             $table->string('image')->nullable();
             $table->timestamps();

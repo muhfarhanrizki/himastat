@@ -64,7 +64,45 @@ export default function Edit({ alumniPath }) {
                             className="w-full rounded-xl border-gray-300 focus:border-gray-500 focus:ring-gray-400"
                         />
                         {errors.nama && (
-                            <p className="text-red-500 text-sm mt-1">{errors.nama}</p>
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.nama}
+                            </p>
+                        )}
+                    </div>
+                    <div>
+                        <label className="block font-medium text-gray-700 mb-2">
+                            Angkatan
+                        </label>
+                        <input
+                            type="text"
+                            value={data.angkatan}
+                            onChange={(e) =>
+                                setData("angkatan", e.target.value)
+                            }
+                            className="w-full rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-300 text-sm shadow-sm"
+                            placeholder="Masukkan Angkatan alumni"
+                        />
+                        {errors.nama && (
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.angkatan}
+                            </p>
+                        )}
+                    </div>
+                    <div>
+                        <label className="block font-medium text-gray-700 mb-2">
+                            Kontak Alumni
+                        </label>
+                        <input
+                            type="text"
+                            value={data.kontak}
+                            onChange={(e) => setData("kontak", e.target.value)}
+                            className="w-full rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-300 text-sm shadow-sm"
+                            placeholder="Masukkan kontak alumni"
+                        />
+                        {errors.nama && (
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.nama}
+                            </p>
                         )}
                     </div>
 
@@ -80,7 +118,9 @@ export default function Edit({ alumniPath }) {
                             className="w-full rounded-xl border-gray-300 focus:border-gray-500 focus:ring-gray-400"
                         />
                         {errors.pesan && (
-                            <p className="text-red-500 text-sm mt-1">{errors.pesan}</p>
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.pesan}
+                            </p>
                         )}
                     </div>
 
@@ -97,7 +137,10 @@ export default function Edit({ alumniPath }) {
                                     className="w-40 h-40 object-cover rounded-xl shadow mb-4"
                                 />
                             ) : (
-                                <UploadCloud className="text-gray-400 mb-3" size={40} />
+                                <UploadCloud
+                                    className="text-gray-400 mb-3"
+                                    size={40}
+                                />
                             )}
                             <input
                                 type="file"
@@ -114,7 +157,9 @@ export default function Edit({ alumniPath }) {
                             </label>
                         </div>
                         {errors.image && (
-                            <p className="text-red-500 text-sm mt-1">{errors.image}</p>
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.image}
+                            </p>
                         )}
                     </div>
 

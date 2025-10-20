@@ -39,7 +39,7 @@ class SambutanController extends Controller
            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
            'nama' => 'required|string|max:255',
            'jabatan' => 'required|string|max:255',
-           'sambutan' => 'required|string|max:255',
+           'sambutan' => 'required|string',
         ]);
 
         if ($request->hasFile('image')) {
