@@ -21,4 +21,10 @@ class Divisi extends Model
     {
         return $this->hasMany(Proker::class);
     }
+
+    public function anggota()
+    {
+        return $this->hasMany(AnggotaDiv::class);
+    }
 }
+

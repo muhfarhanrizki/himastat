@@ -5,17 +5,18 @@ namespace App\Models;
 use App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Model;
 
-class Proker extends Model
+class AnggotaDiv extends Model
 {
     use HasSlug;
-    protected $table = 'prokers';
+    protected $table = 'anggota_divs';
 
     protected $fillable = [
-        'nama',
+        'name',
         'slug',
-        'deskripsi',
-        'image',
         'divisi_id',
+        'kontak',
+        'angkatan',
+        'jabatan',
     ];
 
     public function divisi()
