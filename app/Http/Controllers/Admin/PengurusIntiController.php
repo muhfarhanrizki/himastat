@@ -15,10 +15,10 @@ class PengurusIntiController extends Controller
      */
     public function index()
     {
-        $pengurusintis = PengurusInti::all();
+        $pengurusIntis = PengurusInti::all();
 
         return Inertia::render('Admin/PengurusInti/Index', [
-            'pengurusintis' => $pengurusintis
+            'pengurusIntis' => $pengurusIntis
         ]);
     }
 
@@ -36,7 +36,7 @@ class PengurusIntiController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'nama' => 'required|string|max:255',
             'jabatan' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'deskripsi' => 'nullable|string',
@@ -48,7 +48,7 @@ class PengurusIntiController extends Controller
 
         PengurusInti::create($validated);
 
-        return redirect()->route('pengurusinti.index')->with('success', 'Pengurus Inti berhasil ditambahkan');
+        return redirect()->route('pengurusInti.index')->with('success', 'Pengurus Inti berhasil ditambahkan');
     }
 
     /**
@@ -66,7 +66,7 @@ class PengurusIntiController extends Controller
      */
     public function edit(PengurusInti $pengurusInti)
     {
-        return Inertia::render('Admin/PengurusInti/Show', [
+        return Inertia::render('Admin/PengurusInti/Edit', [
             'pengurusInti' => $pengurusInti
         ]);
     }
@@ -77,7 +77,7 @@ class PengurusIntiController extends Controller
     public function update(Request $request, PengurusInti $pengurusInti)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'nama' => 'required|string|max:255',
             'jabatan' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'deskripsi' => 'nullable|string',
@@ -95,7 +95,7 @@ class PengurusIntiController extends Controller
 
         $pengurusInti->update($validated);
 
-        return redirect()->route('pengurusinti.index')->with('success', 'Pengurus Inti berhasil diperbarui');
+        return redirect()->route('pengurusInti.index')->with('success', 'Pengurus Inti berhasil diperbarui');
     }
 
     /**
@@ -109,6 +109,6 @@ class PengurusIntiController extends Controller
 
         $pengurusInti->delete();
 
-        return redirect()->route('pengurusinti.index')->with('success', 'Pengurus Inti berhasil dihapus');
+        return redirect()->route('pengurusInti.index')->with('success', 'Pengurus Inti berhasil dihapus');
     }
 }

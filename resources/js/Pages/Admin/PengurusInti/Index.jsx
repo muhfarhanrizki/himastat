@@ -1,73 +1,126 @@
 import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head } from "@inertiajs/react";
-import { Plus, Edit, Trash2 } from "lucide-react";
+import { Head, Link, router, usePage } from "@inertiajs/react";
+import { Plus, Pencil, Trash2, Users } from "lucide-react";
+import { route } from "ziggy-js";
 
-export default function Index({ title = "Jumbotron", data = [] }) {
+export default function Index() {
+    const { pengurusIntis = [] } = usePage().props;
+
+    const handleDelete = (id) => {
+        if (confirm("Apakah kamu yakin ingin menghapus data pengurus ini?")) {
+            router.delete(route("pengurusInti.destroy", id), {
+                preserveScroll: true,
+                onSuccess: () => {
+                    console.log("Berhasil dihapus!");
+                },
+                onError: (errors) => {
+                    console.error("Error:", errors);
+                },
+            });
+        }
+    };
+
     return (
         <AuthenticatedLayout>
-            <Head title={title} />
+            <Head title="Pengurus Inti" />
 
-            <div className="p-12 min-h-screen">
-                {/* Header Section */}
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-                    <h1 className="text-4xl font-bold text-gray-800 tracking-tight mb-4 md:mb-0">
-                        {title}
-                    </h1>
-                    <div className="flex items-center gap-3">
-                        <button className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl shadow-md transition">
-                            <Plus size={18} /> Tambah
-                        </button>
+            <div className="p-8 max-w-6xl mx-auto">
+                {/* Header */}
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10">
+                    <div>
+                        <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
+                            <Users size={28} /> Pengurus Inti
+                        </h1>
+                        <p className="text-gray-500 text-sm mt-1">
+                            Daftar anggota inti yang memimpin organisasi,
+                            lengkap dengan jabatan dan deskripsi singkat.
+                        </p>
                     </div>
+
+                    <Link
+                        href={route("pengurusInti.create")}
+                        className="inline-flex items-center gap-2 bg-gray-600 hover:bg-gray-700 text-white px-5 py-2.5 rounded-lg shadow transition"
+                    >
+                        <Plus size={18} /> Tambah Pengurus
+                    </Link>
                 </div>
 
-                {/* Content Card */}
-                <div className="bg-white rounded-2xl shadow-md p-5 border border-gray-100">
-                    {data.length === 0 ? (
-                        <div className="text-center text-gray-500 py-16">
-                            <p className="text-lg">Belum ada data untuk ditampilkan 😅</p>
-                        </div>
-                    ) : (
-                        <div className="overflow-x-auto">
-                            <table className="min-w-full text-sm text-left text-gray-600">
-                                <thead>
-                                    <tr className="bg-gray-100 border-b text-gray-700">
-                                        <th className="px-4 py-3 font-semibold">#</th>
-                                        <th className="px-4 py-3 font-semibold">Nama</th>
-                                        <th className="px-4 py-3 font-semibold">Deskripsi</th>
-                                        <th className="px-4 py-3 font-semibold text-center">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {data.map((item, i) => (
-                                        <tr
-                                            key={i}
-                                            className="border-b hover:bg-blue-50 transition"
+                {/* Daftar Pengurus */}
+                {pengurusIntis.length > 0 ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {pengurusIntis.map((pengurus) => (
+                            <div
+                                key={pengurus.id}
+                                className="relative bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition"
+                            >
+                                {/* Foto */}
+                                <div className="relative w-full h-64 bg-gray-100">
+                                    {pengurus.image ? (
+                                        <img
+                                            src={`/storage/${pengurus.image}`}
+                                            alt={pengurus.nama}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    ) : (
+                                        <div className="w-full h-full flex items-center justify-center text-gray-400">
+                                            Tidak ada foto 📸
+                                        </div>
+                                    )}
+
+                                    {/* Tombol Edit & Hapus */}
+                                    <div className="absolute top-3 right-3 flex gap-2">
+                                        <Link
+                                            href={route("pengurusInti.edit", {
+                                                pengurusInti: pengurus.id,
+                                            })}
+                                            className="p-2 rounded-lg bg-white/80 hover:bg-sky-100 text-sky-700 transition"
+                                            title="Edit"
                                         >
-                                            <td className="px-4 py-3">{i + 1}</td>
-                                            <td className="px-4 py-3 font-medium text-gray-800">
-                                                {item.nama}
-                                            </td>
-                                            <td className="px-4 py-3 text-gray-600">
-                                                {item.deskripsi || "-"}
-                                            </td>
-                                            <td className="px-4 py-3 text-center">
-                                                <div className="flex justify-center gap-2">
-                                                    <button className="p-2 rounded-lg bg-blue-100 hover:bg-blue-200 text-blue-600 transition">
-                                                        <Edit size={16} />
-                                                    </button>
-                                                    <button className="p-2 rounded-lg bg-red-100 hover:bg-red-200 text-red-600 transition">
-                                                        <Trash2 size={16} />
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    )}
-                </div>
+                                            <Pencil size={16} />
+                                        </Link>
+                                        <button
+                                            onClick={() =>
+                                                handleDelete(pengurus.id)
+                                            }
+                                            className="p-2 rounded-lg bg-white/80 hover:bg-red-100 text-red-700 transition"
+                                            title="Hapus"
+                                        >
+                                            <Trash2 size={16} />
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {/* Info */}
+                                <div className="p-5 text-center">
+                                    <h2 className="text-lg font-semibold text-gray-800">
+                                        {pengurus.nama}
+                                    </h2>
+                                    <p className="text-sm text-gray-500 mt-1">
+                                        {pengurus.jabatan}
+                                    </p>
+                                    <p className="text-gray-600 text-sm mt-2 whitespace-pre-line">
+                                        {pengurus.deskripsi ||
+                                            "Belum ada deskripsi."}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="text-center py-20 bg-white rounded-2xl border border-gray-100">
+                        <Users
+                            size={60}
+                            className="mx-auto text-gray-300 mb-4"
+                        />
+                        <h3 className="text-xl font-semibold text-gray-700 mb-2">
+                            Belum Ada Data Pengurus
+                        </h3>
+                        <p className="text-gray-500">
+                            Tambahkan anggota pengurus inti sekarang.
+                        </p>
+                    </div>
+                )}
             </div>
         </AuthenticatedLayout>
     );

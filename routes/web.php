@@ -55,7 +55,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('proker', ProkerController::class);
     Route::resource('jumbotron', JumbotronController::class);
     Route::resource('struktur', StrukturController::class);
-    Route::resource('pengurusinti', PengurusIntiController::class);
+    Route::resource('pengurusInti', PengurusIntiController::class);
     Route::resource('contact', ContactController::class);
     Route::resource('anggotaDiv', AnggotaDivController::class);
 });

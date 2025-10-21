@@ -101,7 +101,7 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
                 {
                     name: "Pengurus Inti",
                     icon: <UserCheck size={18} />,
-                    href: route("pengurusinti.index"),
+                    href: route("pengurusInti.index"),
                     active: route().current("pengurusinti.*"),
                 },
                 {
