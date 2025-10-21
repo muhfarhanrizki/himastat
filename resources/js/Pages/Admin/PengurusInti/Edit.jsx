@@ -4,14 +4,17 @@ import { Head, Link, useForm } from "@inertiajs/react";
 import { ArrowLeft, Save, UploadCloud, X, ImagePlus } from "lucide-react";
 import { route } from "ziggy-js";
 
-export default function Create() {
-    const { data, setData, post, processing, errors, reset } = useForm({
-        nama: "",
-        jabatan: "",
+export default function Edit({ pengurusInti }) {
+    const { data, setData, post, processing, errors } = useForm({
+        _method: "PUT",
+        nama: pengurusInti.nama || "",
+        jabatan: pengurusInti.jabatan || "",
         image: null,
     });
 
-    const [preview, setPreview] = useState(null);
+    const [preview, setPreview] = useState(
+        pengurusInti.image ? `/storage/${pengurusInti.image}` : null
+    );
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
@@ -23,17 +26,12 @@ export default function Create() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("pengurusInti.store"), {
-            onSuccess: () => {
-                reset();
-                setPreview(null);
-            },
-        });
+        post(route("pengurusInti.update", pengurusInti.id));
     };
 
     return (
         <AuthenticatedLayout>
-            <Head title="Tambah Pengurus Inti" />
+            <Head title="Edit Pengurus Inti" />
 
             <div className="max-w-6xl mx-auto p-8">
                 {/* Header */}
@@ -44,7 +42,7 @@ export default function Create() {
                             Tambah Pengurus Inti
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
-                            Lengkapi data pengurus inti dibawah ini.
+                            Ubah data pengurus inti.
                         </p>
                     </div>
                     <Link
@@ -87,7 +85,7 @@ export default function Create() {
                                     className="text-gray-400"
                                 />
                                 <p className="text-sm text-gray-500 mt-2">
-                                    Upload Foto
+                                    Upload Foto Baru
                                 </p>
                                 <input
                                     type="file"
@@ -150,7 +148,7 @@ export default function Create() {
                             className="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-800 text-white px-6 py-2.5 rounded-lg shadow transition"
                         >
                             <Save size={18} />
-                            {processing ? "Menyimpan..." : "Simpan"}
+                            {processing ? "Menyimpan..." : "Perbarui"}
                         </button>
                     </div>
                 </form>

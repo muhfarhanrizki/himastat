@@ -12,8 +12,8 @@ class Divisi extends Model
 
     protected $fillable = [
         'name',
+        'slug',
         'deskripsi',
-        'anggota',
         'image',
     ];
 

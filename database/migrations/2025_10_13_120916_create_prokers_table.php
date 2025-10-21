@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->foreignId('divisi_id')->constrained('divisis')->onDelete('cascade');
             $table->text('deskripsi')->nullable();
+            $table->string('tanggal');
             $table->string('image')->nullable();
             $table->timestamps();
         });

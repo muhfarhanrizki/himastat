@@ -39,7 +39,8 @@ export default function Create() {
                             Tambah Struktur Organisasi
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
-                            Lengkapi informasi struktur organisasi untuk ditampilkan di website.
+                            Lengkapi informasi struktur organisasi untuk
+                            ditampilkan di website.
                         </p>
                     </div>
                     <Link
@@ -63,11 +64,19 @@ export default function Create() {
                         <input
                             type="file"
                             accept="image/*"
-                            onChange={(e) => handleImageChange(e, "thumbnail", setPreviewThumbnail)}
-                            className="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-sky-600 file:text-white hover:file:bg-sky-700"
+                            onChange={(e) =>
+                                handleImageChange(
+                                    e,
+                                    "thumbnail",
+                                    setPreviewThumbnail
+                                )
+                            }
+                            className="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-gray-600 file:text-white hover:file:bg-gray-700"
                         />
                         {errors.thumbnail && (
-                            <p className="text-red-500 text-sm mt-1">{errors.thumbnail}</p>
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.thumbnail}
+                            </p>
                         )}
                         {previewThumbnail && (
                             <img
@@ -77,7 +86,6 @@ export default function Create() {
                             />
                         )}
                     </div>
-
                     {/* Struktur */}
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -86,11 +94,19 @@ export default function Create() {
                         <input
                             type="file"
                             accept="image/*"
-                            onChange={(e) => handleImageChange(e, "struktur", setPreviewStruktur)}
-                            className="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-sky-600 file:text-white hover:file:bg-sky-700"
+                            onChange={(e) =>
+                                handleImageChange(
+                                    e,
+                                    "struktur",
+                                    setPreviewStruktur
+                                )
+                            }
+                            className="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-gray-600 file:text-white hover:file:bg-gray-700"
                         />
                         {errors.struktur && (
-                            <p className="text-red-500 text-sm mt-1">{errors.struktur}</p>
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.struktur}
+                            </p>
                         )}
                         {previewStruktur && (
                             <img
@@ -108,13 +124,17 @@ export default function Create() {
                         </label>
                         <textarea
                             value={data.deskripsi}
-                            onChange={(e) => setData("deskripsi", e.target.value)}
+                            onChange={(e) =>
+                                setData("deskripsi", e.target.value)
+                            }
                             rows="5"
-                            className="w-full rounded-lg border-gray-300 focus:ring-sky-500 focus:border-sky-500"
+                            className="w-full rounded-lg border-gray-300 focus:ring-gray-500 focus:border-gray-500"
                             placeholder="Tulis deskripsi singkat tentang struktur organisasi..."
                         ></textarea>
                         {errors.deskripsi && (
-                            <p className="text-red-500 text-sm mt-1">{errors.deskripsi}</p>
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.deskripsi}
+                            </p>
                         )}
                     </div>
 
@@ -123,7 +143,7 @@ export default function Create() {
                         <button
                             type="submit"
                             disabled={processing}
-                            className="inline-flex items-center gap-2 bg-sky-600 hover:bg-sky-700 text-white px-6 py-2.5 rounded-lg shadow transition disabled:opacity-70"
+                            className="inline-flex items-center gap-2 bg-gray-600 hover:bg-gray-700 text-white px-6 py-2.5 rounded-lg shadow transition disabled:opacity-70"
                         >
                             <UploadCloud size={18} />
                             Simpan

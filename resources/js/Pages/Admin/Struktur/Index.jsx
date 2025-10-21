@@ -9,7 +9,7 @@ export default function Index({ structurs }) {
 
     return (
         <AuthenticatedLayout>
-            <Head title="Struktur Organisasi" />
+            <Head title="Struktur Pengurus" />
 
             <div className="p-8 max-w-6xl mx-auto">
                 {/* Header */}
@@ -17,13 +17,12 @@ export default function Index({ structurs }) {
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
                             <Image className="text-gray-600" size={28} />
-                            Struktur Organisasi
+                            Struktur Pengurus
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
-                            Kelola struktur organisasi dan tampilannya di website.
+                            Kelola struktur pengurus dan tampilannya di website.
                         </p>
                     </div>
-
                     {struktur ? (
                         <Link
                             href={route("struktur.edit", struktur.id)}
@@ -34,7 +33,7 @@ export default function Index({ structurs }) {
                     ) : (
                         <Link
                             href={route("struktur.create")}
-                            className="inline-flex items-center gap-2 bg-sky-600 hover:bg-sky-700 text-white px-5 py-2.5 rounded-lg shadow transition"
+                            className="inline-flex items-center gap-2 bg-gray-600 hover:bg-gray-700 text-white px-5 py-2.5 rounded-lg shadow transition"
                         >
                             <PlusCircle size={18} /> Tambah Struktur
                         </Link>
@@ -112,7 +111,7 @@ export default function Index({ structurs }) {
                     // Jika belum ada data
                     <div className="bg-white rounded-2xl shadow-md p-10 text-center border border-gray-100">
                         <p className="text-gray-500 text-lg">
-                            Belum ada struktur organisasi yang dibuat 😅
+                            Belum ada struktur pengurus yang dibuat 😅
                         </p>
                         <Link
                             href={route("struktur.create")}

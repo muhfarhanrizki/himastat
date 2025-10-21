@@ -14,14 +14,27 @@ class ProkerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $prokers = Proker::with('divisi')->get();
-        $divisis = Divisi::all();
+        $search = $request->query('search');
+
+        $divisis = Divisi::orderBy('created_at', 'desc')->get();
+        $prokers = Proker::with('divisi')
+                ->when($search, function ($query, $search) {
+                    $query->where('nama', 'like', '%' . $search . '%')
+                        ->orWhere('deskripsi', 'like', '%' . $search . '%');
+                })
+                ->orderBy('created_at', 'desc')
+                ->paginate(5)
+                ->withQueryString();
 
         return Inertia::render('Admin/Proker/Index', [
             'prokers' => $prokers,
             'divisis' => $divisis, // pake dropdown filter nah sundala
+            'filters' => 
+            [
+                'search' => $search
+            ] 
         ]);
     }
 
@@ -44,8 +57,8 @@ class ProkerController extends Controller
     {
         $validated = $request->validate([
             'nama' => 'required|string|max:255',
-            'description' => 'required|string',
-            'divisi_id' => 'required|exists:divisi,id',
+            'deskripsi' => 'required|string',
+            'divisi_id' => 'required|exists:divisis,id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'tanggal' => 'required|string|max:255',
         ]);
@@ -89,8 +102,8 @@ class ProkerController extends Controller
     {
         $validated = $request->validate([
             'nama' => 'required|string|max:255',
-            'description' => 'required|string',
-            'divisi_id' => 'required|exists:divisi,id',
+            'deskripsi' => 'required|string',
+            'divisi_id' => 'required|exists:divisis,id',
             'tanggal' => 'required|string|max:255',
         ]);
 

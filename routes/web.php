@@ -31,7 +31,7 @@ use App\Models\PengurusInti;
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/galeri', [PageController::class, 'galeri'])->name('galeri');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
-Route::get('/divisi/{divisi}/', [ControllersDivisiController::class, 'show'])->name('divisi.show');
+// Route::get('/divisi/{divisi}/', [ControllersDivisiController::class, 'show'])->name('divisi.show');
 Route::get('/profil-organisasi', [PageController::class, 'profilOrganisasi'])->name('profil-organisasi');
 Route::get('/sejarah', [PageController::class, 'sejarah'])->name('sejarah');
 Route::get('/jejak-alumni,', [PageController::class, 'jejakAlumni'])->name('jejak-alumni');

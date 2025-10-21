@@ -9,19 +9,23 @@ trait HasSlug
     public static function bootHasSlug()
     {
         static::creating(function ($model) {
-            $model->slug = static::generateUniqueSlug($model->nama);
+            // Cek field mana yang ada: 'nama' atau 'name'
+            $fieldName = property_exists($model, 'nama') || isset($model->nama) ? 'nama' : 'name';
+            $model->slug = static::generateUniqueSlug($model->$fieldName);
         });
 
         static::updating(function ($model) {
-            if ($model->isDirty('nama')) {
-                $model->slug = static::generateUniqueSlug($model->nama, $model->id);
+            $fieldName = property_exists($model, 'nama') || isset($model->nama) ? 'nama' : 'name';
+            
+            if ($model->isDirty($fieldName)) {
+                $model->slug = static::generateUniqueSlug($model->$fieldName, $model->id);
             }
         });
     }
 
-    protected static function generateUniqueSlug($nama, $ignoreId = null)
+    protected static function generateUniqueSlug($value, $ignoreId = null)
     {
-        $slug = Str::slug($nama);
+        $slug = Str::slug($value);
         $original = $slug;
 
         $count = 1;

@@ -16,6 +16,7 @@ class Proker extends Model
         'deskripsi',
         'image',
         'divisi_id',
+        'tanggal',
     ];
 
     public function divisi()

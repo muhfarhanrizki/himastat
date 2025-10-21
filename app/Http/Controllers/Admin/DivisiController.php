@@ -38,7 +38,6 @@ class DivisiController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'deskripsi' => 'required|string',
-            'anggota' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -56,8 +55,12 @@ class DivisiController extends Controller
      */
     public function show(Divisi $divisi)
     {
+        $divisi->load('proker');
+        $divisiWproker = Divisi::with('proker')->get();
+        
         return Inertia::render('Admin/Divisi/Show', [
-            'divisi' => $divisi
+            'divisi' => $divisi,
+            'divisiWproker' => $divisiWproker
         ]);
     }
 
