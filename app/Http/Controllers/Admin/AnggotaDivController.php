@@ -48,15 +48,16 @@ class AnggotaDivController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nama' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'jabatan' => 'required|string|max:255',
+            'divisi_id' => 'required|exists:divisis,id',
             'angkatan' => 'required|string|max:255',
             'kontak' => 'required|string|max:255',
         ]);
 
         AnggotaDiv::create($validated);
 
-        return redirect()->route('anggotaDiv.index')->with('success', 'Anggota Divisi berhasil ditambahkan');
+        return redirect()->back()->with('success', 'Anggota Divisi berhasil ditambahkan');
     }
 
     /**
@@ -85,15 +86,16 @@ class AnggotaDivController extends Controller
     public function update(Request $request, AnggotaDiv $anggotaDiv)
     {
         $validated = $request->validate([
-            'nama' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'jabatan' => 'required|string|max:255',
+            'divisi_id' => 'required|exists:divisis,id',
             'angkatan' => 'required|string|max:255',
             'kontak' => 'required|string|max:255',
         ]);
 
         $anggotaDiv->update($validated);
 
-        return redirect()->route('anggotaDiv.index')->with('success', 'Anggota Divisi berhasil diperbarui');
+        return redirect()->back()->with('success', 'Anggota Divisi berhasil diubah');
     }
 
     /**
@@ -103,6 +105,6 @@ class AnggotaDivController extends Controller
     {
         $anggotaDiv->delete();
 
-        return redirect()->route('anggotaDiv.index')->with('success', 'Anggota Divisi berhasil dihapus');
+        return redirect()->back()->with('success', 'Anggota Divisi berhasil dihapus');
     }
 }

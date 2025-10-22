@@ -29,7 +29,7 @@ export default function Index() {
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10">
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
-                            <Image className="text-gray-600" size={26} />
+                            <Image className="text-gray-800" size={26} />
                             Galeri Himpunan
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
@@ -65,7 +65,7 @@ export default function Index() {
                     </div>
                     <button
                         type="submit"
-                        className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg"
+                        className="bg-gray-700 hover:bg-gray-00 text-white px-4 py-2 rounded-lg"
                     >
                         Cari
                     </button>

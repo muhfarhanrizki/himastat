@@ -32,7 +32,7 @@ export default function Index() {
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10">
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
-                            <User className="text-gray-600" size={28} />
+                            <User className="text-gray-800" size={28} />
                             Jejak Alumni
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
@@ -43,7 +43,7 @@ export default function Index() {
                     {/* Tombol Tambah */}
                     <Link
                         href={route("alumniPath.create")}
-                        className="inline-flex items-center gap-2 bg-gray-600 hover:bg-gray-700 text-white px-5 py-2.5 rounded-lg shadow transition"
+                        className="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-800 text-white px-5 py-2.5 rounded-lg shadow transition"
                     >
                         <Plus size={18} /> Tambah Alumni
                     </Link>
@@ -69,7 +69,7 @@ export default function Index() {
                     </div>
                     <button
                         type="submit"
-                        className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg"
+                        className="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded-lg"
                     >
                         Cari
                     </button>
@@ -77,23 +77,23 @@ export default function Index() {
 
                 {/* Data Alumni */}
                 {alumnis.data.length > 0 ? (
-                    <div className="grid grid-cols-1 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
                         {alumnis.data.map((alumni) => (
                             <div
                                 key={alumni.id}
-                                className="relative bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden"
+                                className="relative bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition"
                             >
-                                <div className="flex flex-col md:flex-row gap-6 p-6 md:p-8">
+                                <div className="flex flex-col md:flex-row gap-6 p-6">
                                     {/* Foto */}
                                     <div className="flex-shrink-0 mx-auto md:mx-0">
                                         {alumni.image ? (
                                             <img
                                                 src={`/storage/${alumni.image}`}
                                                 alt={alumni.nama}
-                                                className="w-40 h-40 object-cover rounded-xl shadow-md border border-gray-200"
+                                                className="w-36 h-36 md:w-40 md:h-40 object-cover rounded-xl shadow-sm border border-gray-200"
                                             />
                                         ) : (
-                                            <div className="w-40 h-40 flex items-center justify-center bg-gray-100 rounded-xl border border-gray-200">
+                                            <div className="w-36 h-36 md:w-40 md:h-40 flex items-center justify-center bg-gray-100 rounded-xl border border-gray-200">
                                                 <User
                                                     size={40}
                                                     className="text-gray-400"
@@ -104,37 +104,38 @@ export default function Index() {
 
                                     {/* Isi */}
                                     <div className="flex-1 flex flex-col justify-between relative">
-                                        <div className="pb-12">
-                                            <h2 className="text-2xl font-semibold text-gray-800">
+                                        <div className="space-y-2">
+                                            <h2 className="text-xl md:text-2xl font-semibold text-gray-800">
                                                 {alumni.nama}
                                             </h2>
-                                            <p className="text-sm font-semibold text-gray-800 mt-1 mb-2">{alumni.angkatan}</p>
-                                            <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                                                {alumni.pesan ||
-                                                    "Belum ada pesan dari alumni ini."}
+                                            <p className="text-sm text-gray-500 font-medium">
+                                                {alumni.angkatan}
                                             </p>
+                                            <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                                                {alumni.pesan || "Belum ada pesan dari alumni ini."}
+                                            </p>
+                                            {alumni.kontak && (
+                                                <p className="text-gray-600 text-sm flex items-center gap-1 mt-2">
+                                                    <User size={14} /> {alumni.kontak}
+                                                </p>
+                                            )}
                                         </div>
 
                                         {/* Tombol Edit & Hapus */}
-                                        <div className="absolute bottom-0 right-0 flex gap-2 px-4 pt-4">
+                                        <div className="absolute top-4 right-4 flex gap-2">
                                             <Link
-                                                href={route(
-                                                    "alumniPath.edit",
-                                                    alumni.id
-                                                )}
-                                                className="p-2.5 rounded-lg bg-sky-100 hover:bg-sky-200 text-sky-700 transition"
+                                                href={route("alumniPath.edit", alumni.id)}
+                                                className="p-2 rounded-lg bg-sky-100 hover:bg-sky-200 text-sky-700 transition"
                                                 title="Edit"
                                             >
-                                                <Pencil size={18} />
+                                                <Pencil size={16} />
                                             </Link>
                                             <button
-                                                onClick={() =>
-                                                    handleDelete(alumni.id)
-                                                }
-                                                className="p-2.5 rounded-lg bg-red-100 hover:bg-red-200 text-red-700 transition"
+                                                onClick={() => handleDelete(alumni.id)}
+                                                className="p-2 rounded-lg bg-red-100 hover:bg-red-200 text-red-700 transition"
                                                 title="Hapus"
                                             >
-                                                <Trash2 size={18} />
+                                                <Trash2 size={16} />
                                             </button>
                                         </div>
                                     </div>
@@ -144,7 +145,7 @@ export default function Index() {
                     </div>
                 ) : (
                     // Empty state
-                    <div className="text-center py-20 bg-white rounded-2xl border border-gray-100">
+                    <div className="text-center py-20 bg-white rounded-2xl border border-gray-100 shadow-sm">
                         <User
                             size={60}
                             className="mx-auto text-gray-300 mb-4"

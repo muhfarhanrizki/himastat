@@ -10,12 +10,12 @@ trait HasSlug
     {
         static::creating(function ($model) {
             // Cek field mana yang ada: 'nama' atau 'name'
-            $fieldName = property_exists($model, 'nama') || isset($model->nama) ? 'nama' : 'name';
+            $fieldName = isset($model->name) ? 'name' : 'nama';
             $model->slug = static::generateUniqueSlug($model->$fieldName);
         });
 
         static::updating(function ($model) {
-            $fieldName = property_exists($model, 'nama') || isset($model->nama) ? 'nama' : 'name';
+            $fieldName = isset($model->name) ? 'name' : 'nama';
             
             if ($model->isDirty($fieldName)) {
                 $model->slug = static::generateUniqueSlug($model->$fieldName, $model->id);

@@ -25,7 +25,7 @@ class ProkerController extends Controller
                         ->orWhere('deskripsi', 'like', '%' . $search . '%');
                 })
                 ->orderBy('created_at', 'desc')
-                ->paginate(5)
+                ->paginate(9)
                 ->withQueryString();
 
         return Inertia::render('Admin/Proker/Index', [
@@ -69,7 +69,7 @@ class ProkerController extends Controller
 
         Proker::create($validated);
 
-        return redirect()->route('proker.index')->with('success', 'Proker berhasil ditambahkan');
+        return redirect()->back()->with('success', 'Proker berhasil ditambahkan');
     }
 
     /**
@@ -119,7 +119,7 @@ class ProkerController extends Controller
 
         $proker->update($validated);
 
-        return redirect()->route('proker.index')->with('success', 'Proker berhasil diperbarui');
+        return redirect()->back()->with('success', 'Proker berhasil diperbarui');
     }
 
     /**
@@ -133,6 +133,6 @@ class ProkerController extends Controller
 
         $proker->delete();
 
-        return redirect()->route('proker.index')->with('success', 'Proker berhasil dihapus');
+        return redirect()->back()->with('success', 'Proker berhasil dihapus');
     }
 }

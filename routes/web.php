@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\VisiMisiController;
 use App\Http\Controllers\Admin\AlumniPathController;
 use App\Http\Controllers\Admin\AnggotaDivController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\JumbotronController;
 use App\Http\Controllers\Admin\PengurusIntiController;
 use App\Http\Controllers\Admin\StrukturController;
@@ -39,10 +40,11 @@ Route::get('/struktur-organisasi', [PageController::class, 'strukturOrganisasi']
 Route::get('/pengurus-inti', [PageController::class, 'pengurusInti'])->name('pengurus-inti');
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Welcome');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -58,6 +60,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('pengurusInti', PengurusIntiController::class);
     Route::resource('contact', ContactController::class);
     Route::resource('anggotaDiv', AnggotaDivController::class);
+
+    Route::get('/404', function () {
+        return Inertia::render('Admin/404');
+    })->name('404');
 });
 
 require __DIR__.'/auth.php';

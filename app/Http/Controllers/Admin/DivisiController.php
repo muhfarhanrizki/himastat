@@ -15,7 +15,7 @@ class DivisiController extends Controller
      */
     public function index()
     {
-        $divisis = Divisi::with('proker')->get();
+        $divisis = Divisi::with('proker', 'anggota')->get();
 
         return Inertia::render('Admin/Divisi/Index', [
             'divisis' => $divisis
@@ -55,12 +55,10 @@ class DivisiController extends Controller
      */
     public function show(Divisi $divisi)
     {
-        $divisi->load('proker');
-        $divisiWproker = Divisi::with('proker')->get();
+        $divisi->load(['proker', 'anggota']);
         
         return Inertia::render('Admin/Divisi/Show', [
             'divisi' => $divisi,
-            'divisiWproker' => $divisiWproker
         ]);
     }
 

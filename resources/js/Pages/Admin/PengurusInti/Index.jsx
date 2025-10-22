@@ -28,7 +28,7 @@ export default function Index({ pengurusIntis }) {
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10">
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
-                            <Users size={28} /> Pengurus Inti
+                            <Users className="text-gray-800" size={28} /> Pengurus Inti
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
                             Daftar anggota inti yang memimpin organisasi.

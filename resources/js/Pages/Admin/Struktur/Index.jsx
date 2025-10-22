@@ -16,7 +16,7 @@ export default function Index({ structurs }) {
                 <div className="flex items-center justify-between mb-10">
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
-                            <Image className="text-gray-600" size={28} />
+                            <Image className="text-gray-800" size={28} />
                             Struktur Pengurus
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
@@ -26,14 +26,14 @@ export default function Index({ structurs }) {
                     {struktur ? (
                         <Link
                             href={route("struktur.edit", struktur.id)}
-                            className="inline-flex items-center gap-2 bg-gray-600 hover:bg-gray-700 text-white px-5 py-2.5 rounded-lg shadow transition"
+                            className="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-800 text-white px-5 py-2.5 rounded-lg shadow transition"
                         >
                             <Edit size={18} /> Edit Struktur
                         </Link>
                     ) : (
                         <Link
                             href={route("struktur.create")}
-                            className="inline-flex items-center gap-2 bg-gray-600 hover:bg-gray-700 text-white px-5 py-2.5 rounded-lg shadow transition"
+                            className="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-800 text-white px-5 py-2.5 rounded-lg shadow transition"
                         >
                             <PlusCircle size={18} /> Tambah Struktur
                         </Link>
