@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, router, Link } from "@inertiajs/react";
-import { Phone, Mail, ArrowLeft, Save } from "lucide-react";
+import { Phone, Mail, ArrowLeft, Save, ImagePlus } from "lucide-react";
 import { route } from "ziggy-js";
 
 export default function Create() {
@@ -27,7 +27,7 @@ export default function Create() {
         <AuthenticatedLayout>
             <Head title="Tambah Kontak" />
 
-            <div className="p-8 max-w-6xl mx-auto">
+            <div className="p-8 px-8 max-w-full mx-auto">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-8">
                     <div>
@@ -41,7 +41,7 @@ export default function Create() {
                     </div>
                     <Link
                         href={route("contact.index")}
-                        className="inline-flex items-center gap-2 text-gray-600 hover:text-sky-600 transition"
+                        className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-600 transition"
                     >
                         <ArrowLeft size={18} /> Kembali
                     </Link>
@@ -54,7 +54,7 @@ export default function Create() {
                         <div className="bg-white rounded-2xl shadow-md border border-gray-100 p-8 hover:shadow-lg transition flex flex-col justify-between">
                             <div>
                                 <div className="flex items-center gap-3 mb-5">
-                                    <div className="p-3 bg-sky-100 text-gray-600 rounded-xl">
+                                    <div className="p-3 bg-gray-100 text-gray-600 rounded-xl">
                                         <Phone size={22} />
                                     </div>
                                     <h2 className="text-lg font-semibold text-gray-800">
@@ -95,7 +95,7 @@ export default function Create() {
                                     name="email"
                                     value={values.email}
                                     onChange={handleChange}
-                                    placeholder="Contoh: desa@example.com"
+                                    placeholder="Contoh: himpunan@example.com"
                                     className="w-full border-gray-300 rounded-lg focus:ring-gray-500 focus:border-gray-500"
                                 />
                                 {errors.email && (

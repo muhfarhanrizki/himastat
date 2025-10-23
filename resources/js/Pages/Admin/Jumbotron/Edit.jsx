@@ -31,7 +31,7 @@ export default function EditJumbotron() {
         <AuthenticatedLayout>
             <Head title="Edit Jumbotron" />
 
-            <div className="p-8 max-w-6xl mx-auto">
+            <div className="p-8 px-8 max-w-full mx-auto">
                 {/* Header */}
                 <div className="flex justify-between items-center mb-10">
                     <div>
@@ -46,7 +46,7 @@ export default function EditJumbotron() {
 
                     <Link
                         href={route("jumbotron.index")}
-                        className="text-gray-600 hover:text-sky-600 flex items-center gap-1 font-medium transition"
+                        className="text-gray-600 hover:text-gray-600 flex items-center gap-1 font-medium transition"
                     >
                         <ArrowLeft size={16} /> Kembali
                     </Link>

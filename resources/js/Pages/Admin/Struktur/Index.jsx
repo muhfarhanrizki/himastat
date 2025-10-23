@@ -11,7 +11,7 @@ export default function Index({ structurs }) {
         <AuthenticatedLayout>
             <Head title="Struktur Pengurus" />
 
-            <div className="p-8 max-w-6xl mx-auto">
+            <div className="p-8 px-8 max-w-full mx-auto">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-10">
                     <div>

@@ -22,7 +22,7 @@ export default function Create() {
         <AuthenticatedLayout>
             <Head title="Tambah Jumbotron" />
 
-            <div className="p-8 max-w-6xl mx-auto">
+            <div className="p-8 px-8 max-w-full mx-auto">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-10">
                     <div>
@@ -37,7 +37,7 @@ export default function Create() {
 
                     <Link
                         href={route("jumbotron.index")}
-                        className="text-gray-600 hover:text-sky-600 flex items-center gap-1 font-medium"
+                        className="text-gray-600 hover:text-gray-600 flex items-center gap-1 font-medium"
                     >
                         <ArrowLeft size={16} /> Kembali
                     </Link>

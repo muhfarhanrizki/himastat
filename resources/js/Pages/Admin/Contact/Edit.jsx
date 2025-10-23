@@ -27,7 +27,7 @@ export default function Edit({ contact }) {
         <AuthenticatedLayout>
             <Head title="Edit Kontak" />
 
-            <div className="p-8 max-w-6xl mx-auto">
+            <div className="p-8 px-8 max-w-full mx-auto">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
                     <div>
@@ -41,7 +41,7 @@ export default function Edit({ contact }) {
 
                     <Link
                         href={route("contact.index")}
-                        className="mt-4 md:mt-0 inline-flex items-center gap-2 text-gray-600 hover:text-sky-600 transition"
+                        className="mt-4 md:mt-0 inline-flex items-center gap-2 text-gray-600 hover:text-gray-600 transition"
                     >
                         <ArrowLeft size={18} /> Kembali
                     </Link>

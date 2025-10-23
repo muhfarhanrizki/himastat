@@ -15,7 +15,7 @@ export default function Index({ sambutans }) {
         <AuthenticatedLayout>
             <Head title="Daftar Sambutan" />
 
-            <div className="p-8 max-w-7xl mx-auto">
+            <div className="p-8 px-8 max-w-full mx-auto">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-10">
                     <div>

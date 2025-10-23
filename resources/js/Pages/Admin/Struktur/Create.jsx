@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link, useForm } from "@inertiajs/react";
-import { ArrowLeft, UploadCloud } from "lucide-react";
+import { ArrowLeft, UploadCloud, Image} from "lucide-react";
 import { route } from "ziggy-js";
 
 export default function Create() {
@@ -31,11 +31,12 @@ export default function Create() {
         <AuthenticatedLayout>
             <Head title="Tambah Struktur Organisasi" />
 
-            <div className="p-8 max-w-6xl mx-auto">
+            <div className="p-8 px-8 max-w-full mx-auto">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-10">
                     <div>
-                        <h1 className="text-3xl font-bold text-gray-900">
+                        <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
+                            <Image className="text-gray-800" size={28} />
                             Tambah Struktur Organisasi
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">

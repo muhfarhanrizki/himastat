@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link, useForm } from "@inertiajs/react";
-import { ArrowLeft, Save } from "lucide-react";
+import { ArrowLeft, Save, Image } from "lucide-react";
 import { route } from "ziggy-js";
 
 export default function Edit({ struktur }) {
@@ -36,11 +36,12 @@ export default function Edit({ struktur }) {
         <AuthenticatedLayout>
             <Head title="Edit Struktur Organisasi" />
 
-            <div className="p-8 max-w-6xl mx-auto">
+            <div className="p-8 px-8 max-w-full mx-auto">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-10">
                     <div>
-                        <h1 className="text-3xl font-bold text-gray-900">
+                        <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
+                            <Image className="text-gray-800" size={28} />
                             Edit Struktur Organisasi
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
@@ -49,9 +50,9 @@ export default function Edit({ struktur }) {
                     </div>
                     <Link
                         href={route("struktur.index")}
-                        className="inline-flex items-center gap-2 bg-gray-600 hover:bg-gray-700 text-white px-5 py-2.5 rounded-lg shadow transition"
+                        className="inline-flex items-center gap-1 text-gray-600 hover:text-gray-600 font-medium"
                     >
-                        <ArrowLeft size={18} /> Kembali
+                        <ArrowLeft size={16} /> Kembali
                     </Link>
                 </div>
 

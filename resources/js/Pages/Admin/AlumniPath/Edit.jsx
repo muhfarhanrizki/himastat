@@ -40,7 +40,7 @@ export default function Edit({ alumniPath }) {
         <AuthenticatedLayout>
             <Head title={`Edit ${alumniPath.nama}`} />
 
-            <div className="p-8 max-w-6xl mx-auto">
+            <div className="p-8 px-8 max-w-full mx-auto">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-10">
                     <h1 className="text-3xl font-bold text-gray-900">
@@ -134,34 +134,30 @@ export default function Edit({ alumniPath }) {
                         </label>
 
                         {preview ? (
-                            <div className="relative group w-fit mx-auto">
+                            <div className="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg p-5 bg-gray-50 hover:bg-gray-100 transition">
+                            {preview ? (
                                 <img
                                     src={preview}
                                     alt="Preview"
-                                    className="w-48 h-48 object-cover rounded-xl shadow-md border border-gray-200"
+                                    className="w-40 h-40 object-cover rounded-lg mb-3 shadow-sm"
                                 />
-                                <button
-                                    type="button"
-                                    onClick={removeImage}
-                                    className="absolute top-2 right-2 bg-white/90 hover:bg-red-100 text-red-600 rounded-full p-1.5 shadow-sm transition"
-                                    title="Hapus gambar"
-                                >
-                                    <X size={16} />
-                                </button>
-                                <label
-                                    htmlFor="image"
-                                    className="absolute bottom-2 left-1/2 -translate-x-1/2 px-3 py-1.5 text-xs font-medium bg-gray-800 text-white rounded-md opacity-0 group-hover:opacity-100 transition cursor-pointer"
-                                >
-                                    Ubah Gambar
-                                </label>
-                                <input
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={handleImageChange}
-                                    className="hidden"
-                                    id="image"
-                                />
-                            </div>
+                            ) : (
+                                <ImageIcon className="text-gray-400 mb-2" size={40} />
+                            )}
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={handleImageChange}
+                                id="image"
+                                className="hidden"
+                            />
+                            <label
+                                htmlFor="image"
+                                className="cursor-pointer text-sm bg-gray-200 hover:bg-gray-300 text-gray-700 px-3 py-1.5 rounded-md transition"
+                            >
+                                Ganti Gambar
+                            </label>
+                        </div>
                         ) : (
                             <label
                                 htmlFor="image"

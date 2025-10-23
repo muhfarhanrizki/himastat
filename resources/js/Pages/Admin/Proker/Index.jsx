@@ -47,7 +47,7 @@ export default function Index({ auth, prokers, divisis, filters }) {
         >
             <Head title="Program Kerja" />
 
-            <div className="p-8 max-w-6xl mx-auto">
+            <div className="p-8 px-8 max-w-full mx-auto">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10">
                     <div>

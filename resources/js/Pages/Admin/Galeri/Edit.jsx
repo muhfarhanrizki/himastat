@@ -32,7 +32,7 @@ export default function Edit({ galeri }) {
         <AuthenticatedLayout>
             <Head title="Edit Galeri" />
 
-            <div className="max-w-6xl mx-auto p-8">
+            <div className="p-8 px-8 max-w-full mx-auto">
                 <div className="flex justify-between items-center mb-8">
                     <div>
                         <h1 className="text-2xl font-semibold text-gray-800 flex items-center gap-2">
@@ -46,7 +46,7 @@ export default function Edit({ galeri }) {
 
                     <Link
                         href={route("galeri.index")}
-                        className="inline-flex items-center gap-1 text-gray-600 hover:text-blue-600 font-medium"
+                        className="inline-flex items-center gap-1 text-gray-600 hover:text-gray-600 font-medium"
                     >
                         <ArrowLeft size={16} /> Kembali
                     </Link>

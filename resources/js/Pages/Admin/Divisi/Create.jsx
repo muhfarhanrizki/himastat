@@ -38,7 +38,7 @@ export default function Create({ auth }) {
         <AuthenticatedLayout user={auth.user}>
             <Head title="Tambah Divisi" />
 
-            <div className="max-w-6xl mx-auto p-8">
+            <div className="p-8 px-8 max-w-full mx-auto">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-8">
                     <div>
@@ -84,14 +84,17 @@ export default function Create({ auth }) {
                                 </button>
                             </div>
                         ) : (
-                            <label className="flex flex-col items-center justify-center w-48 h-48 border-2 border-dashed border-gray-300 rounded-xl cursor-pointer hover:border-gray-400 transition">
+                            <label className="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed border-gray-300 rounded-xl cursor-pointer hover:border-gray-400 transition">
                                 <UploadCloud
                                     size={28}
                                     className="text-gray-400"
                                 />
-                                <p className="text-sm text-gray-500 mt-2">
-                                    Upload Gambar
-                                </p>
+                                                                <span className="text-gray-600 font-medium">
+                                    Klik untuk upload atau drag gambar ke sini
+                                </span>
+                                <span className="text-xs text-gray-400">
+                                    (PNG, JPG, maksimal 2MB)
+                                </span>
                                 <input
                                     type="file"
                                     accept="image/*"
