@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\PengurusIntiController;
 use App\Http\Controllers\Admin\StrukturController;
 use App\Http\Controllers\DivisiController as ControllersDivisiController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ProfilController;
 use App\Models\PengurusInti;
 
 // Route::get('/', function () {
@@ -29,15 +30,15 @@ use App\Models\PengurusInti;
 //     ]);
 // });
 
-Route::get('/', [PageController::class, 'home'])->name('home');
-Route::get('/galeri', [PageController::class, 'galeri'])->name('galeri');
-Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::get('/', [PageController::class, 'beranda'])->name('beranda');
+Route::get('/galeri-himpunan', [PageController::class, 'galeris'])->name('galeris');
+Route::get('/kontak', [PageController::class, 'kontak'])->name('kontak');
 // Route::get('/divisi/{divisi}/', [ControllersDivisiController::class, 'show'])->name('divisi.show');
-Route::get('/profil-organisasi', [PageController::class, 'profilOrganisasi'])->name('profil-organisasi');
-Route::get('/sejarah', [PageController::class, 'sejarah'])->name('sejarah');
-Route::get('/jejak-alumni,', [PageController::class, 'jejakAlumni'])->name('jejak-alumni');
-Route::get('/struktur-organisasi', [PageController::class, 'strukturOrganisasi'])->name('struktur-organisasi');
-Route::get('/pengurus-inti', [PageController::class, 'pengurusInti'])->name('pengurus-inti');
+Route::get('/profil-organisasi', [ProfilController::class, 'profilOrganisasi'])->name('profil-organisasi');
+Route::get('/sejarah', [ProfilController::class, 'sejarah'])->name('sejarah');
+Route::get('/jejak-alumni,', [ProfilController::class, 'jejakAlumni'])->name('jejak-alumni');
+Route::get('/struktur-organisasi', [ProfilController::class, 'strukturOrganisasi'])->name('struktur-organisasi');
+Route::get('/pengurus-inti', [ProfilController::class, 'pengurusInti'])->name('pengurus-inti');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Welcome');

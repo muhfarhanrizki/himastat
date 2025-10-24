@@ -7,38 +7,40 @@ use App\Models\Divisi;
 use App\Models\Galeri;
 use App\Models\Contact;
 use App\Models\Sambutan;
-use App\Models\Struktur;
+use App\Models\AlumniPath;
 use App\Models\VisiMisi;
 use App\Models\Jumbotron;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function home(){
+    public function beranda(){
         $visimisi = VisiMisi::all();
         $sambutan = Sambutan::all();
         $divisi = Divisi::all();
         $jumbotron = Jumbotron::all();
+        $alumniPath = AlumniPath::all();
 
-        return Inertia::render('Page/Home', [
+        return Inertia::render('Beranda', [
             'visimisi' => $visimisi,
             'sambutan' => $sambutan,
             'divisi' => $divisi,
-            'jumbotron' => $jumbotron
+            'jumbotron' => $jumbotron,
+            'alumniPath' => $alumniPath,
         ]);
     }
 
-    public function galeri(){
+    public function galeris(){
         $galeri = Galeri::all();
 
-        return Inertia::render('Page/Galeri',[
+        return Inertia::render('Frontend/Galeri',[
             'galeri' => $galeri
         ]);
     }
 
-    public function contact(){
+    public function kontak(){
         $contact = Contact::all();
-        return Inertia::render('Page/Contact',[
+        return Inertia::render('Frontend/Kontak',[
             'contact' => $contact
         ]);
     }

@@ -15,19 +15,19 @@ class ProfilController extends Controller
     public function profilOrganisasi(){
         $visimisi = VisiMisi::all();
 
-        return Inertia::render('Page/Profil/ProfilOrganisasi', [
+        return Inertia::render('Frontend/Profil/ProfilOrganisasi', [
             'visimisi' => $visimisi
         ]);
     }
 
     public function sejarah(){
-        return Inertia::render('Page/Profil/Sejarah');
+        return Inertia::render('Frontend/Profil/Sejarah');
     }
 
     public function jejakAlumni(){
         $AlumniPath = AlumniPath::all();
 
-        return Inertia::render('Page/Profil/JejakAlumni', [
+        return Inertia::render('Frontend/Profil/JejakAlumni', [
             'AlumniPath' => $AlumniPath
         ]);
     }
@@ -36,7 +36,7 @@ class ProfilController extends Controller
         $struktur = Struktur::all();
         $divisi = Divisi::all();
 
-        return Inertia::render('Page/Profil/StrukturOrganisasi', [
+        return Inertia::render('Frontend/Profil/StrukturOrganisasi', [
             'struktur' => $struktur,
             'divisi' => $divisi
         ]);
@@ -44,7 +44,7 @@ class ProfilController extends Controller
 
     public function pengurusInti(){
         $pengurusInti = PengurusInti::all();
-        return Inertia::render('Page/Profil/PengurusInti',
+        return Inertia::render('Frontend/Profil/PengurusInti',
         [
             'pengurusInti' => $pengurusInti
         ]);
