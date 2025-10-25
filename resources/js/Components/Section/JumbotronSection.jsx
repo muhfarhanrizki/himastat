@@ -32,9 +32,12 @@ export default function JumbotronSection({ data }) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, ease: "easeOut" }}
             >
+                <div className="flex justify-center items-center mt-12">
+                    <img src="/favicon.svg" alt="Logo" className="h-48 w-48" />
+                </div>
 
                 <motion.h1
-                    className="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-6 mt-24 leading-tight bg-white bg-clip-text text-transparent drop-shadow-2xl"
+                    className="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight bg-white bg-clip-text text-transparent drop-shadow-2xl"
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
@@ -43,7 +46,7 @@ export default function JumbotronSection({ data }) {
                 </motion.h1>
 
                 <motion.p
-                    className="text-md md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed drop-shadow-lg font-light"
+                    className="text-md md:text-xl text-gray-300 mb-6 max-w-3xl mx-auto leading-relaxed drop-shadow-lg font-light"
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}

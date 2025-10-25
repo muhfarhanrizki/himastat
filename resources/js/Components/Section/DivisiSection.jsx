@@ -36,7 +36,7 @@ export default function DivisiSection({ data }) {
                 </motion.div>
 
                 {/* Grid Card */}
-                <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-10">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
                     {data.map((item, index) => (
                         <motion.div
                             key={item.id}
