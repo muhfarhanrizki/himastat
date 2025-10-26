@@ -41,7 +41,7 @@ class VisiMisiController extends Controller
 
         VisiMisi::create($validated);
 
-        return redirect()->route('visimisi.index')->with('success', 'Visi Misi berhasil ditambahkan');
+        return redirect()->route('admin.visimisi.index')->with('success', 'Visi Misi berhasil ditambahkan');
     }
 
     /**
@@ -71,12 +71,12 @@ class VisiMisiController extends Controller
     {
         $validated = $request->validate([
             'visi' => 'required|string|max:255',
-            'misi' => 'required|string|max:255',
+            'misi' => 'required|string',
         ]);
 
         $visimisi->update($validated);
 
-        return redirect()->route('visimisi.index')->with('success', 'Visi Misi berhasil diperbarui');   
+        return redirect()->route('admin.visimisi.index')->with('success', 'Visi Misi berhasil diperbarui');   
     }
 
     /**
@@ -86,6 +86,6 @@ class VisiMisiController extends Controller
     {
         $visimisi->delete();
 
-        return redirect()->route('visimisi.index')->with('success', 'Visi Misi berhasil dihapus');
+        return redirect()->route('admin.visimisi.index')->with('success', 'Visi Misi berhasil dihapus');
     }
 }

@@ -41,7 +41,7 @@ class ContactController extends Controller
 
         Contact::create($validated);
 
-        return redirect()->route('contact.index')->with('success', 'Contact berhasil ditambahkan');
+        return redirect()->route('admin.contact.index')->with('success', 'Contact berhasil ditambahkan');
     }
 
     /**
@@ -76,7 +76,7 @@ class ContactController extends Controller
 
         $contact->update($validated);
 
-        return redirect()->route('contact.index')->with('success', 'Contact berhasil diperbarui');
+        return redirect()->route('admin.contact.index')->with('success', 'Contact berhasil diperbarui');
     }
 
     /**
@@ -86,6 +86,6 @@ class ContactController extends Controller
     {
         $contact->delete();
 
-        return redirect()->route('contact.index')->with('success', 'Contact berhasil dihapus');
+        return redirect()->route('admin.contact.index')->with('success', 'Contact berhasil dihapus');
     }
 }

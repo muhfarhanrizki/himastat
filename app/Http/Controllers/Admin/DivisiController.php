@@ -47,7 +47,7 @@ class DivisiController extends Controller
 
         Divisi::create($validated);
 
-        return redirect()->route('divisi.index')->with('success', 'Divisi berhasil ditambahkan');
+        return redirect()->route('admin.divisi.index')->with('success', 'Divisi berhasil ditambahkan');
     }
 
     /**
@@ -96,7 +96,7 @@ class DivisiController extends Controller
 
         $divisi->update($validated);
 
-        return redirect()->route('divisi.index')->with('success', 'Divisi berhasil diperbarui');
+        return redirect()->route('admin.divisi.index')->with('success', 'Divisi berhasil diperbarui');
     }
 
     /**
@@ -110,6 +110,6 @@ class DivisiController extends Controller
             Storage::disk('public')->delete($divisi->image);
         }
 
-        return redirect()->route('divisi.index')->with('success', 'Divisi berhasil dihapus');
+        return redirect()->route('admin.divisi.index')->with('success', 'Divisi berhasil dihapus');
     }
 }

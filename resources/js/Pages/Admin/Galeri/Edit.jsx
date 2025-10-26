@@ -13,7 +13,9 @@ export default function Edit({ galeri }) {
         image: null,
     });
 
-    const [preview, setPreview] = useState(galeri.image ? `/storage/${galeri.image}` : null);
+    const [preview, setPreview] = useState(
+        galeri.image ? `/storage/${galeri.image}` : null
+    );
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -25,7 +27,7 @@ export default function Edit({ galeri }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("galeri.update", galeri.id));
+        post(route("admin.galeri.update", galeri.id));
     };
 
     return (
@@ -45,7 +47,7 @@ export default function Edit({ galeri }) {
                     </div>
 
                     <Link
-                        href={route("galeri.index")}
+                        href={route("admin.galeri.index")}
                         className="inline-flex items-center gap-1 text-gray-600 hover:text-gray-600 font-medium"
                     >
                         <ArrowLeft size={16} /> Kembali
@@ -68,7 +70,9 @@ export default function Edit({ galeri }) {
                             className="w-full border-gray-300 rounded-lg focus:border-gray-400 focus:ring-gray-300 text-sm"
                         />
                         {errors.name && (
-                            <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.name}
+                            </p>
                         )}
                     </div>
 
@@ -79,12 +83,16 @@ export default function Edit({ galeri }) {
                         </label>
                         <textarea
                             value={data.description}
-                            onChange={(e) => setData("description", e.target.value)}
+                            onChange={(e) =>
+                                setData("description", e.target.value)
+                            }
                             rows="3"
                             className="w-full border-gray-300 rounded-lg focus:border-gray-400 focus:ring-gray-300 text-sm"
                         ></textarea>
                         {errors.description && (
-                            <p className="text-red-500 text-sm mt-1">{errors.description}</p>
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.description}
+                            </p>
                         )}
                     </div>
 
@@ -100,7 +108,9 @@ export default function Edit({ galeri }) {
                             className="w-full border-gray-300 rounded-lg focus:border-gray-400 focus:ring-gray-300 text-sm"
                         />
                         {errors.tanggal && (
-                            <p className="text-red-500 text-sm mt-1">{errors.tanggal}</p>
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.tanggal}
+                            </p>
                         )}
                     </div>
 
@@ -117,7 +127,10 @@ export default function Edit({ galeri }) {
                                     className="w-40 h-40 object-cover rounded-lg mb-3 shadow-sm"
                                 />
                             ) : (
-                                <ImageIcon className="text-gray-400 mb-2" size={40} />
+                                <ImageIcon
+                                    className="text-gray-400 mb-2"
+                                    size={40}
+                                />
                             )}
                             <input
                                 type="file"
@@ -134,7 +147,9 @@ export default function Edit({ galeri }) {
                             </label>
                         </div>
                         {errors.image && (
-                            <p className="text-red-500 text-sm mt-1">{errors.image}</p>
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.image}
+                            </p>
                         )}
                     </div>
 
@@ -144,9 +159,11 @@ export default function Edit({ galeri }) {
                             type="submit"
                             disabled={processing}
                             className={`inline-flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-md transition
-                                ${processing
-                                    ? "bg-gray-400 cursor-not-allowed text-white"
-                                    : "bg-gray-600 hover:bg-gray-700 text-white"}`}
+                                ${
+                                    processing
+                                        ? "bg-gray-400 cursor-not-allowed text-white"
+                                        : "bg-gray-600 hover:bg-gray-700 text-white"
+                                }`}
                         >
                             <Save size={16} /> Perbarui
                         </button>

@@ -74,11 +74,11 @@ export default function Show({ auth, divisi }) {
         e.preventDefault();
 
         if (editingProker) {
-            prokerForm.post(route("proker.update", editingProker.slug), {
+            prokerForm.post(route("admin.proker.update", editingProker.slug), {
                 onSuccess: () => closeProkerModal(),
             });
         } else {
-            prokerForm.post(route("proker.store"), {
+            prokerForm.post(route("admin.proker.store"), {
                 onSuccess: () => closeProkerModal(),
             });
         }
@@ -86,7 +86,7 @@ export default function Show({ auth, divisi }) {
 
     const handleDeleteProker = (slug) => {
         if (confirm("Apakah Anda yakin ingin menghapus proker ini?")) {
-            prokerForm.delete(route("proker.destroy", slug));
+            prokerForm.delete(route("admin.proker.destroy", slug));
         }
     };
 
@@ -132,11 +132,14 @@ export default function Show({ auth, divisi }) {
         e.preventDefault();
 
         if (editingAnggota) {
-            anggotaForm.post(route("anggotaDiv.update", editingAnggota.slug), {
-                onSuccess: () => closeAnggotaModal(),
-            });
+            anggotaForm.post(
+                route("admin.anggotaDiv.update", editingAnggota.slug),
+                {
+                    onSuccess: () => closeAnggotaModal(),
+                }
+            );
         } else {
-            anggotaForm.post(route("anggotaDiv.store"), {
+            anggotaForm.post(route("admin.anggotaDiv.store"), {
                 onSuccess: () => closeAnggotaModal(),
             });
         }
@@ -144,7 +147,7 @@ export default function Show({ auth, divisi }) {
 
     const handleDeleteAnggota = (slug) => {
         if (confirm("Apakah Anda yakin ingin menghapus anggota ini?")) {
-            anggotaForm.delete(route("anggotaDiv.destroy", slug));
+            anggotaForm.delete(route("admin.anggotaDiv.destroy", slug));
         }
     };
 
@@ -173,7 +176,7 @@ export default function Show({ auth, divisi }) {
                     </div>
 
                     <Link
-                        href={route("divisi.index")}
+                        href={route("admin.divisi.index")}
                         className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-800 transition"
                     >
                         <ArrowLeft size={20} />

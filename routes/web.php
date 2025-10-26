@@ -33,18 +33,18 @@ use App\Models\PengurusInti;
 Route::get('/', [PageController::class, 'beranda'])->name('beranda');
 Route::get('/galeri-himpunan', [PageController::class, 'galeris'])->name('galeris');
 Route::get('/kontak', [PageController::class, 'kontak'])->name('kontak');
-// Route::get('/divisi/{divisi}/', [ControllersDivisiController::class, 'show'])->name('divisi.show');
+Route::get('/divisi/{divisi}/', [ControllersDivisiController::class, 'show'])->name('divisi.show');
 Route::get('/profil-organisasi', [ProfilController::class, 'profilOrganisasi'])->name('profil-organisasi');
 Route::get('/sejarah', [ProfilController::class, 'sejarah'])->name('sejarah');
 Route::get('/jejak-alumni,', [ProfilController::class, 'jejakAlumni'])->name('jejak-alumni');
 Route::get('/struktur-organisasi', [ProfilController::class, 'strukturOrganisasi'])->name('struktur-organisasi');
 Route::get('/pengurus-inti', [ProfilController::class, 'pengurusInti'])->name('pengurus-inti');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Welcome');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return Inertia::render('Welcome');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

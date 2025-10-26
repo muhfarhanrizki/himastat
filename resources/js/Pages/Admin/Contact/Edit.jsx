@@ -18,7 +18,7 @@ export default function Edit({ contact }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        router.put(route("contact.update", contact.id), values, {
+        router.put(route("admin.contact.update", contact.id), values, {
             onError: (err) => setErrors(err),
         });
     };
@@ -35,12 +35,13 @@ export default function Edit({ contact }) {
                             <Phone className="text-gray-600" /> Edit Kontak
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
-                            Ubah informasi kontak seperti nomor telepon dan email.
+                            Ubah informasi kontak seperti nomor telepon dan
+                            email.
                         </p>
                     </div>
 
                     <Link
-                        href={route("contact.index")}
+                        href={route("admin.contact.index")}
                         className="mt-4 md:mt-0 inline-flex items-center gap-2 text-gray-600 hover:text-gray-600 transition"
                     >
                         <ArrowLeft size={18} /> Kembali
@@ -68,7 +69,9 @@ export default function Edit({ contact }) {
                             placeholder="Contoh: +62 812 3456 7890"
                         />
                         {errors.phone && (
-                            <p className="text-red-500 text-sm mt-2">{errors.phone}</p>
+                            <p className="text-red-500 text-sm mt-2">
+                                {errors.phone}
+                            </p>
                         )}
                     </div>
 
@@ -76,7 +79,9 @@ export default function Edit({ contact }) {
                     <div className="bg-white rounded-2xl shadow-md border border-gray-100 p-8 space-y-4">
                         <div className="flex items-center gap-2 mb-4">
                             <Mail className="text-gray-600" />
-                            <h2 className="font-semibold text-gray-800">Email</h2>
+                            <h2 className="font-semibold text-gray-800">
+                                Email
+                            </h2>
                         </div>
                         <input
                             type="email"
@@ -87,7 +92,9 @@ export default function Edit({ contact }) {
                             placeholder="Contoh: himastat@example.com"
                         />
                         {errors.email && (
-                            <p className="text-red-500 text-sm mt-2">{errors.email}</p>
+                            <p className="text-red-500 text-sm mt-2">
+                                {errors.email}
+                            </p>
                         )}
                     </div>
 

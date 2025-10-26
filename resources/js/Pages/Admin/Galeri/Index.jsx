@@ -11,13 +11,13 @@ export default function Index() {
 
     const handleDelete = (id) => {
         if (confirm("Apakah kamu yakin ingin menghapus galeri ini?")) {
-            router.delete(route("galeri.destroy", id));
+            router.delete(route("admin.galeri.destroy", id));
         }
     };
 
     const handleSearch = (e) => {
         e.preventDefault();
-        router.get(route("galeri.index"), { search }, { preserveState: true });
+        router.get(route("admin.galeri.index"), { search }, { preserveState: true });
     };
 
     return (
@@ -38,7 +38,7 @@ export default function Index() {
                     </div>
 
                     <Link
-                        href={route("galeri.create")}
+                        href={route("admin.galeri.create")}
                         className="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-800 text-white px-5 py-2.5 rounded-lg shadow transition"
                     >
                         <Plus size={18} /> Tambah Galeri
@@ -114,7 +114,7 @@ export default function Index() {
                                         <div className="flex gap-2">
                                             <Link
                                                 href={route(
-                                                    "galeri.edit",
+                                                    "admin.galeri.edit",
                                                     galeri.id
                                                 )}
                                                 className="bg-white/20 hover:bg-white/30 text-white p-1.5 rounded-md transition"

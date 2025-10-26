@@ -17,7 +17,7 @@ export default function Create() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("alumniPath.store"));
+        post(route("admin.alumniPath.store"));
     };
 
     const handleImageChange = (e) => {
@@ -51,7 +51,7 @@ export default function Create() {
                     </div>
 
                     <Link
-                        href={route("alumniPath.index")}
+                        href={route("admin.alumniPath.index")}
                         className="text-gray-600 hover:text-sky-600 flex items-center gap-1 font-medium"
                     >
                         <ArrowLeft size={16} /> Kembali

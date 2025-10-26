@@ -72,7 +72,10 @@ export default function Index({ jumbotrons }) {
                             {/* Tombol Aksi di pojok kanan atas */}
                             <div className="absolute top-3 right-3 flex gap-2">
                                 <Link
-                                    href={route("jumbotron.edit", jumbotron.id)}
+                                    href={route(
+                                        "admin.jumbotron.edit",
+                                        jumbotron.id
+                                    )}
                                     className="p-2 rounded-lg bg-white/80 hover:bg-white text-sky-600 transition"
                                     title="Edit"
                                 >
@@ -82,7 +85,7 @@ export default function Index({ jumbotrons }) {
                                     as="button"
                                     method="delete"
                                     href={route(
-                                        "jumbotron.destroy",
+                                        "admin.jumbotron.destroy",
                                         jumbotron.id
                                     )}
                                     className="p-2 rounded-lg bg-white/80 hover:bg-red-100 text-red-600 transition"

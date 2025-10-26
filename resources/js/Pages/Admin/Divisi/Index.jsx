@@ -1,12 +1,12 @@
-import React from 'react';
-import { Head, Link, router } from '@inertiajs/react';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Users, Plus, Trash2, Briefcase, UserCheck } from 'lucide-react';
+import React from "react";
+import { Head, Link, router } from "@inertiajs/react";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import { Users, Plus, Trash2, Briefcase, UserCheck } from "lucide-react";
 
 export default function Index({ auth, divisis }) {
     const handleDelete = (slug) => {
-        if (confirm('Apakah Anda yakin ingin menghapus divisi ini?')) {
-            router.delete(route('divisi.destroy', slug));
+        if (confirm("Apakah Anda yakin ingin menghapus divisi ini?")) {
+            router.delete(route("divisi.destroy", slug));
         }
     };
 
@@ -35,7 +35,7 @@ export default function Index({ auth, divisis }) {
                     </div>
 
                     <Link
-                        href={route('divisi.create')}
+                        href={route("admin.divisi.create")}
                         className="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-800 text-white px-5 py-2.5 rounded-lg shadow transition"
                     >
                         <Plus size={18} /> Tambah Divisi
@@ -48,7 +48,7 @@ export default function Index({ auth, divisis }) {
                         {divisis.map((divisi) => (
                             <Link
                                 key={divisi.id}
-                                href={route('divisi.show', divisi.slug)}
+                                href={route("admin.divisi.show", divisi.slug)}
                                 className="relative group overflow-hidden rounded-2xl shadow-md border border-gray-100 bg-white cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
                             >
                                 {/* Tombol Hapus di pojok kanan atas */}
@@ -74,7 +74,10 @@ export default function Index({ auth, divisis }) {
                                         />
                                     ) : (
                                         <div className="w-full h-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-                                            <Users size={60} className="text-white opacity-50" />
+                                            <Users
+                                                size={60}
+                                                className="text-white opacity-50"
+                                            />
                                         </div>
                                     )}
 
@@ -86,7 +89,7 @@ export default function Index({ auth, divisis }) {
                                         <h2 className="text-white font-bold text-xl mb-2">
                                             {divisi.name}
                                         </h2>
-                                        
+
                                         <p className="text-gray-200 text-sm line-clamp-2 mb-3">
                                             {divisi.deskripsi}
                                         </p>
@@ -95,11 +98,18 @@ export default function Index({ auth, divisis }) {
                                         <div className="flex items-center gap-4">
                                             <div className="flex items-center gap-1.5 text-white text-sm">
                                                 <UserCheck size={16} />
-                                                <span>{divisi.anggota?.length || 0} Anggota</span>
+                                                <span>
+                                                    {divisi.anggota?.length ||
+                                                        0}{" "}
+                                                    Anggota
+                                                </span>
                                             </div>
                                             <div className="flex items-center gap-1.5 text-white text-sm">
                                                 <Briefcase size={16} />
-                                                <span>{divisi.proker?.length || 0} Proker</span>
+                                                <span>
+                                                    {divisi.proker?.length || 0}{" "}
+                                                    Proker
+                                                </span>
                                             </div>
                                         </div>
                                     </div>

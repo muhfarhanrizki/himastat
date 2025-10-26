@@ -53,7 +53,7 @@ class StrukturController extends Controller
             Struktur::create($validated);
 
             return redirect()
-                ->route('struktur.index')
+                ->route('admin.struktur.index')
                 ->with('success', 'Struktur berhasil ditambahkan.');
         } catch (\Exception $e) {
             return back()->with('error', 'Terjadi kesalahan saat menyimpan: ' . $e->getMessage());
@@ -113,7 +113,7 @@ class StrukturController extends Controller
             $struktur->update($validated);
 
             return redirect()
-                ->route('struktur.index')
+                ->route('admin.struktur.index')
                 ->with('success', 'Struktur berhasil diperbarui.');
         } catch (\Exception $e) {
             return back()->with('error', 'Terjadi kesalahan saat menyimpan: ' . $e->getMessage());
@@ -135,6 +135,6 @@ class StrukturController extends Controller
 
         $struktur->delete();
 
-        return redirect()->route('struktur.index')->with('success', 'Struktur berhasil dihapus');
+        return redirect()->route('admin.struktur.index')->with('success', 'Struktur berhasil dihapus');
     }
 }

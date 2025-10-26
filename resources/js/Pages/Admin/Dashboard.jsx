@@ -65,33 +65,35 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
         if (diffHours < 24) return `${diffHours} jam yang lalu`;
         if (diffDays === 1) return "Kemarin";
         if (diffDays < 7) return `${diffDays} hari yang lalu`;
-        return past.toLocaleDateString('id-ID');
+        return past.toLocaleDateString("id-ID");
     };
 
     // Gabungkan semua aktivitas
     const recentActivities = [
-        ...(latest.galeri?.map(g => ({
+        ...(latest.galeri?.map((g) => ({
             id: `galeri-${g.id}`,
-            type: 'galeri',
-            title: 'Galeri Baru Ditambahkan',
+            type: "galeri",
+            title: "Galeri Baru Ditambahkan",
             description: g.name,
             created_at: g.created_at,
         })) || []),
-        ...(latest.proker?.map(p => ({
+        ...(latest.proker?.map((p) => ({
             id: `proker-${p.id}`,
-            type: 'proker',
-            title: 'Program Kerja Baru',
-            description: `${p.nama} - ${p.divisi?.name || 'Divisi'}`,
+            type: "proker",
+            title: "Program Kerja Baru",
+            description: `${p.nama} - ${p.divisi?.name || "Divisi"}`,
             created_at: p.created_at,
         })) || []),
-        ...(latest.alumniPath?.map(a => ({
+        ...(latest.alumniPath?.map((a) => ({
             id: `alumni-${a.id}`,
-            type: 'alumni',
-            title: 'Alumni Terdaftar',
+            type: "alumni",
+            title: "Alumni Terdaftar",
             description: `${a.nama} (Angkatan ${a.angkatan})`,
             created_at: a.created_at,
         })) || []),
-    ].sort((a, b) => new Date(b.created_at) - new Date(a.created_at)).slice(0, 10);
+    ]
+        .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+        .slice(0, 10);
 
     return (
         <AuthenticatedLayout>
@@ -108,18 +110,24 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
                     {/* Decorative elements */}
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -mr-32 -mt-32"></div>
                     <div className="absolute bottom-0 left-0 w-48 h-48 bg-white opacity-5 rounded-full -ml-24 -mb-24"></div>
-                    
+
                     <div className="relative z-10">
                         <div className="flex items-center justify-between">
                             <div className="flex-1">
                                 <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                                    {timeOfDay}, {auth?.user?.name || "Admin"} 👋
+                                    {timeOfDay}, {auth?.user?.name || "Admin"}{" "}
+                                    👋
                                 </h1>
                                 <p className="text-gray-300 text-lg max-w-3xl leading-relaxed">
-                                    Selamat datang di dashboard! Di sini, kamu bisa melihat seluruh informasi penting yang dibutuhkan untuk memantau sistem dan aktivitas terbaru, sehingga memudahkanmu dalam mengelola setiap halaman dengan lebih efektif.
+                                    Selamat datang di dashboard! Di sini, kamu
+                                    bisa melihat seluruh informasi penting yang
+                                    dibutuhkan untuk memantau sistem dan
+                                    aktivitas terbaru, sehingga memudahkanmu
+                                    dalam mengelola setiap halaman dengan lebih
+                                    efektif.
                                 </p>
                             </div>
-                            
+
                             {/* Icon decoration */}
                             <div className="hidden lg:flex items-center gap-4">
                                 <div className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center transform hover:scale-110 transition-transform">
@@ -127,21 +135,23 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
                                 </div>
                             </div>
                         </div>
-                        
+
                         {/* Quick stats in header */}
                         <div className="mt-6 flex flex-wrap gap-4">
                             <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
                                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                                <span className="text-sm text-gray-200">Sistem Aktif</span>
+                                <span className="text-sm text-gray-200">
+                                    Sistem Aktif
+                                </span>
                             </div>
                             <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
                                 <Calendar className="w-4 h-4 text-gray-300" />
                                 <span className="text-sm text-gray-200">
-                                    {new Date().toLocaleDateString('id-ID', { 
-                                        weekday: 'long', 
-                                        year: 'numeric', 
-                                        month: 'long', 
-                                        day: 'numeric' 
+                                    {new Date().toLocaleDateString("id-ID", {
+                                        weekday: "long",
+                                        year: "numeric",
+                                        month: "long",
+                                        day: "numeric",
                                     })}
                                 </span>
                             </div>
@@ -193,7 +203,7 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
                                 Galeri Terbaru
                             </h2>
                             <Link
-                                href="/galeri"
+                                href="/admin/galeri"
                                 className="text-gray-700 hover:text-gray-900 text-sm font-medium flex items-center gap-1"
                             >
                                 Lihat semua <ArrowRight size={16} />
@@ -221,8 +231,13 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
                             </div>
                         ) : (
                             <div className="text-center py-8">
-                                <Image size={40} className="mx-auto text-gray-300 mb-2" />
-                                <p className="text-gray-400 text-sm">Belum ada galeri</p>
+                                <Image
+                                    size={40}
+                                    className="mx-auto text-gray-300 mb-2"
+                                />
+                                <p className="text-gray-400 text-sm">
+                                    Belum ada galeri
+                                </p>
                             </div>
                         )}
                     </motion.div>
@@ -239,7 +254,7 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
                                 Divisi Himpunan
                             </h2>
                             <Link
-                                href="/divisi"
+                                href="/admin/divisi"
                                 className="text-gray-700 hover:text-gray-900 text-sm font-medium flex items-center gap-1"
                             >
                                 Lihat semua <ArrowRight size={16} />
@@ -261,7 +276,10 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
                                             />
                                         ) : (
                                             <div className="w-14 h-14 bg-gradient-to-br from-gray-400 to-gray-600 rounded-lg flex items-center justify-center">
-                                                <Users size={24} className="text-white" />
+                                                <Users
+                                                    size={24}
+                                                    className="text-white"
+                                                />
                                             </div>
                                         )}
                                         <div className="flex-1 min-w-0">
@@ -269,19 +287,33 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
                                                 {item.name}
                                             </p>
                                             <div className="flex items-center gap-3 text-xs text-gray-500 mt-1">
-                                                <span>{item.proker_count || 0} Proker</span>
+                                                <span>
+                                                    {item.proker_count || 0}{" "}
+                                                    Proker
+                                                </span>
                                                 <span>•</span>
-                                                <span>{item.anggota_count || 0} Anggota</span>
+                                                <span>
+                                                    {item.anggota_count || 0}{" "}
+                                                    Anggota
+                                                </span>
                                             </div>
                                         </div>
-                                        <ArrowRight size={18} className="text-gray-400 group-hover:text-gray-700 transition" />
+                                        <ArrowRight
+                                            size={18}
+                                            className="text-gray-400 group-hover:text-gray-700 transition"
+                                        />
                                     </Link>
                                 ))}
                             </div>
                         ) : (
                             <div className="text-center py-8">
-                                <Users size={40} className="mx-auto text-gray-300 mb-2" />
-                                <p className="text-gray-400 text-sm">Belum ada divisi</p>
+                                <Users
+                                    size={40}
+                                    className="mx-auto text-gray-300 mb-2"
+                                />
+                                <p className="text-gray-400 text-sm">
+                                    Belum ada divisi
+                                </p>
                             </div>
                         )}
                     </motion.div>
@@ -301,7 +333,7 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
                                 Program Kerja Terbaru
                             </h2>
                             <Link
-                                href="/proker"
+                                href="/admin/proker"
                                 className="text-gray-700 hover:text-gray-900 text-sm font-medium flex items-center gap-1"
                             >
                                 Lihat semua <ArrowRight size={16} />
@@ -319,11 +351,12 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
                                                 {item.nama}
                                             </h3>
                                             <span className="px-2 py-1 bg-gray-700 text-white text-xs rounded-full whitespace-nowrap">
-                                                {item.divisi?.name || 'Divisi'}
+                                                {item.divisi?.name || "Divisi"}
                                             </span>
                                         </div>
                                         <p className="text-sm text-gray-600 line-clamp-2 mb-2">
-                                            {item.description || "Tidak ada deskripsi"}
+                                            {item.description ||
+                                                "Tidak ada deskripsi"}
                                         </p>
                                         <div className="flex items-center gap-1 text-xs text-gray-500">
                                             <Calendar size={14} />
@@ -334,8 +367,13 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
                             </div>
                         ) : (
                             <div className="text-center py-8">
-                                <Briefcase size={40} className="mx-auto text-gray-300 mb-2" />
-                                <p className="text-gray-400 text-sm">Belum ada program kerja</p>
+                                <Briefcase
+                                    size={40}
+                                    className="mx-auto text-gray-300 mb-2"
+                                />
+                                <p className="text-gray-400 text-sm">
+                                    Belum ada program kerja
+                                </p>
                             </div>
                         )}
                     </motion.div>
@@ -373,8 +411,13 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
                                 ))
                             ) : (
                                 <div className="text-center py-8">
-                                    <Activity size={40} className="mx-auto text-gray-300 mb-2" />
-                                    <p className="text-gray-400 text-sm">Belum ada aktivitas</p>
+                                    <Activity
+                                        size={40}
+                                        className="mx-auto text-gray-300 mb-2"
+                                    />
+                                    <p className="text-gray-400 text-sm">
+                                        Belum ada aktivitas
+                                    </p>
                                 </div>
                             )}
                         </div>
@@ -393,7 +436,7 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
                             Jejak Alumni
                         </h2>
                         <Link
-                            href="/alumniPath"
+                            href="/admin/alumniPath"
                             className="text-gray-700 hover:text-gray-900 text-sm font-medium flex items-center gap-1"
                         >
                             Lihat semua <ArrowRight size={16} />
@@ -422,15 +465,23 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
                                         </div>
                                     </div>
                                     <p className="text-sm text-gray-700 italic leading-relaxed line-clamp-4">
-                                        "{item.pesan || "Belum ada pesan dari alumni ini."}"
+                                        "
+                                        {item.pesan ||
+                                            "Belum ada pesan dari alumni ini."}
+                                        "
                                     </p>
                                 </div>
                             ))}
                         </div>
                     ) : (
                         <div className="text-center py-8">
-                            <MessageSquare size={40} className="mx-auto text-gray-300 mb-2" />
-                            <p className="text-gray-400 text-sm">Belum ada data alumni</p>
+                            <MessageSquare
+                                size={40}
+                                className="mx-auto text-gray-300 mb-2"
+                            />
+                            <p className="text-gray-400 text-sm">
+                                Belum ada data alumni
+                            </p>
                         </div>
                     )}
                 </motion.div>

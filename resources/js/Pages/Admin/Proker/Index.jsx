@@ -18,7 +18,7 @@ export default function Index({ auth, prokers, divisis, filters }) {
 
     const handleSearch = () => {
         router.get(
-            route("proker.index"),
+            route("admin.proker.index"),
             {
                 search: searchTerm,
             },

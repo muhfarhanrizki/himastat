@@ -7,7 +7,7 @@ import { route } from "ziggy-js";
 export default function Index({ pengurusIntis }) {
     const handleDelete = (id) => {
         if (confirm("Apakah kamu yakin ingin menghapus data pengurus ini?")) {
-            router.delete(route("pengurusInti.destroy", id), {
+            router.delete(route("admin.pengurusInti.destroy", id), {
                 preserveScroll: true,
                 onSuccess: () => {
                     console.log("✅ Data berhasil dihapus");
@@ -28,7 +28,8 @@ export default function Index({ pengurusIntis }) {
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10">
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
-                            <Users className="text-gray-800" size={28} /> Pengurus Inti
+                            <Users className="text-gray-800" size={28} />{" "}
+                            Pengurus Inti
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
                             Daftar anggota inti yang memimpin organisasi.
@@ -36,7 +37,7 @@ export default function Index({ pengurusIntis }) {
                     </div>
 
                     <Link
-                        href={route("pengurusInti.create")}
+                        href={route("admin.pengurusInti.create")}
                         className="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-800 text-white px-5 py-2.5 rounded-lg shadow transition"
                     >
                         <Plus size={18} /> Tambah Pengurus Inti
@@ -70,7 +71,7 @@ export default function Index({ pengurusIntis }) {
                                         <div className="flex justify-end w-full gap-2">
                                             <Link
                                                 href={route(
-                                                    "pengurusInti.edit",
+                                                    "admin.pengurusInti.edit",
                                                     pengurus.id
                                                 )}
                                                 className="p-2 rounded-lg bg-white/30 hover:bg-sky-500 hover:text-white transition"

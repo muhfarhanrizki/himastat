@@ -26,7 +26,7 @@ export default function Create({ auth }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("divisi.store"), {
+        post(route("admin.divisi.store"), {
             onSuccess: () => {
                 reset();
                 setPreviewImage(null);
@@ -51,7 +51,7 @@ export default function Create({ auth }) {
                         </p>
                     </div>
                     <Link
-                        href={route("divisi.index")}
+                        href={route("admin.divisi.index")}
                         className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-800 transition"
                     >
                         <ArrowLeft size={18} /> Kembali
@@ -89,7 +89,7 @@ export default function Create({ auth }) {
                                     size={28}
                                     className="text-gray-400"
                                 />
-                                                                <span className="text-gray-600 font-medium">
+                                <span className="text-gray-600 font-medium">
                                     Klik untuk upload atau drag gambar ke sini
                                 </span>
                                 <span className="text-xs text-gray-400">
@@ -170,3 +170,5 @@ export default function Create({ auth }) {
         </AuthenticatedLayout>
     );
 }
+
+

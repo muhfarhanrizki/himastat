@@ -7,7 +7,7 @@ import { route } from "ziggy-js";
 export default function Index({ contacts = [] }) {
     const handleDelete = (id) => {
         if (confirm("Apakah kamu yakin ingin menghapus kontak ini?")) {
-            router.delete(route("contact.destroy", id));
+            router.delete(route("admin.contact.destroy", id));
         }
     };
 
@@ -26,20 +26,21 @@ export default function Index({ contacts = [] }) {
                             Kontak Himpunan
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
-                            Kelola informasi kontak seperti nomor telepon dan email resmi.
+                            Kelola informasi kontak seperti nomor telepon dan
+                            email resmi.
                         </p>
                     </div>
 
                     {contact ? (
                         <Link
-                            href={route("contact.edit", contact.id)}
+                            href={route("admin.contact.edit", contact.id)}
                             className="inline-flex items-center gap-2 bg-gray-600 hover:bg-gray-700 text-white px-5 py-2.5 rounded-lg shadow transition"
                         >
                             <Pencil size={18} /> Edit Kontak
                         </Link>
                     ) : (
                         <Link
-                            href={route("contact.create")}
+                            href={route("admin.contact.create")}
                             className="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-800 text-white px-5 py-2.5 rounded-lg shadow transition"
                         >
                             <Plus size={18} /> Tambah Kontak
@@ -61,7 +62,9 @@ export default function Index({ contacts = [] }) {
                                 </h2>
                             </div>
                             {contact ? (
-                                <p className="text-gray-600 text-lg">{contact.phone}</p>
+                                <p className="text-gray-600 text-lg">
+                                    {contact.phone}
+                                </p>
                             ) : (
                                 <p className="text-gray-400 italic text-lg">
                                     Belum ada nomor telepon
@@ -82,7 +85,9 @@ export default function Index({ contacts = [] }) {
                                 </h2>
                             </div>
                             {contact ? (
-                                <p className="text-gray-600 text-lg">{contact.email}</p>
+                                <p className="text-gray-600 text-lg">
+                                    {contact.email}
+                                </p>
                             ) : (
                                 <p className="text-gray-400 italic text-lg">
                                     Belum ada email desa

@@ -25,14 +25,14 @@ export default function Index({ structurs }) {
                     </div>
                     {struktur ? (
                         <Link
-                            href={route("struktur.edit", struktur.id)}
+                            href={route("admin.struktur.edit", struktur.id)}
                             className="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-800 text-white px-5 py-2.5 rounded-lg shadow transition"
                         >
                             <Edit size={18} /> Edit Struktur
                         </Link>
                     ) : (
                         <Link
-                            href={route("struktur.create")}
+                            href={route("admin.struktur.create")}
                             className="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-800 text-white px-5 py-2.5 rounded-lg shadow transition"
                         >
                             <PlusCircle size={18} /> Tambah Struktur
@@ -114,7 +114,7 @@ export default function Index({ structurs }) {
                             Belum ada struktur pengurus yang dibuat 😅
                         </p>
                         <Link
-                            href={route("struktur.create")}
+                            href={route("admin.struktur.create")}
                             className="inline-flex items-center gap-2 mt-6 bg-gray-600 text-white px-5 py-2 rounded-lg hover:bg-gray-700 transition font-medium"
                         >
                             <PlusCircle size={18} />

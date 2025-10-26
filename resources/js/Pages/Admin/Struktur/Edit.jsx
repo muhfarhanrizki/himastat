@@ -21,7 +21,7 @@ export default function Edit({ struktur }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("struktur.update", struktur.id));
+        post(route("admin.struktur.update", struktur.id));
     };
 
     const handleImageChange = (e, field, setPreview) => {
@@ -49,7 +49,7 @@ export default function Edit({ struktur }) {
                         </p>
                     </div>
                     <Link
-                        href={route("struktur.index")}
+                        href={route("admin.struktur.index")}
                         className="inline-flex items-center gap-1 text-gray-600 hover:text-gray-600 font-medium"
                     >
                         <ArrowLeft size={16} /> Kembali

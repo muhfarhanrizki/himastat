@@ -29,7 +29,7 @@ export default function Create() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("galeri.store"));
+        post(route("admin.galeri.store"));
     };
 
     return (
@@ -50,7 +50,7 @@ export default function Create() {
                     </div>
 
                     <Link
-                        href={route("galeri.index")}
+                        href={route("admin.galeri.index")}
                         className="inline-flex items-center gap-1 text-gray-600 hover:text-gray-600 font-medium"
                     >
                         <ArrowLeft size={16} /> Kembali

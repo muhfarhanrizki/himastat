@@ -26,7 +26,7 @@ export default function Edit({ pengurusInti }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("pengurusInti.update", pengurusInti.id));
+        post(route("admin.pengurusInti.update", pengurusInti.id));
     };
 
     return (
@@ -46,7 +46,7 @@ export default function Edit({ pengurusInti }) {
                         </p>
                     </div>
                     <Link
-                        href={route("pengurusInti.index")}
+                        href={route("admin.pengurusInti.index")}
                         className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-800 transition"
                     >
                         <ArrowLeft size={18} /> Kembali

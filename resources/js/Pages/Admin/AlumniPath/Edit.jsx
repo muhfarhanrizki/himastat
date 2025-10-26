@@ -20,7 +20,7 @@ export default function Edit({ alumniPath }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("alumniPath.update", alumniPath.id));
+        post(route("admin.alumniPath.update", alumniPath.id));
     };
 
     const handleImageChange = (e) => {
@@ -47,7 +47,7 @@ export default function Edit({ alumniPath }) {
                         Edit Jejak Alumni
                     </h1>
                     <Link
-                        href={route("alumniPath.index")}
+                        href={route("admin.alumniPath.index")}
                         className="text-gray-600 hover:text-sky-600 flex items-center gap-1 font-medium"
                     >
                         <ArrowLeft size={16} /> Kembali

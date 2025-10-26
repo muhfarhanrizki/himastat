@@ -60,7 +60,7 @@ class GaleriController extends Controller
 
         Galeri::create($validated);
 
-        return redirect()->route('galeri.index')->with('success', 'Galeri berhasil ditambahkan');
+        return redirect()->route('admin.galeri.index')->with('success', 'Galeri berhasil ditambahkan');
     }
 
     /**
@@ -107,7 +107,7 @@ class GaleriController extends Controller
 
         $galeri->update($validated);
 
-        return redirect()->route('galeri.index')->with('success', 'Galeri berhasil diperbarui');
+        return redirect()->route('admin.galeri.index')->with('success', 'Galeri berhasil diperbarui');
     }
 
     /**
@@ -121,6 +121,6 @@ class GaleriController extends Controller
 
         $galeri->delete();
 
-        return redirect()->route('galeri.index')->with('success', 'Galeri berhasil dihapus');
+        return redirect()->route('admin.galeri.index')->with('success', 'Galeri berhasil dihapus');
     }
 }

@@ -12,7 +12,7 @@ export default function Edit({ visimisi }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        put(route("visimisi.update", visimisi.id));
+        put(route("admin.visimisi.update", visimisi.id));
     };
 
     return (
@@ -32,7 +32,7 @@ export default function Edit({ visimisi }) {
                         </p>
                     </div>
                     <Link
-                        href={route("visimisi.index")}
+                        href={route("admin.visimisi.index")}
                         className="inline-flex items-center gap-2 text-gray-600 hover:text-sky-600 transition"
                     >
                         <ArrowLeft size={18} />
@@ -57,7 +57,9 @@ export default function Edit({ visimisi }) {
                             onChange={(e) => setData("visi", e.target.value)}
                         />
                         {errors.visi && (
-                            <p className="text-red-600 text-sm mt-1">{errors.visi}</p>
+                            <p className="text-red-600 text-sm mt-1">
+                                {errors.visi}
+                            </p>
                         )}
                     </div>
 
@@ -73,7 +75,9 @@ export default function Edit({ visimisi }) {
                             onChange={(e) => setData("misi", e.target.value)}
                         />
                         {errors.misi && (
-                            <p className="text-red-600 text-sm mt-1">{errors.misi}</p>
+                            <p className="text-red-600 text-sm mt-1">
+                                {errors.misi}
+                            </p>
                         )}
                     </div>
 

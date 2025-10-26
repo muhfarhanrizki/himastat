@@ -19,7 +19,7 @@ export default function Edit({ sambutan }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        post(route("sambutan.update", sambutan.id));
+        post(route("admin.sambutan.update", sambutan.id));
     }
 
     return (
@@ -40,7 +40,7 @@ export default function Edit({ sambutan }) {
                     </div>
 
                     <Link
-                        href={route("sambutan.index")}
+                        href={route("admin.sambutan.index")}
                         className="text-gray-600 hover:text-gray-600 flex items-center gap-1 font-medium"
                     >
                         <ArrowLeft size={16} /> Kembali

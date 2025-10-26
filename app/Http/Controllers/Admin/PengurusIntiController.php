@@ -48,7 +48,7 @@ class PengurusIntiController extends Controller
 
         PengurusInti::create($validated);
 
-        return redirect()->route('pengurusInti.index')->with('success', 'Pengurus Inti berhasil ditambahkan');
+        return redirect()->route('admin.pengurusInti.index')->with('success', 'Pengurus Inti berhasil ditambahkan');
     }
 
     /**
@@ -95,7 +95,7 @@ class PengurusIntiController extends Controller
 
         $pengurusInti->update($validated);
 
-        return redirect()->route('pengurusInti.index')->with('success', 'Pengurus Inti berhasil diperbarui');
+        return redirect()->route('admin.pengurusInti.index')->with('success', 'Pengurus Inti berhasil diperbarui');
     }
 
     /**
@@ -109,6 +109,6 @@ class PengurusIntiController extends Controller
 
         $pengurusInti->delete();
 
-        return redirect()->route('pengurusInti.index')->with('success', 'Pengurus Inti berhasil dihapus');
+        return redirect()->route('admin.pengurusInti.index')->with('success', 'Pengurus Inti berhasil dihapus');
     }
 }

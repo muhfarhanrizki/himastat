@@ -7,7 +7,7 @@ import { route } from "ziggy-js";
 export default function Index({ sambutans }) {
     const handleDelete = (id) => {
         if (confirm("Apakah Anda yakin ingin menghapus sambutan ini?")) {
-            router.delete(route("sambutan.destroy", id));
+            router.delete(route("admin.sambutan.destroy", id));
         }
     };
 
@@ -20,7 +20,10 @@ export default function Index({ sambutans }) {
                 <div className="flex items-center justify-between mb-10">
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
-                            <MessageSquare className="text-gray-800" size={28} />
+                            <MessageSquare
+                                className="text-gray-800"
+                                size={28}
+                            />
                             Daftar Sambutan
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
@@ -71,7 +74,7 @@ export default function Index({ sambutans }) {
                                     <div className="p-6 border-t border-gray-200 flex gap-3">
                                         <Link
                                             href={route(
-                                                "sambutan.edit",
+                                                "admin.sambutan.edit",
                                                 sambutan.id
                                             )}
                                             className="flex-1 bg-sky-600 hover:bg-sky-700 text-white px-5 py-2.5 rounded-lg flex items-center justify-center gap-2 font-medium transition"
@@ -109,7 +112,7 @@ export default function Index({ sambutans }) {
                             Mulai tambahkan sambutan untuk pengunjung website.
                         </p>
                         <Link
-                            href={route("sambutan.create")}
+                            href={route("admin.sambutan.create")}
                             className="inline-flex items-center gap-2 bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition"
                         >
                             <Plus size={18} />

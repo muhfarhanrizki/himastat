@@ -48,7 +48,7 @@ class JumbotronController extends Controller
 
         Jumbotron::create($validated);
 
-        return redirect()->route('jumbotron.index')->with('success', 'Jumbotron berhasil ditambahkan');
+        return redirect()->route('admin.jumbotron.index')->with('success', 'Jumbotron berhasil ditambahkan');
     }
 
     /**
@@ -94,7 +94,7 @@ class JumbotronController extends Controller
 
         $jumbotron->update($validated);
 
-        return redirect()->route('jumbotron.index')->with('success', 'Jumbotron berhasil diperbarui');
+        return redirect()->route('admin.jumbotron.index')->with('success', 'Jumbotron berhasil diperbarui');
     }
 
     /**
@@ -108,6 +108,6 @@ class JumbotronController extends Controller
 
         $jumbotron->delete();
 
-        return redirect()->route('jumbotron.index')->with('success', 'Jumbotron berhasil dihapus');
+        return redirect()->route('admin.jumbotron.index')->with('success', 'Jumbotron berhasil dihapus');
     }
 }

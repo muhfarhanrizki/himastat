@@ -64,7 +64,7 @@ class AlumniPathController extends Controller
 
         AlumniPath::create($validated);
 
-        return redirect()->route('alumniPath.index')->with('success', 'Alumni Path berhasil ditambahkan');
+        return redirect()->route('admin.alumniPath.index')->with('success', 'Alumni Path berhasil ditambahkan');
     }
 
     /**
@@ -113,7 +113,7 @@ class AlumniPathController extends Controller
 
         $alumniPath->update($validated);
 
-        return redirect()->route('alumniPath.index')->with('success', 'Alumni Path berhasil diperbarui');
+        return redirect()->route('admin.alumniPath.index')->with('success', 'Alumni Path berhasil diperbarui');
     }
 
     /**
@@ -127,6 +127,6 @@ class AlumniPathController extends Controller
             Storage::disk('public')->delete($alumniPath->image);
         }
 
-        return redirect()->route('alumniPath.index')->with('success', 'Alumni Path berhasil dihapus');
+        return redirect()->route('admin.alumniPath.index')->with('success', 'Alumni Path berhasil dihapus');
     }
 }

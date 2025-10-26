@@ -10,14 +10,14 @@ export default function Index() {
 
     const handleDelete = (id) => {
         if (confirm("Apakah kamu yakin ingin menghapus data alumni ini?")) {
-            router.delete(route("alumniPath.destroy", id));
+            router.delete(route("admin.alumniPath.destroy", id));
         }
     };
 
     const handleSearch = (e) => {
         e.preventDefault();
         router.get(
-            route("alumniPath.index"),
+            route("admin.alumniPath.index"),
             { search },
             { preserveState: true }
         );
@@ -42,7 +42,7 @@ export default function Index() {
 
                     {/* Tombol Tambah */}
                     <Link
-                        href={route("alumniPath.create")}
+                        href={route("admin.alumniPath.create")}
                         className="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-800 text-white px-5 py-2.5 rounded-lg shadow transition"
                     >
                         <Plus size={18} /> Tambah Alumni
@@ -112,11 +112,13 @@ export default function Index() {
                                                 {alumni.angkatan}
                                             </p>
                                             <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                                                {alumni.pesan || "Belum ada pesan dari alumni ini."}
+                                                {alumni.pesan ||
+                                                    "Belum ada pesan dari alumni ini."}
                                             </p>
                                             {alumni.kontak && (
                                                 <p className="text-gray-600 text-sm flex items-center gap-1 mt-2">
-                                                    <User size={14} /> {alumni.kontak}
+                                                    <User size={14} />{" "}
+                                                    {alumni.kontak}
                                                 </p>
                                             )}
                                         </div>
@@ -124,14 +126,19 @@ export default function Index() {
                                         {/* Tombol Edit & Hapus */}
                                         <div className="absolute top-4 right-4 flex gap-2">
                                             <Link
-                                                href={route("alumniPath.edit", alumni.id)}
+                                                href={route(
+                                                    "admin.alumniPath.edit",
+                                                    alumni.id
+                                                )}
                                                 className="p-2 rounded-lg bg-sky-100 hover:bg-sky-200 text-sky-700 transition"
                                                 title="Edit"
                                             >
                                                 <Pencil size={16} />
                                             </Link>
                                             <button
-                                                onClick={() => handleDelete(alumni.id)}
+                                                onClick={() =>
+                                                    handleDelete(alumni.id)
+                                                }
                                                 className="p-2 rounded-lg bg-red-100 hover:bg-red-200 text-red-700 transition"
                                                 title="Hapus"
                                             >

@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, useForm, Link, usePage } from "@inertiajs/react";
-import { Save, ArrowLeft, ImagePlus, Upload, Image as ImageIcon } from "lucide-react";
+import {
+    Save,
+    ArrowLeft,
+    ImagePlus,
+    Upload,
+    Image as ImageIcon,
+} from "lucide-react";
 import { route } from "ziggy-js";
 
 export default function EditJumbotron() {
@@ -20,7 +26,7 @@ export default function EditJumbotron() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("jumbotron.update", jumbotron.id), {
+        post(route("admin.jumbotron.update", jumbotron.id), {
             forceFormData: true,
             preserveScroll: true,
             onSuccess: () => console.log("✅ Jumbotron berhasil diperbarui!"),
@@ -45,7 +51,7 @@ export default function EditJumbotron() {
                     </div>
 
                     <Link
-                        href={route("jumbotron.index")}
+                        href={route("admin.jumbotron.index")}
                         className="text-gray-600 hover:text-gray-600 flex items-center gap-1 font-medium transition"
                     >
                         <ArrowLeft size={16} /> Kembali
@@ -81,7 +87,9 @@ export default function EditJumbotron() {
                         ) : (
                             <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 text-gray-400">
                                 <Upload size={40} className="mb-3" />
-                                <p className="text-gray-500">Belum ada gambar dipilih</p>
+                                <p className="text-gray-500">
+                                    Belum ada gambar dipilih
+                                </p>
                             </div>
                         )}
 
@@ -119,11 +127,15 @@ export default function EditJumbotron() {
                                 type="text"
                                 className="w-full border-gray-300 rounded-lg focus:ring-gray-500 focus:border-gray-500"
                                 value={data.title}
-                                onChange={(e) => setData("title", e.target.value)}
+                                onChange={(e) =>
+                                    setData("title", e.target.value)
+                                }
                                 placeholder="Masukkan judul jumbotron..."
                             />
                             {errors.title && (
-                                <p className="text-red-500 text-sm mt-1">{errors.title}</p>
+                                <p className="text-red-500 text-sm mt-1">
+                                    {errors.title}
+                                </p>
                             )}
                         </div>
 
@@ -135,7 +147,9 @@ export default function EditJumbotron() {
                             <textarea
                                 className="w-full border-gray-300 rounded-lg focus:ring-gray-500 focus:border-gray-500"
                                 value={data.description}
-                                onChange={(e) => setData("description", e.target.value)}
+                                onChange={(e) =>
+                                    setData("description", e.target.value)
+                                }
                                 placeholder="Masukkan deskripsi singkat..."
                                 rows={4}
                             ></textarea>
@@ -148,7 +162,9 @@ export default function EditJumbotron() {
 
                         {/* Error Gambar */}
                         {errors.image && (
-                            <p className="text-red-500 text-sm">{errors.image}</p>
+                            <p className="text-red-500 text-sm">
+                                {errors.image}
+                            </p>
                         )}
 
                         {/* Tombol Simpan */}

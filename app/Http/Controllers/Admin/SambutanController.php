@@ -48,7 +48,7 @@ class SambutanController extends Controller
 
         Sambutan::create($validated);
 
-        return redirect()->route('sambutan.index')->with('success', 'Sambutan berhasil ditambahkan');
+        return redirect()->route('admin.sambutan.index')->with('success', 'Sambutan berhasil ditambahkan');
     }
 
     /**
@@ -95,7 +95,7 @@ class SambutanController extends Controller
 
         $sambutan->update($validated);
 
-        return redirect()->route('sambutan.index')->with('success', 'Sambutan berhasil diperbarui');
+        return redirect()->route('admin.sambutan.index')->with('success', 'Sambutan berhasil diperbarui');
     }
 
     /**
@@ -109,6 +109,6 @@ class SambutanController extends Controller
 
         $sambutan->delete();
 
-        return redirect()->route('sambutan.index')->with('success', 'Sambutan berhasil dihapus');
+        return redirect()->route('admin.sambutan.index')->with('success', 'Sambutan berhasil dihapus');
     }
 }
