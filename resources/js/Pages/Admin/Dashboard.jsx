@@ -265,7 +265,7 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
                                 {latest.divisi.map((item) => (
                                     <Link
                                         key={item.id}
-                                        href={`/divisi/${item.slug}`}
+                                        href={`/admin/divisi/${item.slug}`}
                                         className="flex items-center gap-4 p-3 rounded-xl border border-gray-100 hover:bg-gray-50 hover:border-gray-300 transition-all group"
                                     >
                                         {item.image ? (
