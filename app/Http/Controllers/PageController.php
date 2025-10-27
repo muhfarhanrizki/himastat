@@ -31,7 +31,10 @@ class PageController extends Controller
     }
 
     public function galeris(){
-        $galeri = Galeri::all();
+        // Mengambil semua data galeri, diurutkan berdasarkan tanggal terbaru
+        $galeri = Galeri::orderBy('tanggal', 'desc')
+                        ->orderBy('created_at', 'desc')
+                        ->get();
 
         return Inertia::render('Frontend/Galeri',[
             'galeri' => $galeri
