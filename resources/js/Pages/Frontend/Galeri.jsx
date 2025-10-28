@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { Head } from "@inertiajs/react";
 import { motion } from "framer-motion";
-import { Search, Calendar, Image as ImageIcon, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Search, Calendar, Image, ImageIcon, X, ChevronLeft, ChevronRight } from "lucide-react";
 import FrontendLayout from "@/Layouts/FrontendLayout";
 
 function GaleriContent({ galeri }) {
@@ -100,46 +100,55 @@ function GaleriContent({ galeri }) {
             </section>
 
             {/* Search & Filter Section */}
-            <section className="py-12 -mt-1 bg-gray-50">
-                <div className="max-w-7xl mx-auto px-6">
-                    <motion.div
-                        className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        <div className="flex flex-col md:flex-row gap-4 items-center">
-                            {/* Search Input */}
-                            <div className="relative flex-1 w-full">
-                                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                                <input
-                                    type="text"
-                                    placeholder="Cari galeri..."
-                                    value={searchQuery}
-                                    onChange={(e) => handleSearch(e.target.value)}
-                                    className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all"
-                                />
-                                {searchQuery && (
-                                    <button
-                                        onClick={() => handleSearch("")}
-                                        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
-                                    >
-                                        <X className="w-5 h-5" />
-                                    </button>
-                                )}
+            <section className="py-12 -mt-1">
+            <div className="max-w-7xl mx-auto px-6">
+                <motion.div
+                    className="backdrop-blur-md rounded-2xl"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <div className="flex flex-col md:flex-row gap-4 items-center">
+                        {/* Search Input */}
+                        <div className="relative flex-1 w-full">
+                            <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                                <Search className="w-5 h-5 text-gray-400" />
                             </div>
 
-                            {/* Results Count */}
-                            <div className="text-gray-600 font-medium whitespace-nowrap">
-                                {filteredGaleri.length} Hasil
-                            </div>
+                            <input
+                                type="text"
+                                placeholder="Cari galeri berdasarkan judul atau kategori..."
+                                value={searchQuery}
+                                onChange={(e) => handleSearch(e.target.value)}
+                                className="w-full pl-12 pr-12 py-3 rounded-xl bg-white/60 border border-gray-300/70 
+                                        text-gray-700 placeholder-gray-400 focus:ring-2 focus:ring-gray-400 
+                                        focus:border-transparent shadow-inner transition-all duration-300 
+                                        hover:bg-white"
+                            />
+
+                            {searchQuery && (
+                                <button
+                                    onClick={() => handleSearch("")}
+                                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 
+                                            hover:text-gray-600 transition-colors"
+                                >
+                                    <X className="w-5 h-5" />
+                                </button>
+                            )}
                         </div>
-                    </motion.div>
-                </div>
-            </section>
+
+                        {/* Result Count */}
+                        <div className="flex items-center gap-2 text-gray-600 font-medium whitespace-nowrap bg-gray-100/80 px-4 py-2 rounded-xl border border-gray-200">
+                            <Image className="w-5 h-5 text-gray-500" />
+                            {filteredGaleri.length} hasil ditemukan
+                        </div>
+                    </div>
+                </motion.div>
+            </div>
+        </section>
 
             {/* Gallery Grid */}
-            <section className="py-12 pb-24">
+            <section className="pt-8 pb-24">
                 <div className="max-w-7xl mx-auto px-6">
                     {currentItems.length > 0 ? (
                         <>
@@ -271,7 +280,7 @@ function GaleriContent({ galeri }) {
                     onClick={() => setSelectedImage(null)}
                 >
                     <motion.div
-                        className="relative max-w-5xl w-full"
+                        className="relative max-w-2xl w-full"
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 0.3 }}

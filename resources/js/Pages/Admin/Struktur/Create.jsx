@@ -16,7 +16,7 @@ export default function Create() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("struktur.store"));
+        post(route("admin.struktur.store"));
     };
 
     const handleImageChange = (e, field, setPreview) => {
@@ -45,7 +45,7 @@ export default function Create() {
                         </p>
                     </div>
                     <Link
-                        href={route("struktur.index")}
+                        href={route("admin.struktur.index")}
                         className="inline-flex items-center gap-2 bg-gray-600 hover:bg-gray-700 text-white px-5 py-2.5 rounded-lg shadow transition"
                     >
                         <ArrowLeft size={18} /> Kembali
@@ -155,3 +155,4 @@ export default function Create() {
         </AuthenticatedLayout>
     );
 }
+

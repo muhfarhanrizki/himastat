@@ -25,7 +25,9 @@ class ProfilController extends Controller
     }
 
     public function jejakAlumni(){
-        $AlumniPath = AlumniPath::all();
+        $AlumniPath = AlumniPath::orderBy('nama', 'desc')
+                        ->orderBy('created_at', 'desc')
+                        ->get();
 
         return Inertia::render('Frontend/Profil/JejakAlumni', [
             'AlumniPath' => $AlumniPath
@@ -35,10 +37,12 @@ class ProfilController extends Controller
     public function strukturOrganisasi(){
         $struktur = Struktur::all();
         $divisi = Divisi::all();
+        $pengurusInti = PengurusInti::all();
 
         return Inertia::render('Frontend/Profil/StrukturOrganisasi', [
             'struktur' => $struktur,
-            'divisi' => $divisi
+            'divisi' => $divisi,
+            'pengurusInti' => $pengurusInti,
         ]);
     }
 

@@ -18,11 +18,6 @@ function KontakContent({ contact }) {
     const secretariatLocation = {
         address: "Gedung Fakultas MIPA, Universitas Indonesia",
         fullAddress: "Kampus UI Depok, Jawa Barat 16424",
-        operationalHours: [
-            { day: "Senin - Jumat", time: "09.00 - 17.00 WIB" },
-            { day: "Sabtu", time: "09.00 - 14.00 WIB" },
-            { day: "Minggu", time: "Tutup" }
-        ],
         // Ganti dengan koordinat dan embed URL lokasi Anda
         mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.822673977686!2d119.48601289999999!3d-5.132242499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbefb8c3aa414f7%3A0x59585e28c7ee3ebc!2sFakultas%20Matematika%20dan%20Ilmu%20Pengetahuan%20Alam%20UNHAS!5e0!3m2!1sid!2sid!4v1761414022218!5m2!1sid!2sid"
     };
@@ -53,7 +48,7 @@ function KontakContent({ contact }) {
                             <Mail className="w-10 h-10 text-white" />
                         </motion.div>
 
-                        <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300 bg-clip-text text-transparent pb-2 mb-6">
+                        <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300 bg-clip-text text-transparent pb-2 mb-2">
                             Hubungi Kami
                         </h1>
                         <p className="text-xl text-gray-300 max-w-2xl mx-auto">
@@ -151,18 +146,6 @@ function KontakContent({ contact }) {
                                         <div>
                                             <p className="font-medium mb-1">{secretariatLocation.address}</p>
                                             <p className="text-gray-400 text-sm">{secretariatLocation.fullAddress}</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex items-start gap-3">
-                                        <Clock className="w-5 h-5 text-gray-400 mt-1 flex-shrink-0" />
-                                        <div>
-                                            <p className="font-medium mb-2">Jam Operasional</p>
-                                            {secretariatLocation.operationalHours.map((schedule, index) => (
-                                                <p key={index} className="text-gray-400 text-sm">
-                                                    {schedule.day}: {schedule.time}
-                                                </p>
-                                            ))}
                                         </div>
                                     </div>
                                 </div>

@@ -23,7 +23,7 @@ export default function Create() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("pengurusInti.store"), {
+        post(route("admin.pengurusInti.store"), {
             onSuccess: () => {
                 reset();
                 setPreview(null);
@@ -48,7 +48,7 @@ export default function Create() {
                         </p>
                     </div>
                     <Link
-                        href={route("pengurusInti.index")}
+                        href={route("admin.pengurusInti.index")}
                         className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-800 transition"
                     >
                         <ArrowLeft size={18} /> Kembali

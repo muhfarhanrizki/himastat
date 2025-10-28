@@ -36,7 +36,7 @@ Route::get('/kontak', [PageController::class, 'kontak'])->name('kontak');
 Route::get('/divisi/{divisi}/', [ControllersDivisiController::class, 'show'])->name('divisi.show');
 Route::get('/profil-organisasi', [ProfilController::class, 'profilOrganisasi'])->name('profil-organisasi');
 Route::get('/sejarah', [ProfilController::class, 'sejarah'])->name('sejarah');
-Route::get('/jejak-alumni,', [ProfilController::class, 'jejakAlumni'])->name('jejak-alumni');
+Route::get('/jejak-alumni', [ProfilController::class, 'jejakAlumni'])->name('jejak-alumni');
 Route::get('/struktur-organisasi', [ProfilController::class, 'strukturOrganisasi'])->name('struktur-organisasi');
 Route::get('/pengurus-inti', [ProfilController::class, 'pengurusInti'])->name('pengurus-inti');
 

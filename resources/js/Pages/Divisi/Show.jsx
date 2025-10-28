@@ -62,7 +62,7 @@ export default function Show({ divisi }) {
                                 </Link>
 
                                 {/* Title */}
-                                <h1 className="text-5xl md:text-6xl font-bold mb-4">
+                                <h1 className="text-5xl md:text-6xl font-bold mb-4 text-white">
                                     {divisi.name}
                                 </h1>
 

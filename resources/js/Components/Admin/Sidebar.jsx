@@ -186,7 +186,7 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
                 {/* Bagian Atas: Logo + Menu */}
                 <div className="flex flex-col flex-grow overflow-hidden">
                     {/* Header */}
-                    <div className="flex items-center justify-between px-4 py-3 bg-gray-700 shrink-0">
+                    <div className="flex items-center justify-between px-4 py-2 bg-gray-700 shrink-0">
                         <Link
                             href={route("admin.dashboard")}
                             className="flex items-center gap-3"
@@ -265,7 +265,18 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
                 </div>
 
                 {/* Bagian Bawah: Profil & Logout */}
-                <div className="border-t border-gray-200 p-4 shrink-0 bg-gray-50">
+                {/* Bagian Bawah: Navigasi Tambahan + Profil & Logout */}
+                <div className="border-t border-gray-200 p-4 shrink-0 bg-gray-50 space-y-3">
+                    {/* Tombol Kembali ke Beranda */}
+                    <Link
+                        href={route("beranda")}
+                        className="flex items-center justify-center gap-2 w-full px-4 py-2.5 text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-gray-900 transition text-sm font-medium shadow-sm"
+                    >
+                        <Home size={18} />
+                        <span>Beranda</span>
+                    </Link>
+
+                    {/* Profil Admin */}
                     <Link
                         href={route("admin.profile.edit")}
                         className="flex items-center gap-3 group hover:bg-white px-3 py-3 rounded-lg transition shadow-sm border border-transparent hover:border-gray-200"
@@ -283,9 +294,10 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
                         </div>
                     </Link>
 
+                    {/* Tombol Logout */}
                     <button
                         onClick={handleLogout}
-                        className="flex items-center justify-center gap-2 w-full mt-3 px-4 py-2.5 text-red-600 hover:bg-red-50 border border-red-200 hover:border-red-300 rounded-lg transition font-medium"
+                        className="flex items-center justify-center gap-2 w-full px-4 py-2.5 text-red-600 hover:bg-red-50 border border-red-200 hover:border-red-300 rounded-lg transition font-medium"
                     >
                         <LogOut size={18} />
                         <span>Log Out</span>

@@ -1,5 +1,5 @@
 import React from "react";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function JumbotronSection({ data }) {
@@ -32,7 +32,7 @@ export default function JumbotronSection({ data }) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, ease: "easeOut" }}
             >
-                <div className="flex justify-center items-center mt-12">
+                <div className="flex justify-center items-center mt-8">
                     <img src="/favicon.svg" alt="Logo" className="h-48 w-48" />
                 </div>
 
@@ -46,7 +46,7 @@ export default function JumbotronSection({ data }) {
                 </motion.h1>
 
                 <motion.p
-                    className="text-md md:text-xl text-gray-300 mb-6 max-w-3xl mx-auto leading-relaxed drop-shadow-lg font-light"
+                    className="text-md md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed drop-shadow-lg font-light"
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
@@ -55,26 +55,46 @@ export default function JumbotronSection({ data }) {
                         "Tempat berbagi semangat, karya, dan kolaborasi!"}
                 </motion.p>
 
-                <motion.a
-                    href="#profil"
-                    className="inline-flex items-center gap-2 bg-gradient-to-r from-gray-600 to-gray-800 text-white px-8 py-4 rounded-full font-semibold hover:from-gray-500 hover:to-gray-700 transition-all duration-300 shadow-xl border border-gray-600/50 group"
+                {/* Buttons Section */}
+                <motion.div
+                    className="flex flex-wrap justify-center gap-4"
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
                 >
-                    Pelajari Lebih Lanjut
-                    <ChevronRight
-                        size={20}
-                        className="group-hover:translate-x-1 transition-transform duration-300"
-                    />
-                </motion.a>
+                    {/* Button: Tentang Kami */}
+                    <motion.a
+                        href="/profil-organisasi"
+                        className="inline-flex items-center gap-2 bg-gradient-to-r from-gray-600 to-gray-800 text-white px-8 py-4 rounded-lg font-semibold hover:from-gray-500 hover:to-gray-700 transition-all duration-300 shadow-xl border border-gray-600/50 group"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        Tentang Kami
+                        <ChevronRight
+                            size={20}
+                            className="group-hover:translate-x-1 transition-transform duration-300"
+                        />
+                    </motion.a>
+
+                    {/* Button: Hubungi Kami */}
+                    <motion.a
+                        href="/ kontak"
+                        className="inline-flex items-center gap-2 bg-gradient-to-r from-gray-200 to-gray-400 text-gray-900 px-8 py-4 rounded-lg font-semibold hover:from-gray-100 hover:to-gray-300 transition-all duration-300 shadow-xl border border-gray-300/60 group"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        <Mail
+                            size={20}
+                            className="text-gray-700 group-hover:rotate-6 transition-transform duration-300"
+                        />
+                        Hubungi Kami
+                    </motion.a>
+                </motion.div>
             </motion.div>
 
             {/* Scroll Indicator */}
             <motion.div
-                className="absolute bottom-10 flex justify-center items-center transform -translate-x-1/2 z-10"
+                className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10"
                 animate={{ y: [0, 10, 0] }}
                 transition={{
                     duration: 2,

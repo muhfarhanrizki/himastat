@@ -67,16 +67,6 @@ export default function AboutSection() {
                             </p>
                         </div>
 
-                        {/* CTA Button */}
-                        <div className="mt-10 flex justify-center relative z-10">
-                            <a
-                                href="/kontak"
-                                className="inline-flex items-center gap-2 px-8 py-3 bg-gray-900 text-white font-semibold rounded-full shadow-lg hover:bg-gray-800 transition-all duration-300"
-                            >
-                                Hubungi Kami
-                            </a>
-                        </div>
-
                         {/* Corner Decoration */}
                         <div className="absolute bottom-0 right-0 w-20 h-20 border-r-2 border-b-2 border-gray-300 rounded-br-3xl opacity-50"></div>
                     </div>

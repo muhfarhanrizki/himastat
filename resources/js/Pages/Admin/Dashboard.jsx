@@ -116,7 +116,7 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
                             <div className="flex-1">
                                 <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                                     {timeOfDay}, {auth?.user?.name || "Admin"}{" "}
-                                    👋
+                                    
                                 </h1>
                                 <p className="text-gray-300 text-lg max-w-3xl leading-relaxed">
                                     Selamat datang di dashboard! Di sini, kamu

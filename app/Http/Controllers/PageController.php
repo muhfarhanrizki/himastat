@@ -30,7 +30,8 @@ class PageController extends Controller
         ]);
     }
 
-    public function galeris(){
+    public function galeris()
+    {
         // Mengambil semua data galeri, diurutkan berdasarkan tanggal terbaru
         $galeri = Galeri::orderBy('tanggal', 'desc')
                         ->orderBy('created_at', 'desc')
