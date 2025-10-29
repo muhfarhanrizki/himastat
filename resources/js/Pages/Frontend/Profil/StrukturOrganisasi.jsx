@@ -1,18 +1,46 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Head, Link } from "@inertiajs/react";
 import { motion } from "framer-motion";
-import { Users, Building2, Network } from "lucide-react";
+import { Users, Building2, Network, ChevronLeft, ChevronRight } from "lucide-react";
 import FrontendLayout from "@/Layouts/FrontendLayout";
 
 export default function StrukturOrganisasi({ struktur, divisi, pengurusInti }) {
     const data = struktur?.[0] || {};
+    const scrollContainerRef = useRef(null);
+    const [showLeftArrow, setShowLeftArrow] = useState(false);
+    const [showRightArrow, setShowRightArrow] = useState(true);
+
+    const scroll = (direction) => {
+        const container = scrollContainerRef.current;
+        if (!container) return;
+
+        const scrollAmount = 280; // Lebar card (256px) + gap
+        const newScrollLeft = direction === "left" 
+            ? container.scrollLeft - scrollAmount 
+            : container.scrollLeft + scrollAmount;
+
+        container.scrollTo({
+            left: newScrollLeft,
+            behavior: "smooth"
+        });
+    };
+
+    const handleScroll = () => {
+        const container = scrollContainerRef.current;
+        if (!container) return;
+
+        setShowLeftArrow(container.scrollLeft > 10);
+        setShowRightArrow(
+            container.scrollLeft < container.scrollWidth - container.clientWidth - 10
+        );
+    };
 
     return (
         <FrontendLayout>
             <Head title="Struktur Organisasi" />
 
             {/* HERO SECTION */}
-            <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-36 overflow-hidden">
+            <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-36 pb-16 overflow-hidden">
                 {/* Background Hero */}
                 <div
                     className="absolute inset-0 bg-cover bg-center opacity-20"
@@ -46,37 +74,27 @@ export default function StrukturOrganisasi({ struktur, divisi, pengurusInti }) {
                         </p>
                     </motion.div>
                 </div>
-
-                {/* Bottom Wave */}
-                <div className="absolute bottom-0 left-0 right-0">
-                    <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
-                            fill="rgb(249, 250, 251)"
-                        />
-                    </svg>
-                </div>
             </section>
 
             {/* STRUKTUR SECTION */}
             <section className="pb-20 pt-12 bg-gray-50">
                 <div className="max-w-6xl mx-auto px-6 text-center">
-                <motion.div
-                    className="text-center mb-8"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <div className="flex justify-center mb-6">
-                        <div className="p-4 bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl shadow-md">
-                            <Users className="w-8 h-8 text-gray-700" />
+                    <motion.div
+                        className="text-center mb-8"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        <div className="flex justify-center mb-6">
+                            <div className="p-4 bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl shadow-md">
+                                <Users className="w-8 h-8 text-gray-700" />
+                            </div>
                         </div>
-                    </div>
-                    <h2 className="text-3xl font-bold text-gray-800">Pengurus Inti</h2>
-                    <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
-                        Inilah tim inti yang menjadi tulang punggung organisasi kami.
-                    </p>
-                </motion.div>
+                        <h2 className="text-3xl font-bold text-gray-800">Pengurus Inti</h2>
+                        <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
+                            Inilah tim inti yang menjadi tulang punggung organisasi kami.
+                        </p>
+                    </motion.div>
 
                     {/* Struktur Gambar */}
                     {data?.struktur && (
@@ -103,52 +121,125 @@ export default function StrukturOrganisasi({ struktur, divisi, pengurusInti }) {
                         </motion.p>
                     )}
                 </div>
+
+                {/* PENGURUS INTI SECTION */}
                 <div className="max-w-6xl mx-auto px-6">
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
                     {pengurusInti.length > 0 ? (
-                        pengurusInti.map((person, index) => (
-                            <motion.div
-                                key={person.id}
-                                className="relative group rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-200 transition-all duration-500"
-                                initial={{ opacity: 0, y: 50 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                            >
-                                {/* Gambar Background */}
-                                {person.image ? (
-                                    <img
-                                        src={`/storage/${person.image}`}
-                                        alt={person.nama}
-                                        className="w-full h-[320px] object-cover group-hover:scale-110 transition-transform duration-700"
-                                    />
-                                ) : (
-                                    <div className="w-full h-[420px] bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
-                                        <Users className="w-12 h-12 text-white" />
-                                    </div>
+                        <>
+                            {/* Desktop Grid View */}
+                            <div className="hidden lg:grid lg:grid-cols-4 gap-10">
+                                {pengurusInti.map((person, index) => (
+                                    <motion.div
+                                        key={person.id}
+                                        className="relative group rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-200 transition-all duration-500"
+                                        initial={{ opacity: 0, y: 50 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                                    >
+                                        {/* Gambar Background */}
+                                        {person.image ? (
+                                            <img
+                                                src={`/storage/${person.image}`}
+                                                alt={person.nama}
+                                                className="w-full h-[320px] object-cover group-hover:scale-110 transition-transform duration-700"
+                                            />
+                                        ) : (
+                                            <div className="w-full h-[320px] bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
+                                                <Users className="w-12 h-12 text-white" />
+                                            </div>
+                                        )}
+
+                                        {/* Overlay Hitam Transparan */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-90 group-hover:opacity-100 transition-all duration-500" />
+
+                                        {/* Text Overlay */}
+                                        <div className="absolute bottom-0 left-0 right-0 px-4 pt-8 pb-6 text-center text-white z-10 transition-all duration-500 group-hover:translate-y-[-4px]">
+                                            <h3 className="text-lg font-bold drop-shadow-lg">
+                                                {person.nama}
+                                            </h3>
+                                            <p className="text-gray-300 font-medium text-sm">{person.jabatan}</p>
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
+
+                            {/* Mobile & Tablet Carousel View */}
+                            <div className="lg:hidden relative group">
+                                {/* Left Arrow */}
+                                {showLeftArrow && (
+                                    <button
+                                        onClick={() => scroll("left")}
+                                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 opacity-0 group-hover:opacity-100"
+                                        aria-label="Scroll left"
+                                    >
+                                        <ChevronLeft size={24} className="text-gray-800" />
+                                    </button>
                                 )}
 
-                                {/* Overlay Hitam Transparan */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-90 group-hover:opacity-100 transition-all duration-500" />
+                                {/* Right Arrow */}
+                                {showRightArrow && (
+                                    <button
+                                        onClick={() => scroll("right")}
+                                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 opacity-0 group-hover:opacity-100"
+                                        aria-label="Scroll right"
+                                    >
+                                        <ChevronRight size={24} className="text-gray-800" />
+                                    </button>
+                                )}
 
-                                {/* Text Overlay */}
-                                <div className="absolute bottom-0 left-0 right-0 px-4 pt-8 pb-6 text-center text-white z-10 transition-all duration-500 group-hover:translate-y-[-4px] ">
-                                    <h3 className="text-lg font-bold drop-shadow-lg">
-                                        {person.nama}
-                                    </h3>
-                                    <p className="text-gray-300 font-medium text-sm">{person.jabatan}</p>
+                                {/* Carousel Container */}
+                                <div
+                                    ref={scrollContainerRef}
+                                    onScroll={handleScroll}
+                                    className="flex gap-6 overflow-x-auto pb-8 pt-4 px-4 hide-scrollbar scroll-smooth snap-x snap-mandatory"
+                                    style={{
+                                        scrollbarWidth: 'none',
+                                        msOverflowStyle: 'none',
+                                    }}
+                                >
+                                    {pengurusInti.map((person, index) => (
+                                        <motion.div
+                                            key={person.id}
+                                            className="relative group flex-shrink-0 w-64 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-200 transition-all duration-500 snap-center"
+                                            viewport={{ once: true }}
+                                         
+                                        >
+                                            {/* Gambar Background */}
+                                            {person.image ? (
+                                                <img
+                                                    src={`/storage/${person.image}`}
+                                                    alt={person.nama}
+                                                    className="w-full h-[320px] object-cover group-hover:scale-110 transition-transform duration-700"
+                                                />
+                                            ) : (
+                                                <div className="w-full h-[320px] bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
+                                                    <Users className="w-12 h-12 text-white" />
+                                                </div>
+                                            )}
+
+                                            {/* Overlay Hitam Transparan */}
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-90 group-hover:opacity-100 transition-all duration-500" />
+
+                                            {/* Text Overlay */}
+                                            <div className="absolute bottom-0 left-0 right-0 px-4 pt-8 pb-6 text-center text-white z-10 transition-all duration-500 group-hover:translate-y-[-4px]">
+                                                <h3 className="text-lg font-bold drop-shadow-lg">
+                                                    {person.nama}
+                                                </h3>
+                                                <p className="text-gray-300 font-medium text-sm">{person.jabatan}</p>
+                                            </div>
+                                        </motion.div>
+                                    ))}
                                 </div>
-                            </motion.div>
-                        ))
+                            </div>
+                        </>
                     ) : (
                         <div className="col-span-full text-center text-gray-500">
                             Belum ada data pengurus inti.
                         </div>
                     )}
                 </div>
-                </div>
             </section>
-
 
             {/* DIVISI SECTION */}
             <section className="py-24 bg-white">
@@ -245,6 +336,12 @@ export default function StrukturOrganisasi({ struktur, divisi, pengurusInti }) {
                     </div>
                 </div>
             </section>
+
+            <style jsx>{`
+                .hide-scrollbar::-webkit-scrollbar {
+                    display: none;
+                }
+            `}</style>
         </FrontendLayout>
     );
 }

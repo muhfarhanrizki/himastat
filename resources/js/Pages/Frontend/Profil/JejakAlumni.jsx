@@ -1,7 +1,14 @@
 import React, { useState, useMemo } from "react";
 import { Head } from "@inertiajs/react";
 import { motion } from "framer-motion";
-import { GraduationCap, Search, ChevronLeft, ChevronRight, X, Quote } from "lucide-react";
+import {
+    GraduationCap,
+    Search,
+    ChevronLeft,
+    ChevronRight,
+    X,
+    Quote,
+} from "lucide-react";
 import FrontendLayout from "@/Layouts/FrontendLayout";
 
 export default function JejakAlumni({ AlumniPath }) {
@@ -9,11 +16,11 @@ export default function JejakAlumni({ AlumniPath }) {
     const [currentPage, setCurrentPage] = useState(1);
     const perPage = 6;
 
-    // ✅ FIXED: useMemo pakai searchQuery yang aktif
     const filtered = useMemo(() => {
-        return AlumniPath.filter((item) =>
-            item.nama.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            item.angkatan.toLowerCase().includes(searchQuery.toLowerCase())
+        return AlumniPath.filter(
+            (item) =>
+                item.nama.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                item.angkatan.toLowerCase().includes(searchQuery.toLowerCase())
         );
     }, [searchQuery, AlumniPath]);
 
@@ -27,7 +34,8 @@ export default function JejakAlumni({ AlumniPath }) {
     const startIndex = (currentPage - 1) * perPage;
     const currentData = filtered.slice(startIndex, startIndex + perPage);
 
-    const nextPage = () => currentPage < totalPages && setCurrentPage(currentPage + 1);
+    const nextPage = () =>
+        currentPage < totalPages && setCurrentPage(currentPage + 1);
     const prevPage = () => currentPage > 1 && setCurrentPage(currentPage - 1);
 
     return (
@@ -35,12 +43,7 @@ export default function JejakAlumni({ AlumniPath }) {
             <Head title="Jejak Alumni" />
 
             {/* Hero Section */}
-            <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-36 overflow-hidden">
-                <div className="absolute inset-0 opacity-10">
-                    <div className="absolute top-10 left-10 w-96 h-96 bg-gray-600 rounded-full blur-3xl"></div>
-                    <div className="absolute bottom-10 right-10 w-96 h-96 bg-gray-700 rounded-full blur-3xl"></div>
-                </div>
-
+            <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-36 pb-16 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <motion.div
                         className="text-center"
@@ -61,18 +64,10 @@ export default function JejakAlumni({ AlumniPath }) {
                             Jejak Alumni
                         </h1>
                         <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                            Cerita dan pesan dari para alumni Himastat yang menginspirasi.
+                            Cerita dan pesan dari para alumni Himastat yang
+                            menginspirasi.
                         </p>
                     </motion.div>
-                </div>
-
-                <div className="absolute bottom-0 left-0 right-0">
-                    <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
-                            fill="rgb(249, 250, 251)"
-                        />
-                    </svg>
                 </div>
             </section>
 
@@ -96,7 +91,9 @@ export default function JejakAlumni({ AlumniPath }) {
                                     type="text"
                                     placeholder="Cari alumni berdasarkan nama atau angkatan..."
                                     value={searchQuery}
-                                    onChange={(e) => handleSearch(e.target.value)}
+                                    onChange={(e) =>
+                                        handleSearch(e.target.value)
+                                    }
                                     className="w-full pl-12 pr-12 py-3 rounded-xl bg-white/60 border border-gray-300/70 
                                             text-gray-700 placeholder-gray-400 focus:ring-2 focus:ring-gray-400 
                                             focus:border-transparent shadow-inner transition-all duration-300 
@@ -124,7 +121,6 @@ export default function JejakAlumni({ AlumniPath }) {
                 </div>
             </section>
 
-
             {/* Alumni Cards */}
             <section className="pb-20 pt-8 relative z-10">
                 <div className="max-w-7xl mx-auto px-6">
@@ -151,16 +147,20 @@ export default function JejakAlumni({ AlumniPath }) {
                                                 <GraduationCap size={30} />
                                             </div>
                                         )}
-                                       <Quote
-                                        size={26}
-                                        className="absolute -top-3 -right-3 text-gray-300 opacity-70"
+                                        <Quote
+                                            size={26}
+                                            className="absolute -top-3 -right-3 text-gray-300 opacity-70"
                                         />
                                     </div>
 
                                     {/* INFO */}
                                     <div className="flex-1 text-center sm:text-left">
-                                        <h4 className="text-lg font-semibold text-gray-800 mb-1">{alumni.nama}</h4>
-                                        <p className="text-gray-500 text-sm mb-2">Angkatan {alumni.angkatan}</p>
+                                        <h4 className="text-lg font-semibold text-gray-800 mb-1">
+                                            {alumni.nama}
+                                        </h4>
+                                        <p className="text-gray-500 text-sm mb-2">
+                                            Angkatan {alumni.angkatan}
+                                        </p>
 
                                         <p className="text-gray-700 italic leading-relaxed text-sm line-clamp-3">
                                             “{alumni.pesan}”
@@ -168,7 +168,10 @@ export default function JejakAlumni({ AlumniPath }) {
 
                                         {alumni.kontak && (
                                             <p className="mt-2 text-gray-500 text-sm">
-                                                <span className="font-semibold">Kontak:</span> {alumni.kontak}
+                                                <span className="font-semibold">
+                                                    Kontak:
+                                                </span>{" "}
+                                                {alumni.kontak}
                                             </p>
                                         )}
                                     </div>
@@ -207,7 +210,6 @@ export default function JejakAlumni({ AlumniPath }) {
                     )}
                 </div>
             </section>
-
         </FrontendLayout>
     );
 }

@@ -78,7 +78,7 @@ export default function JumbotronSection({ data }) {
 
                     {/* Button: Hubungi Kami */}
                     <motion.a
-                        href="/ kontak"
+                        href="/kontak"
                         className="inline-flex items-center gap-2 bg-gradient-to-r from-gray-200 to-gray-400 text-gray-900 px-8 py-4 rounded-lg font-semibold hover:from-gray-100 hover:to-gray-300 transition-all duration-300 shadow-xl border border-gray-300/60 group"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}

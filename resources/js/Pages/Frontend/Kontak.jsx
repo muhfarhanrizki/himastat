@@ -25,13 +25,7 @@ function KontakContent({ contact }) {
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50">
             {/* Header Section */}
-            <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-36 overflow-hidden">
-                {/* Background Decoration */}
-                <div className="absolute inset-0 opacity-10">
-                    <div className="absolute top-10 left-10 w-96 h-96 bg-gray-600 rounded-full blur-3xl"></div>
-                    <div className="absolute bottom-10 right-10 w-96 h-96 bg-gray-700 rounded-full blur-3xl"></div>
-                </div>
-
+            <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-36 pb-16 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <motion.div
                         className="text-center"
@@ -55,13 +49,6 @@ function KontakContent({ contact }) {
                             Jangan ragu untuk menghubungi kami. Kami siap membantu Anda!
                         </p>
                     </motion.div>
-                </div>
-
-                {/* Decorative Bottom Wave */}
-                <div className="absolute bottom-0 left-0 right-0">
-                    <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="rgb(249, 250, 251)"/>
-                    </svg>
                 </div>
             </section>
 

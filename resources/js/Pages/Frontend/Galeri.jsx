@@ -8,7 +8,7 @@ function GaleriContent({ galeri }) {
     const [searchQuery, setSearchQuery] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedImage, setSelectedImage] = useState(null);
-    const itemsPerPage = 9;
+    const itemsPerPage = 6;
 
     // Filter galeri berdasarkan search query
     const filteredGaleri = useMemo(() => {
@@ -38,34 +38,14 @@ function GaleriContent({ galeri }) {
         return new Date(dateString).toLocaleDateString('id-ID', options);
     };
 
-    // Pagination buttons
-    const getPaginationButtons = () => {
-        const buttons = [];
-        const maxButtons = 5;
-        let startPage = Math.max(1, currentPage - Math.floor(maxButtons / 2));
-        let endPage = Math.min(totalPages, startPage + maxButtons - 1);
-
-        if (endPage - startPage < maxButtons - 1) {
-            startPage = Math.max(1, endPage - maxButtons + 1);
-        }
-
-        for (let i = startPage; i <= endPage; i++) {
-            buttons.push(i);
-        }
-
-        return buttons;
-    };
+    // Pagination navigation
+    const nextPage = () => currentPage < totalPages && setCurrentPage(currentPage + 1);
+    const prevPage = () => currentPage > 1 && setCurrentPage(currentPage - 1);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50">
+        <div className="min-h-screen">
             {/* Header Section */}
-            <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-36 overflow-hidden">
-                {/* Background Decoration */}
-                <div className="absolute inset-0 opacity-10">
-                    <div className="absolute top-10 left-10 w-96 h-96 bg-gray-600 rounded-full blur-3xl"></div>
-                    <div className="absolute bottom-10 right-10 w-96 h-96 bg-gray-700 rounded-full blur-3xl"></div>
-                </div>
-
+            <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-36 pb-16 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <motion.div
                         className="text-center"
@@ -90,65 +70,58 @@ function GaleriContent({ galeri }) {
                         </p>
                     </motion.div>
                 </div>
-
-                {/* Decorative Bottom Wave */}
-                <div className="absolute bottom-0 left-0 right-0">
-                    <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="rgb(249, 250, 251)"/>
-                    </svg>
-                </div>
             </section>
 
             {/* Search & Filter Section */}
             <section className="py-12 -mt-1">
-            <div className="max-w-7xl mx-auto px-6">
-                <motion.div
-                    className="backdrop-blur-md rounded-2xl"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <div className="flex flex-col md:flex-row gap-4 items-center">
-                        {/* Search Input */}
-                        <div className="relative flex-1 w-full">
-                            <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-                                <Search className="w-5 h-5 text-gray-400" />
+                <div className="max-w-7xl mx-auto px-6">
+                    <motion.div
+                        className="backdrop-blur-md rounded-2xl"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        <div className="flex flex-col md:flex-row gap-4 items-center">
+                            {/* Search Input */}
+                            <div className="relative flex-1 w-full">
+                                <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                                    <Search className="w-5 h-5 text-gray-400" />
+                                </div>
+
+                                <input
+                                    type="text"
+                                    placeholder="Cari galeri berdasarkan judul atau deskripsi..."
+                                    value={searchQuery}
+                                    onChange={(e) => handleSearch(e.target.value)}
+                                    className="w-full pl-12 pr-12 py-3 rounded-xl bg-white/60 border border-gray-300/70 
+                                            text-gray-700 placeholder-gray-400 focus:ring-2 focus:ring-gray-400 
+                                            focus:border-transparent shadow-inner transition-all duration-300 
+                                            hover:bg-white"
+                                />
+
+                                {searchQuery && (
+                                    <button
+                                        onClick={() => handleSearch("")}
+                                        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 
+                                                hover:text-gray-600 transition-colors"
+                                    >
+                                        <X className="w-5 h-5" />
+                                    </button>
+                                )}
                             </div>
 
-                            <input
-                                type="text"
-                                placeholder="Cari galeri berdasarkan judul atau kategori..."
-                                value={searchQuery}
-                                onChange={(e) => handleSearch(e.target.value)}
-                                className="w-full pl-12 pr-12 py-3 rounded-xl bg-white/60 border border-gray-300/70 
-                                        text-gray-700 placeholder-gray-400 focus:ring-2 focus:ring-gray-400 
-                                        focus:border-transparent shadow-inner transition-all duration-300 
-                                        hover:bg-white"
-                            />
-
-                            {searchQuery && (
-                                <button
-                                    onClick={() => handleSearch("")}
-                                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 
-                                            hover:text-gray-600 transition-colors"
-                                >
-                                    <X className="w-5 h-5" />
-                                </button>
-                            )}
+                            {/* Result Count */}
+                            <div className="flex items-center gap-2 text-gray-600 font-medium whitespace-nowrap bg-gray-100/80 px-4 py-2 rounded-xl border border-gray-200">
+                                <ImageIcon className="w-5 h-5 text-gray-500" />
+                                {filteredGaleri.length} hasil ditemukan
+                            </div>
                         </div>
-
-                        {/* Result Count */}
-                        <div className="flex items-center gap-2 text-gray-600 font-medium whitespace-nowrap bg-gray-100/80 px-4 py-2 rounded-xl border border-gray-200">
-                            <Image className="w-5 h-5 text-gray-500" />
-                            {filteredGaleri.length} hasil ditemukan
-                        </div>
-                    </div>
-                </motion.div>
-            </div>
-        </section>
+                    </motion.div>
+                </div>
+            </section>
 
             {/* Gallery Grid */}
-            <section className="pt-8 pb-24">
+            <section className="pb-20 pt-8 relative z-10">
                 <div className="max-w-7xl mx-auto px-6">
                     {currentItems.length > 0 ? (
                         <>
@@ -208,52 +181,34 @@ function GaleriContent({ galeri }) {
                                 ))}
                             </div>
 
-                            {/* Pagination */}
+                            {/* Pagination - Style sama seperti Jejak Alumni */}
                             {totalPages > 1 && (
-                                <motion.div
-                                    className="mt-12 flex justify-center items-center gap-2"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ duration: 0.5, delay: 0.3 }}
-                                >
-                                    {/* Previous Button */}
+                                <div className="flex justify-center items-center gap-6 mt-12">
                                     <button
-                                        onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                                        onClick={prevPage}
                                         disabled={currentPage === 1}
-                                        className="p-2 rounded-lg bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-sm"
+                                        className="p-3 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full disabled:opacity-50 disabled:cursor-not-allowed transition"
                                     >
-                                        <ChevronLeft className="w-5 h-5" />
+                                        <ChevronLeft size={22} />
                                     </button>
 
-                                    {/* Page Numbers */}
-                                    {getPaginationButtons().map((page) => (
-                                        <button
-                                            key={page}
-                                            onClick={() => setCurrentPage(page)}
-                                            className={`px-4 py-2 rounded-lg font-medium transition-all shadow-sm ${
-                                                currentPage === page
-                                                    ? "bg-gradient-to-r from-gray-700 to-gray-900 text-white"
-                                                    : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
-                                            }`}
-                                        >
-                                            {page}
-                                        </button>
-                                    ))}
+                                    <span className="text-gray-700 font-medium">
+                                        {currentPage} / {totalPages}
+                                    </span>
 
-                                    {/* Next Button */}
                                     <button
-                                        onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                                        onClick={nextPage}
                                         disabled={currentPage === totalPages}
-                                        className="p-2 rounded-lg bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-sm"
+                                        className="p-3 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full disabled:opacity-50 disabled:cursor-not-allowed transition"
                                     >
-                                        <ChevronRight className="w-5 h-5" />
+                                        <ChevronRight size={22} />
                                     </button>
-                                </motion.div>
+                                </div>
                             )}
                         </>
                     ) : (
                         <motion.div
-                            className="text-center py-20"
+                            className="col-span-full text-center py-20"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.5 }}
@@ -280,7 +235,7 @@ function GaleriContent({ galeri }) {
                     onClick={() => setSelectedImage(null)}
                 >
                     <motion.div
-                        className="relative max-w-2xl w-full"
+                        className="relative max-w-4xl w-full"
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 0.3 }}
