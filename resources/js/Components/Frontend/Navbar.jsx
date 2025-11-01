@@ -53,7 +53,7 @@ export default function Navbar() {
                                 : "text-white"
                         }`}
                     >
-                        Himastat FMIPA
+                        
                     </span>
                 </Link>
 

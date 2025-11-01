@@ -27,10 +27,10 @@ export default function Index({ auth, divisis }) {
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
                             <Users className="text-gray-800" size={26} />
-                            Divisi Himpunan
+                            Divisi
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
-                            Kelola divisi dan struktur organisasi himpunan.
+                            Kelola divisi himpunan.
                         </p>
                     </div>
 

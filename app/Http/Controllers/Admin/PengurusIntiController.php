@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Inertia\Inertia;
 use App\Models\PengurusInti;
+use App\Models\Struktur;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -27,7 +28,11 @@ class PengurusIntiController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Admin/PengurusInti/Create');
+        $structurs = Struktur::all();
+        return Inertia::render('Admin/PengurusInti/Create', [
+            'structurs' => $structurs,
+        ]);;
+        
     }
 
     /**
@@ -48,7 +53,7 @@ class PengurusIntiController extends Controller
 
         PengurusInti::create($validated);
 
-        return redirect()->route('admin.pengurusInti.index')->with('success', 'Pengurus Inti berhasil ditambahkan');
+        return redirect()->route('admin.struktur.index')->with('success', 'Pengurus Inti berhasil ditambahkan');
     }
 
     /**
@@ -95,7 +100,7 @@ class PengurusIntiController extends Controller
 
         $pengurusInti->update($validated);
 
-        return redirect()->route('admin.pengurusInti.index')->with('success', 'Pengurus Inti berhasil diperbarui');
+        return redirect()->route('admin.struktur.index')->with('success', 'Pengurus Inti berhasil diperbarui');
     }
 
     /**
@@ -109,6 +114,6 @@ class PengurusIntiController extends Controller
 
         $pengurusInti->delete();
 
-        return redirect()->route('admin.pengurusInti.index')->with('success', 'Pengurus Inti berhasil dihapus');
+        return redirect()->route('admin.struktur.index')->with('success', 'Pengurus Inti berhasil dihapus');
     }
 }

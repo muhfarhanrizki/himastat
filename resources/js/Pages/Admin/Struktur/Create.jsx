@@ -57,40 +57,10 @@ export default function Create() {
                     onSubmit={handleSubmit}
                     className="bg-white rounded-2xl shadow-md border border-gray-100 p-8 space-y-6"
                 >
-                    {/* Thumbnail */}
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Thumbnail
-                        </label>
-                        <input
-                            type="file"
-                            accept="image/*"
-                            onChange={(e) =>
-                                handleImageChange(
-                                    e,
-                                    "thumbnail",
-                                    setPreviewThumbnail
-                                )
-                            }
-                            className="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-gray-600 file:text-white hover:file:bg-gray-700"
-                        />
-                        {errors.thumbnail && (
-                            <p className="text-red-500 text-sm mt-1">
-                                {errors.thumbnail}
-                            </p>
-                        )}
-                        {previewThumbnail && (
-                            <img
-                                src={previewThumbnail}
-                                alt="Preview Thumbnail"
-                                className="mt-3 w-full max-h-64 object-cover rounded-lg border"
-                            />
-                        )}
-                    </div>
                     {/* Struktur */}
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Gambar Struktur
+                            Foto Pengurus
                         </label>
                         <input
                             type="file"
@@ -121,7 +91,7 @@ export default function Create() {
                     {/* Deskripsi */}
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Deskripsi
+                            Tugas dan Fungsi
                         </label>
                         <textarea
                             value={data.deskripsi}

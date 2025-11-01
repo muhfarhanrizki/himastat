@@ -48,7 +48,7 @@ export default function Create() {
                         </p>
                     </div>
                     <Link
-                        href={route("admin.pengurusInti.index")}
+                        href={route("admin.struktur.index")}
                         className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-800 transition"
                     >
                         <ArrowLeft size={18} /> Kembali

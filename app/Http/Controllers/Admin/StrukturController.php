@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Inertia\Inertia;
 use App\Models\Struktur;
 use Illuminate\Http\Request;
+use App\Models\PengurusInti;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,12 +17,13 @@ class StrukturController extends Controller
     public function index()
     {
         $structurs = Struktur::all();
-
+        $pengurusInti = PengurusInti::all();
+        
         return Inertia::render('Admin/Struktur/Index', [
-            'structurs' => $structurs
+            'structurs' => $structurs,
+            'pengurusInti' => $pengurusInti,
         ]);
     }
-
     /**
      * Show the form for creating a new resource.
      */

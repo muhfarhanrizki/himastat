@@ -42,7 +42,7 @@ export default function Edit({ struktur }) {
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
                             <Image className="text-gray-800" size={28} />
-                            Edit Struktur Organisasi
+                            Edit Foto Organisasi
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
                             Perbarui informasi struktur organisasi yang sudah ada.
@@ -57,33 +57,11 @@ export default function Edit({ struktur }) {
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* Card 1: Thumbnail */}
-                    <div className="bg-white rounded-2xl shadow-md border border-gray-100 p-6">
-                        <h2 className="text-lg font-semibold text-gray-800 mb-3">
-                            Thumbnail
-                        </h2>
-                        <input
-                            type="file"
-                            accept="image/*"
-                            onChange={(e) => handleImageChange(e, "thumbnail", setPreviewThumbnail)}
-                            className="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-gray-600 file:text-white hover:file:bg-gray-700"
-                        />
-                        {errors.thumbnail && (
-                            <p className="text-red-500 text-sm mt-1">{errors.thumbnail}</p>
-                        )}
-                        {previewThumbnail && (
-                            <img
-                                src={previewThumbnail}
-                                alt="Preview Thumbnail"
-                                className="mt-3 w-full max-h-64 object-cover rounded-lg border"
-                            />
-                        )}
-                    </div>
 
                     {/* Card 2: Struktur Gambar */}
                     <div className="bg-white rounded-2xl shadow-md border border-gray-100 p-6">
                         <h2 className="text-lg font-semibold text-gray-800 mb-3">
-                            Gambar Struktur
+                            Foto Pengurus
                         </h2>
                         <input
                             type="file"
@@ -106,7 +84,7 @@ export default function Edit({ struktur }) {
                     {/* Card 3: Deskripsi */}
                     <div className="bg-white rounded-2xl shadow-md border border-gray-100 p-6">
                         <h2 className="text-lg font-semibold text-gray-800 mb-3">
-                            Deskripsi
+                            Tugas dan Fungsi
                         </h2>
                         <textarea
                             value={data.deskripsi}

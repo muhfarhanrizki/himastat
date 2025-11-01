@@ -46,7 +46,7 @@ class ProkerController extends Controller
         $divisis = Divisi::all();
 
         return Inertia::render('Admin/Proker/Create',[
-            'divisis' => $divisis  // ini jg pake dropwon untuk formna sundala
+            'divisis' => $divisis
         ]);
     }
 

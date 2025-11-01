@@ -10,8 +10,6 @@ import {
     BookUser,
     Footprints,
     Network,
-    UserCheck,
-    Users2,
     FolderIcon,
     Phone,
     Home,
@@ -19,6 +17,9 @@ import {
     Columns3,
     ListIcon,
     X,
+    GitBranch,
+    Award,
+    Users2,
 } from "lucide-react";
 import NavLink from "@/Components/NavLink";
 import { useState, useEffect } from "react";
@@ -89,17 +90,29 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
             icon: <Columns3 size={20} />,
             submenu: [
                 {
-                    name: "Struktur Pengurus",
+                    name: "Badan Eksekutif",
                     icon: <Network size={18} />,
                     href: route("admin.struktur.index"),
                     active: route().current("struktur.*"),
                 },
                 {
-                    name: "Pengurus Inti",
-                    icon: <UserCheck size={18} />,
-                    href: route("admin.pengurusInti.index"),
-                    active: route().current("pengurusInti.*"),
+                    name: "Dewan",
+                    icon: <Award size={18} />,
+                    href: route("admin.dewan.index"),
+                    active: route().current("dewan.*"),
                 },
+                {
+                    name: "Bagan Struktur",
+                    icon: <GitBranch size={18} />,
+                    href: route("admin.baganStruktur.index"),
+                    active: route().current("baganStruktur.*"),
+                },
+            ],
+        },
+        {
+            name: "Divisi & Proker",
+            icon: <Users2 size={20} />,
+            submenu: [
                 {
                     name: "Divisi",
                     icon: <Users2 size={18} />,
@@ -142,7 +155,6 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
         if (activeMenu) setOpenMenu(activeMenu.name);
     }, [route().current()]);
 
-    // Close sidebar when clicking outside on mobile
     useEffect(() => {
         const handleClickOutside = (e) => {
             if (isSidebarOpen && window.innerWidth < 768) {
@@ -164,7 +176,6 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
 
     return (
         <>
-            {/* Overlay untuk mobile */}
             {isSidebarOpen && (
                 <div
                     className="fixed inset-0 bg-black/50 z-20 md:hidden transition-opacity"
@@ -172,7 +183,6 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
                 ></div>
             )}
 
-            {/* Sidebar */}
             <aside
                 id="sidebar"
                 className={`fixed md:static inset-y-0 left-0 z-30 bg-white flex flex-col justify-between shadow-lg h-screen transition-transform duration-300 ease-in-out
@@ -183,9 +193,7 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
                     }
                     w-64 md:w-64`}
             >
-                {/* Bagian Atas: Logo + Menu */}
                 <div className="flex flex-col flex-grow overflow-hidden">
-                    {/* Header */}
                     <div className="flex items-center justify-between px-4 py-2 bg-gray-700 shrink-0">
                         <Link
                             href={route("admin.dashboard")}
@@ -201,7 +209,6 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
                             </span>
                         </Link>
 
-                        {/* Close button untuk mobile */}
                         <button
                             onClick={toggleSidebar}
                             className="text-gray-300 hover:text-white md:hidden p-1"
@@ -210,7 +217,6 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
                         </button>
                     </div>
 
-                    {/* Menu Section */}
                     <nav className="flex-1 overflow-y-auto mt-4 space-y-2 px-3 pb-4">
                         {menuItems.map((item, i) => (
                             <div key={i}>
@@ -264,10 +270,7 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
                     </nav>
                 </div>
 
-                {/* Bagian Bawah: Profil & Logout */}
-                {/* Bagian Bawah: Navigasi Tambahan + Profil & Logout */}
                 <div className="border-t border-gray-200 p-4 shrink-0 bg-gray-50 space-y-3">
-                    {/* Tombol Kembali ke Beranda */}
                     <Link
                         href={route("beranda")}
                         className="flex items-center justify-center gap-2 w-full px-4 py-2.5 text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-gray-900 transition text-sm font-medium shadow-sm"
@@ -276,7 +279,6 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
                         <span>Beranda</span>
                     </Link>
 
-                    {/* Profil Admin */}
                     <Link
                         href={route("admin.profile.edit")}
                         className="flex items-center gap-3 group hover:bg-white px-3 py-3 rounded-lg transition shadow-sm border border-transparent hover:border-gray-200"
@@ -294,7 +296,6 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
                         </div>
                     </Link>
 
-                    {/* Tombol Logout */}
                     <button
                         onClick={handleLogout}
                         className="flex items-center justify-center gap-2 w-full px-4 py-2.5 text-red-600 hover:bg-red-50 border border-red-200 hover:border-red-300 rounded-lg transition font-medium"

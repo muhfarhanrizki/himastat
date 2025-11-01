@@ -279,32 +279,6 @@ export default function Show({ divisi }) {
                             </div>
                         )}
                     </motion.section>
-
-                    {/* CTA Section */}
-                    <motion.section
-                        className="mt-20"
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
-                    >
-                        <div className="bg-gradient-to-r from-gray-800 to-gray-900 rounded-3xl p-10 md:p-16 text-center shadow-2xl">
-                            <h3 className="text-3xl md:text-4xl font-bold text-gray-300 mb-4">
-                                Tertarik Bergabung?
-                            </h3>
-                            <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-                                Jelajahi divisi lainnya dan temukan tempat yang
-                                cocok untuk Anda berkembang bersama Himastat
-                            </p>
-                            <Link
-                                href="/#divisi"
-                                className="inline-flex items-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all hover:scale-105 shadow-lg"
-                            >
-                                <Users size={24} />
-                                Lihat Divisi Lainnya
-                            </Link>
-                        </div>
-                    </motion.section>
                 </div>
             </div>
         </FrontendLayout>

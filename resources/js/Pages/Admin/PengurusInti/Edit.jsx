@@ -39,14 +39,14 @@ export default function Edit({ pengurusInti }) {
                     <div>
                         <h1 className="text-2xl font-semibold text-gray-800 flex items-center gap-2">
                             <ImagePlus size={22} className="text-gray-600" />
-                            Tambah Pengurus Inti
+                            Edit Pengurus Inti
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
                             Ubah data pengurus inti.
                         </p>
                     </div>
                     <Link
-                        href={route("admin.pengurusInti.index")}
+                        href={route("admin.struktur.index")}
                         className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-800 transition"
                     >
                         <ArrowLeft size={18} /> Kembali

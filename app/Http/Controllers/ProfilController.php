@@ -8,6 +8,8 @@ use App\Models\Struktur;
 use App\Models\VisiMisi;
 use App\Models\AlumniPath;
 use App\Models\PengurusInti;
+use App\Models\Dewan;
+use App\Models\BaganStruktur;
 use Illuminate\Http\Request;
 
 class ProfilController extends Controller
@@ -34,22 +36,49 @@ class ProfilController extends Controller
         ]);
     }
 
-    public function strukturOrganisasi(){
+    public function strukturOrganisasi()
+    {
+        return Inertia::render('Frontend/Profil/StrukturOrganisasi');
+    }
+
+    // Halaman Badan Eksekutif (isi dari struktur organisasi lama)
+    public function badanEksekutif()
+    {
         $struktur = Struktur::all();
         $divisi = Divisi::all();
         $pengurusInti = PengurusInti::all();
-
-        return Inertia::render('Frontend/Profil/StrukturOrganisasi', [
+        
+        return Inertia::render('Frontend/Profil/BadanEksekutif', [
             'struktur' => $struktur,
             'divisi' => $divisi,
             'pengurusInti' => $pengurusInti,
         ]);
     }
 
-    public function pengurusInti(){
+    // Halaman Bagan Struktur
+    public function baganStruktur()
+    {
+        $bagan = BaganStruktur::first();
+        
+        return Inertia::render('Frontend/Profil/BaganStruktur', [
+            'bagan' => $bagan,
+        ]);
+    }
+
+    // Halaman Dewan
+    public function dewan()
+    {
+        $dewan = Dewan::all();
+        
+        return Inertia::render('Frontend/Profil/Dewan', [
+            'dewan' => $dewan,
+        ]);
+    }
+
+    public function pengurusInti()
+    {
         $pengurusInti = PengurusInti::all();
-        return Inertia::render('Frontend/Profil/PengurusInti',
-        [
+        return Inertia::render('Frontend/Profil/PengurusInti', [
             'pengurusInti' => $pengurusInti
         ]);
     }

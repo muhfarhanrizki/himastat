@@ -53,7 +53,7 @@ export default function Index({ auth, prokers, divisis, filters }) {
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
                             <Briefcase className="text-gray-800" size={26} />
-                            Program Kerja Himpunan
+                            Daftar Program Kerja
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
                             Daftar program kerja dari semua divisi.
