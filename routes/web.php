@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\PengurusIntiController;
 use App\Http\Controllers\Admin\StrukturController;
 use App\Http\Controllers\Admin\BaganStrukturController;
 use App\Http\Controllers\Admin\DewanController;
+use App\Http\Controllers\Admin\StrukturDewanController;
 use App\Http\Controllers\DivisiController as ControllersDivisiController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfilController;
@@ -59,7 +60,8 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('anggotaDiv', AnggotaDivController::class);
     Route::resource('baganStruktur', BaganStrukturController::class);
     Route::resource('dewan', DewanController::class);
-    
+    Route::resource('strukturdewan', StrukturDewanController::class);
+
     Route::get('/404', function () {
         return Inertia::render('Admin/404');
     })->name('404');

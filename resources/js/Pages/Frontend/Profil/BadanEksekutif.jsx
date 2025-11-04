@@ -50,18 +50,18 @@ export default function StrukturOrganisasi({ struktur, divisi, pengurusInti }) {
                         transition={{ duration: 0.8 }}
                     >
                         <motion.div
-                            className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-gray-700 to-gray-900 rounded-2xl mb-6 shadow-2xl"
+                            className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-gray-700 to-gray-900 rounded-2xl mb-6 shadow-2xl"
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
                         >
-                            <Network className="w-10 h-10 text-white" />
+                            <Network className="w-8 h-8 md:w-10 md:h-10 text-white" />
                         </motion.div>
 
-                        <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300 bg-clip-text text-transparent py-2 mb-2">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300 bg-clip-text text-transparent py-2 mb-4">
                             Badan Eksekutif
                         </h1>
-                        <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+                        <p className="text-gray-300 max-w-2xl mx-auto text-base md:text-lg px-4">
                             Mengenal susunan kepengurusan dan pembagian divisi dalam organisasi kami.
                         </p>
                     </motion.div>

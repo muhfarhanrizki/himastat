@@ -10,6 +10,7 @@ use App\Models\AlumniPath;
 use App\Models\PengurusInti;
 use App\Models\Dewan;
 use App\Models\BaganStruktur;
+use App\Models\StrukturDewan;
 use Illuminate\Http\Request;
 
 class ProfilController extends Controller
@@ -69,9 +70,11 @@ class ProfilController extends Controller
     public function dewan()
     {
         $dewan = Dewan::all();
+        $strukturdewans = StrukturDewan::all();
         
         return Inertia::render('Frontend/Profil/Dewan', [
             'dewan' => $dewan,
+            'strukturdewan' => $strukturdewans,
         ]);
     }
 

@@ -28,10 +28,10 @@ export default function BaganStruktur({ bagan }) {
                                 <GitBranch className="w-8 h-8 md:w-10 md:h-10 text-white" />
                             </motion.div>
 
-                            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300 bg-clip-text text-transparent pb-2 mb-2">
+                            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300 bg-clip-text text-transparent py-2 mb-4">
                                 Bagan Struktur
                             </h1>
-                            <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto px-4">
+                            <p className="text-gray-300 max-w-2xl mx-auto text-base md:text-lg px-4">
                                 Visualisasi hierarki dan alur organisasi secara menyeluruh
                             </p>
                         </motion.div>
@@ -43,44 +43,15 @@ export default function BaganStruktur({ bagan }) {
                     <div className="max-w-7xl mx-auto px-6">
                         {bagan ? (
                             <motion.div
-                                className="bg-gradient-to-br from-white to-gray-50 rounded-2xl md:rounded-3xl shadow-xl border border-gray-200 relative overflow-hidden"
+                                className=" relative overflow-hidden"
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.8 }}
                             >
-                                {/* Background Glow Effect */}
-                                <div className="absolute top-0 right-0 w-32 md:w-40 h-32 md:h-40 bg-gradient-to-br from-gray-200/40 to-transparent rounded-full blur-2xl"></div>
-                                
-                                {/* Top Border Accent */}
-                                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gray-600 to-gray-800 rounded-t-2xl md:rounded-t-3xl"></div>
 
                                 {/* Content */}
                                 <div className="relative z-10 p-6 sm:p-8 md:p-10">
-                                    {/* Title & Description */}
-                                    <div className="text-center mb-8">
-                                        <motion.div
-                                            className="inline-flex items-center justify-center mb-6"
-                                            whileHover={{ scale: 1.05 }}
-                                        >
-                                            <div className="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-gray-700 to-gray-900 rounded-xl md:rounded-2xl shadow-lg">
-                                                <GitBranch className="w-7 h-7 md:w-8 md:h-8 text-white" />
-                                            </div>
-                                        </motion.div>
-
-                                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                                            {bagan.title}
-                                        </h2>
-
-                                        {bagan.description && (
-                                            <div className="relative max-w-3xl mx-auto">
-                                                <div className="absolute -left-4 md:-left-6 top-0 bottom-0 w-0.5 md:w-1 bg-gradient-to-b from-gray-600 to-transparent rounded-full"></div>
-                                                <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed pl-3 md:pl-4">
-                                                    {bagan.description}
-                                                </p>
-                                            </div>
-                                        )}
-                                    </div>
 
                                     {/* Bagan Image */}
                                     {bagan.image && (
@@ -117,9 +88,6 @@ export default function BaganStruktur({ bagan }) {
                                         </motion.div>
                                     )}
                                 </div>
-
-                                {/* Corner Decoration */}
-                                <div className="absolute bottom-0 right-0 w-16 md:w-20 h-16 md:h-20 border-r-2 border-b-2 border-gray-300 rounded-br-2xl md:rounded-br-3xl opacity-50"></div>
                             </motion.div>
                         ) : (
                             <motion.div
@@ -137,6 +105,21 @@ export default function BaganStruktur({ bagan }) {
                                 </p>
                             </motion.div>
                         )}
+
+                         {/* Title & Description */}
+                                    <div className="text-center mb-8">
+                                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                                            {bagan.title}
+                                        </h2>
+
+                                        {bagan.description && (
+                                            <div className="relative max-w-3xl mx-auto">
+                                                <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed pl-3 md:pl-4">
+                                                    {bagan.description}
+                                                </p>
+                                            </div>
+                                        )}
+                                    </div>
 
                         {/* Bottom Decoration */}
                         <motion.div

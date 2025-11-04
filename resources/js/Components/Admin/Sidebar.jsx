@@ -98,8 +98,8 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
                 {
                     name: "Dewan",
                     icon: <Award size={18} />,
-                    href: route("admin.dewan.index"),
-                    active: route().current("dewan.*"),
+                    href: route("admin.strukturdewan.index"),
+                    active: route().current("strukturdewan*"),
                 },
                 {
                     name: "Bagan Struktur",

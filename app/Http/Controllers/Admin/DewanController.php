@@ -38,7 +38,7 @@ class DewanController extends Controller
 
         Dewan::create($validated);
 
-        return redirect()->route('admin.dewan.index')
+        return redirect()->route('admin.strukturdewan.index')
             ->with('success', 'Dewan berhasil ditambahkan');
     }
 
@@ -67,7 +67,7 @@ class DewanController extends Controller
 
         $dewan->update($validated);
 
-        return redirect()->route('admin.dewan.index')
+        return redirect()->route('admin.strukturdewan.index')
             ->with('success', 'Dewan berhasil diperbarui');
     }
 
@@ -79,7 +79,7 @@ class DewanController extends Controller
 
         $dewan->delete();
 
-        return redirect()->route('admin.dewan.index')
+        return redirect()->route('admin.strukturdewan.index')
             ->with('success', 'Dewan berhasil dihapus');
     }
 }

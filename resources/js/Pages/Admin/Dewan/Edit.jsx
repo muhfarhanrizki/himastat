@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Head, Link, useForm } from "@inertiajs/react";
-import AdminLayout from "@/Layouts/AdminLayout";
-import { ArrowLeftIcon } from "@heroicons/react/24/outline";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import { ArrowLeftIcon } from "lucide-react";
 
 export default function Edit({ dewan }) {
     const { data, setData, post, processing, errors } = useForm({
@@ -42,7 +42,7 @@ export default function Edit({ dewan }) {
                     {/* Header */}
                     <div className="mb-6">
                         <Link
-                            href={route("admin.dewan.index")}
+                            href={route("admin.strukturdewan.index")}
                             className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-4"
                         >
                             <ArrowLeftIcon className="w-5 h-5 mr-2" />
@@ -140,7 +140,7 @@ export default function Edit({ dewan }) {
                             {/* Submit Button */}
                             <div className="flex justify-end gap-3 pt-4">
                                 <Link
-                                    href={route("admin.dewan.index")}
+                                    href={route("admin.strukturdewan.index")}
                                     className="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition"
                                 >
                                     Batal

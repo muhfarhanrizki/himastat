@@ -19,13 +19,51 @@ export default function Show({ divisi }) {
 
             <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
                 {/* Hero Section dengan Image */}
-                <div className="relative h-[500px] overflow-hidden">
-                    {/* Background Image */}
+                <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-36 pb-16 md:pb-24 overflow-hidden">
+                                <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 30 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.8 }}
+                                    >
+                                        <motion.div
+                                            className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-gray-700 to-gray-900 rounded-2xl mb-6 shadow-2xl"
+                                            initial={{ scale: 0 }}
+                                            animate={{ scale: 1 }}
+                                            transition={{ duration: 0.5, delay: 0.2 }}
+                                        >
+                                            <Users className="w-8 h-8 md:w-10 md:h-10 text-white" />
+                                        </motion.div>
+                
+                                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300 bg-clip-text text-transparent py-2 mb-4">
+                                            {divisi.name}
+                                        </h1>
+                                        <div className="flex justify-center items-center gap-6 text-white/90">
+                                            <div className="flex items-center gap-2">
+                                                <UserCheck size={24} />
+                                                <span className="text-xl font-medium">
+                                                    {divisi.anggota?.length || 0}{" "}
+                                                    Anggota
+                                                </span>
+                                            </div>
+                                            <div className="flex items-center gap-2">
+                                                <Briefcase size={24} />
+                                                <span className="text-xl font-medium">
+                                                    {divisi.proker?.length || 0} Program
+                                                    Kerja
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                </div>
+                            </section>
+
+                <div className="max-w-6xl mx-auto px-6 pt-16">
                     {divisi.image ? (
                         <img
                             src={`/storage/${divisi.image}`}
                             alt={divisi.name}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover rounded-3xl shadow-xl"
                         />
                     ) : (
                         <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
@@ -34,59 +72,8 @@ export default function Show({ divisi }) {
                                 className="text-white opacity-30"
                             />
                         </div>
-                    )}
-
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
-
-                    {/* Content Overlay */}
-                    <div className="absolute inset-0 flex items-end">
-                        <div className="max-w-6xl mx-auto px-6 pb-16 w-full">
-                            <motion.div
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6 }}
-                            >
-                                {/* Back Button */}
-                                <Link
-                                    href="/#divisi"
-                                    className="inline-flex items-center gap-2 text-white/80 hover:text-white transition mb-6 group"
-                                >
-                                    <ArrowLeft
-                                        size={20}
-                                        className="group-hover:-translate-x-1 transition-transform"
-                                    />
-                                    <span className="font-medium">
-                                        Kembali ke Beranda
-                                    </span>
-                                </Link>
-
-                                {/* Title */}
-                                <h1 className="text-5xl md:text-6xl font-bold mb-4 text-white">
-                                    {divisi.name}
-                                </h1>
-
-                                {/* Stats */}
-                                <div className="flex flex-wrap items-center gap-6 text-white/90">
-                                    <div className="flex items-center gap-2">
-                                        <UserCheck size={24} />
-                                        <span className="text-xl font-medium">
-                                            {divisi.anggota?.length || 0}{" "}
-                                            Anggota
-                                        </span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <Briefcase size={24} />
-                                        <span className="text-xl font-medium">
-                                            {divisi.proker?.length || 0} Program
-                                            Kerja
-                                        </span>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        </div>
-                    </div>
-                </div>
+                    )}               
+                </div>      
 
                 {/* Main Content */}
                 <div className="max-w-6xl mx-auto px-6 py-16">

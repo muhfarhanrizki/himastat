@@ -11,8 +11,8 @@ export default function StrukturOrganisasi() {
             description: "Struktur kepengurusan dan divisi dalam organisasi kami",
             icon: Users,
             href: "/struktur-organisasi/badan-eksekutif",
-            gradient: "from-blue-600 to-blue-800",
-            bgGradient: "from-blue-700 to-blue-900",
+            gradient: "from-gray-600 to-gray-800",
+            bgGradient: "from-gray-700 to-gray-900",
         },
         {
             title: "Bagan Struktur",
@@ -27,8 +27,8 @@ export default function StrukturOrganisasi() {
             description: "Dewan pembina dan pengawas organisasi",
             icon: Award,
             href: "/struktur-organisasi/dewan",
-            gradient: "from-purple-600 to-purple-800",
-            bgGradient: "from-purple-700 to-purple-900",
+            gradient: "from-gray-600 to-gray-800",
+            bgGradient: "from-gray-700 to-gray-900",
         },
     ];
 
@@ -37,7 +37,7 @@ export default function StrukturOrganisasi() {
             <Head title="Struktur Organisasi" />
 
             {/* HERO SECTION */}
-            <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-36 pb-16 md:pb-24 overflow-hidden">
+            <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-36 pb-16 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
