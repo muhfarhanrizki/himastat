@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link, useForm } from "@inertiajs/react";
-import { ArrowLeft, UploadCloud, Image} from "lucide-react";
+import { ArrowLeft, UploadCloud, Image } from "lucide-react";
 import { route } from "ziggy-js";
 
 export default function Create() {
     const { data, setData, post, processing, errors } = useForm({
-        thumbnail: "",
         struktur: "",
         deskripsi: "",
     });
 
-    const [previewThumbnail, setPreviewThumbnail] = useState(null);
     const [previewStruktur, setPreviewStruktur] = useState(null);
 
     const handleSubmit = (e) => {
@@ -19,11 +17,11 @@ export default function Create() {
         post(route("admin.struktur.store"));
     };
 
-    const handleImageChange = (e, field, setPreview) => {
+    const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
-            setData(field, file);
-            setPreview(URL.createObjectURL(file));
+            setData("struktur", file);
+            setPreviewStruktur(URL.createObjectURL(file));
         }
     };
 
@@ -31,8 +29,8 @@ export default function Create() {
         <AuthenticatedLayout>
             <Head title="Tambah Struktur Organisasi" />
 
-            <div className="p-8 px-8 max-w-full mx-auto">
-                {/* Header */}
+            <div className="p-8 max-w-full mx-auto">
+
                 <div className="flex items-center justify-between mb-10">
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
@@ -40,8 +38,7 @@ export default function Create() {
                             Tambah Struktur Organisasi
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
-                            Lengkapi informasi struktur organisasi untuk
-                            ditampilkan di website.
+                            Lengkapi informasi struktur organisasi untuk ditampilkan di website.
                         </p>
                     </div>
                     <Link
@@ -52,12 +49,8 @@ export default function Create() {
                     </Link>
                 </div>
 
-                {/* Form Card */}
-                <form
-                    onSubmit={handleSubmit}
-                    className="bg-white rounded-2xl shadow-md border border-gray-100 p-8 space-y-6"
-                >
-                    {/* Struktur */}
+                <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-md border p-8 space-y-6">
+
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
                             Foto Pengurus
@@ -65,19 +58,11 @@ export default function Create() {
                         <input
                             type="file"
                             accept="image/*"
-                            onChange={(e) =>
-                                handleImageChange(
-                                    e,
-                                    "struktur",
-                                    setPreviewStruktur
-                                )
-                            }
+                            onChange={handleImageChange}
                             className="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-gray-600 file:text-white hover:file:bg-gray-700"
                         />
                         {errors.struktur && (
-                            <p className="text-red-500 text-sm mt-1">
-                                {errors.struktur}
-                            </p>
+                            <p className="text-red-500 text-sm mt-1">{errors.struktur}</p>
                         )}
                         {previewStruktur && (
                             <img
@@ -88,28 +73,22 @@ export default function Create() {
                         )}
                     </div>
 
-                    {/* Deskripsi */}
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
                             Tugas dan Fungsi
                         </label>
                         <textarea
                             value={data.deskripsi}
-                            onChange={(e) =>
-                                setData("deskripsi", e.target.value)
-                            }
+                            onChange={(e) => setData("deskripsi", e.target.value)}
                             rows="5"
                             className="w-full rounded-lg border-gray-300 focus:ring-gray-500 focus:border-gray-500"
-                            placeholder="Tulis deskripsi singkat tentang struktur organisasi..."
+                            placeholder="Tulis deskripsi singkat..."
                         ></textarea>
                         {errors.deskripsi && (
-                            <p className="text-red-500 text-sm mt-1">
-                                {errors.deskripsi}
-                            </p>
+                            <p className="text-red-500 text-sm mt-1">{errors.deskripsi}</p>
                         )}
                     </div>
 
-                    {/* Submit */}
                     <div className="flex justify-end">
                         <button
                             type="submit"
@@ -125,4 +104,3 @@ export default function Create() {
         </AuthenticatedLayout>
     );
 }
-

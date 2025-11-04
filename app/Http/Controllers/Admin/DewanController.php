@@ -29,7 +29,6 @@ class DewanController extends Controller
             'nama' => 'required|string|max:255',
             'jabatan' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'deskripsi' => 'nullable|string',
         ]);
 
         if ($request->hasFile('image')) {
@@ -55,7 +54,6 @@ class DewanController extends Controller
             'nama' => 'required|string|max:255',
             'jabatan' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'deskripsi' => 'nullable|string',
         ]);
 
         if ($request->hasFile('image')) {

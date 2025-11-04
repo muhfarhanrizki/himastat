@@ -9,9 +9,8 @@ class Struktur extends Model
     protected $table = 'strukturs';
 
     protected $fillable = [
-        'thumbnail',
         'struktur',
         'deskripsi',
-    ]; 
+    ];
     
 }

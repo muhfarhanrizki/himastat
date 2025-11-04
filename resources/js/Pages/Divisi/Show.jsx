@@ -38,7 +38,7 @@ export default function Show({ divisi }) {
                                         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300 bg-clip-text text-transparent py-2 mb-4">
                                             {divisi.name}
                                         </h1>
-                                        <div className="flex justify-center items-center gap-6 text-white/90">
+                                        <div className="flex justify-center items-center gap-6 text-white/90 pt-4">
                                             <div className="flex items-center gap-2">
                                                 <UserCheck size={24} />
                                                 <span className="text-xl font-medium">

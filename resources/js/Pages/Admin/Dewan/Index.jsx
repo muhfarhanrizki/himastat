@@ -45,9 +45,6 @@ export default function Index({ dewan }) {
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Jabatan
                                         </th>
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Deskripsi
-                                        </th>
                                         <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Aksi
                                         </th>
@@ -78,11 +75,6 @@ export default function Index({ dewan }) {
                                                 <td className="px-6 py-4">
                                                     <div className="text-sm text-gray-900">
                                                         {item.jabatan}
-                                                    </div>
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    <div className="text-sm text-gray-500 max-w-md truncate">
-                                                        {item.deskripsi || "-"}
                                                     </div>
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

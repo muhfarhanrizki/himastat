@@ -38,16 +38,11 @@ class StrukturController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-        'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'struktur' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'deskripsi' => 'nullable|string',
         ]);
 
         try {
-            if ($request->hasFile('thumbnail')) {
-                $validated['thumbnail'] = $request->file('thumbnail')->store('strukturs/thumbnails', 'public');
-            }
-
             if ($request->hasFile('struktur')) {
                 $validated['struktur'] = $request->file('struktur')->store('strukturs/images', 'public');
             }
@@ -88,20 +83,11 @@ class StrukturController extends Controller
     public function update(Request $request, Struktur $struktur)
     {
         $validated = $request->validate([
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'struktur' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'deskripsi' => 'nullable|string',
         ]);
         
         try {
-            if ($request->hasFile('thumbnail')) {
-                if ($struktur->thumbnail && Storage::disk('public')->exists($struktur->thumbnail)) {
-                    Storage::disk('public')->delete($struktur->thumbnail);
-                }
-                $validated['thumbnail'] = $request->file('thumbnail')->store('strukturs/thumbnails', 'public');
-            } else {
-                unset($validated['thumbnail']);
-            }
 
             if ($request->hasFile('struktur')) {
                 if ($struktur->struktur && Storage::disk('public')->exists($struktur->struktur)) {
@@ -127,9 +113,6 @@ class StrukturController extends Controller
      */
     public function destroy(Struktur $struktur)
     {
-        if ($struktur->thumbnail && Storage::disk('public')->exists($struktur->thumbnail)) {
-            Storage::disk('public')->delete($struktur->thumbnail);
-        }
 
         if ($struktur->struktur && Storage::disk('public')->exists($struktur->struktur)) {
             Storage::disk('public')->delete($struktur->struktur);   

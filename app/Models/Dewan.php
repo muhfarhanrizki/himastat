@@ -15,6 +15,5 @@ class Dewan extends Model
         'nama',
         'jabatan',
         'image',
-        'deskripsi',
     ];
 }

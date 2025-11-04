@@ -53,40 +53,39 @@ export default function BaganStruktur({ bagan }) {
                                 {/* Content */}
                                 <div className="relative z-10 p-6 sm:p-8 md:p-10">
 
-                                    {/* Bagan Image */}
                                     {bagan.image && (
-                                        <motion.div
-                                            className="relative group"
-                                            initial={{ opacity: 0, scale: 0.95 }}
-                                            whileInView={{ opacity: 1, scale: 1 }}
-                                            viewport={{ once: true }}
-                                            transition={{ duration: 0.6, delay: 0.2 }}
-                                        >
-                                            {/* Image Container */}
-                                            <div className="relative rounded-xl md:rounded-2xl overflow-hidden border-2 border-gray-200 shadow-lg">
-                                                <img
-                                                    src={`/storage/${bagan.image}`}
-                                                    alt={bagan.title}
-                                                    className="w-full h-auto object-contain bg-white"
-                                                />
-                                                
-                                                {/* Hover Overlay */}
-                                                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                            </div>
+                                    <motion.div
+                                        className="relative group"
+                                        initial={{ opacity: 0, scale: 0.95 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.6, delay: 0.2 }}
+                                    >
+                                        {/* Image Container */}
+                                        <div className="relative rounded-xl md:rounded-2xl overflow-hidden border-2 border-gray-200 shadow-lg">
+                                            <img
+                                                src={`/storage/${bagan.image}`}
+                                                alt={bagan.title}
+                                                className="w-full h-auto object-contain bg-white"
+                                            />
 
-                                            {/* Download Button */}
-                                            <motion.a
-                                                href={`/storage/${bagan.image}`}
-                                                download
-                                                className="absolute bottom-4 right-4 inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm text-gray-900 rounded-lg font-semibold shadow-lg hover:bg-white transition-all duration-300 opacity-0 group-hover:opacity-100"
-                                                whileHover={{ scale: 1.05 }}
-                                                whileTap={{ scale: 0.95 }}
-                                            >
-                                                <Download className="w-4 h-4" />
-                                                <span className="text-sm">Download</span>
-                                            </motion.a>
-                                        </motion.div>
-                                    )}
+                                            {/* Hover Overlay */}
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                        </div>
+
+                                        {/* Download Button */}
+                                        <motion.a
+                                            href={`/storage/${bagan.image}`}
+                                            download
+                                            className="absolute bottom-4 right-4 inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm text-gray-900 rounded-lg font-semibold shadow-lg hover:bg-white transition-all duration-300 opacity-0 group-hover:opacity-100"
+                                            whileHover={{ scale: 1.05 }}
+                                            whileTap={{ scale: 0.95 }}
+                                        >
+                                            <Download className="w-4 h-4" />
+                                            <span className="text-sm">Download</span>
+                                        </motion.a>
+                                    </motion.div>
+                                )}
                                 </div>
                             </motion.div>
                         ) : (
