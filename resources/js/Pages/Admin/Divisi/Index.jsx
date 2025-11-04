@@ -6,7 +6,7 @@ import { Users, Plus, Trash2, Briefcase, UserCheck } from "lucide-react";
 export default function Index({ auth, divisis }) {
     const handleDelete = (slug) => {
         if (confirm("Apakah Anda yakin ingin menghapus divisi ini?")) {
-            router.delete(route("divisi.destroy", slug));
+            router.delete(route("admin.divisi.destroy", slug));
         }
     };
 

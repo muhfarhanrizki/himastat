@@ -109,7 +109,7 @@ export default function Index({ jumbotrons }) {
                             tambahkan jumbotron untuk header website
                         </p>
                         <Link
-                            href={route("jumbotron.create")}
+                            href={route("admin.jumbotron.create")}
                             className="inline-flex items-center gap-2 bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition"
                         >
                             <PlusIcon size={18} />

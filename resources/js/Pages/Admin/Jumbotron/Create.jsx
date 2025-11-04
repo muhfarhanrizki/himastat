@@ -15,7 +15,7 @@ export default function Create() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        post(route("jumbotron.store"));
+        post(route("admin.jumbotron.store"));
     }
 
     return (
@@ -36,7 +36,7 @@ export default function Create() {
                     </div>
 
                     <Link
-                        href={route("jumbotron.index")}
+                        href={route("admin.jumbotron.index")}
                         className="text-gray-600 hover:text-gray-600 flex items-center gap-1 font-medium"
                     >
                         <ArrowLeft size={16} /> Kembali
@@ -72,7 +72,9 @@ export default function Create() {
                         ) : (
                             <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 text-gray-400">
                                 <Upload size={40} className="mb-3" />
-                                <p className="text-gray-500">Belum ada gambar dipilih</p>
+                                <p className="text-gray-500">
+                                    Belum ada gambar dipilih
+                                </p>
                             </div>
                         )}
 
@@ -98,6 +100,11 @@ export default function Create() {
                                 }
                             }}
                         />
+                        {errors.image && (
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.image}
+                            </p>
+                        )}
                     </div>
 
                     {/* Input Section */}
@@ -111,11 +118,15 @@ export default function Create() {
                                 type="text"
                                 className="w-full border-gray-300 rounded-lg focus:ring-gray-500 focus:border-gray-500"
                                 value={data.title}
-                                onChange={(e) => setData("title", e.target.value)}
+                                onChange={(e) =>
+                                    setData("title", e.target.value)
+                                }
                                 placeholder="Masukkan judul jumbotron..."
                             />
                             {errors.title && (
-                                <p className="text-red-500 text-sm mt-1">{errors.title}</p>
+                                <p className="text-red-500 text-sm mt-1">
+                                    {errors.title}
+                                </p>
                             )}
                         </div>
 
@@ -142,7 +153,9 @@ export default function Create() {
 
                         {/* Error Gambar */}
                         {errors.image && (
-                            <p className="text-red-500 text-sm">{errors.image}</p>
+                            <p className="text-red-500 text-sm">
+                                {errors.image}
+                            </p>
                         )}
 
                         {/* Tombol Simpan */}

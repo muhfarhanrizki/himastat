@@ -28,7 +28,8 @@ export default function AboutSection() {
                     </h2>
                     <div className="w-20 md:w-24 h-1 bg-gradient-to-r from-gray-600 to-gray-800 mx-auto rounded-full"></div>
                     <p className="text-gray-600 mt-4 text-base md:text-lg px-4">
-                        Mengenal lebih dekat siapa Himastat dan apa tujuan organisasi kami
+                        Mengenal lebih dekat siapa Himastat dan apa tujuan
+                        organisasi kami
                     </p>
                 </motion.div>
 
@@ -55,15 +56,17 @@ export default function AboutSection() {
                         {/* Text Content */}
                         <div className="relative z-10 text-center">
                             <p className="text-gray-700 leading-relaxed text-sm sm:text-base md:text-lg max-w-3xl mx-auto">
-                                Kami adalah organisasi yang berfokus pada pengembangan potensi, kreativitas,
-                                dan solidaritas mahasiswa dalam bidang teknologi serta sosial. Melalui berbagai
-                                kegiatan, pelatihan, dan proyek kolaboratif, kami berupaya menciptakan generasi
-                                muda yang inovatif, berdaya saing, dan berkarakter.
+                                Himastat FMIPA Unhas resmi berdiri pada tanggal
+                                23 Oktober 2019. Himastat FMIPA Unhas berasaskan
+                                kekeluargaan dan berlandaskan Tri Darma
+                                Perguruan Tinggi.
                                 <br />
                                 <br />
-                                Dengan semangat kolaborasi dan rasa kekeluargaan, kami percaya bahwa setiap
-                                individu mampu membawa perubahan positif. Bersama, kita tumbuh, belajar, dan
-                                menciptakan karya yang berdampak nyata bagi masyarakat.
+                                Sebagai organisasi kader, Himastat hadir untuk
+                                membentuk mahasiswa Statistika yang
+                                berintegritas, berwawasan luas, kritis, serta
+                                mampu berkontribusi dalam pengembangan ilmu
+                                pengetahuan dan masyarakat.
                             </p>
                         </div>
 
