@@ -60,7 +60,7 @@ export default function DivisiSection({ data }) {
                     </h2>
                     <div className="w-24 h-1 bg-gradient-to-r from-gray-600 to-gray-800 mx-auto rounded-full"></div>
                     <p className="text-gray-600 mt-4 text-lg">
-                        Kenali divisi-divisi yang ada di Himastat
+                        Kenali divisi-divisi yang ada pada periode kali ini.
                     </p>
                 </motion.div>
 

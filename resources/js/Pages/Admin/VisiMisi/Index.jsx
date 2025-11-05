@@ -44,12 +44,8 @@ export default function Index({ visimisi = [] }) {
                                         <h1 className="font-bold text-2xl text-gray-900">
                                             Tentang Himastat
                                         </h1>
-                                        <p className="font-normal text-lg text-gray-700 pb-8 pt-4">
-                                            Lorem ipsum dolor sit, amet
-                                            consectetur adipisicing elit.
-                                            Corporis, incidunt? Ipsum quidem
-                                            ratione doloremque voluptatem
-                                            maiores consequuntur ea tempora quo.
+                                        <p className="font-normal text-lg text-gray-700 pb-8 pt-4 px-4">
+                                            Himastat FMIPA Unhas resmi berdiri pada tanggal 23 Oktober 2019. Himastat FMIPA Unhas berasaskan kekeluargaan dan berlandaskan Tri Darma Perguruan Tinggi. Sebagai organisasi kader, Himastat hadir untuk membentuk mahasiswa Statistika yang berintegritas, berwawasan luas, kritis, serta mampu berkontribusi dalam pengembangan ilmu pengetahuan dan masyarakat.
                                         </p>
                                     </div>
                                 </div>

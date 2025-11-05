@@ -64,8 +64,7 @@ export default function JejakAlumni({ AlumniPath }) {
                             Jejak Alumni
                         </h1>
                         <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                            Cerita dan pesan dari para alumni Himastat yang
-                            menginspirasi.
+                            Pesan dan kesan dari para alumni Himastat.
                         </p>
                     </motion.div>
                 </div>

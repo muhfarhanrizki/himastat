@@ -16,7 +16,7 @@ export default function Create() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        post(route("sambutan.store"));
+        post(route("admin.sambutan.store"));
     }
 
     return (
@@ -37,7 +37,7 @@ export default function Create() {
                     </div>
 
                     <Link
-                        href={route("sambutan.index")}
+                        href={route("admin.sambutan.index")}
                         className="text-gray-600 hover:text-gray-600 flex items-center gap-1 font-medium"
                     >
                         <ArrowLeft size={16} /> Kembali

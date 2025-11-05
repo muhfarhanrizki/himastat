@@ -73,10 +73,7 @@ function ProfilContent({ visimisi }) {
                             <div className="text-center ">
                                 <div className="relative">
                                     <p className="text-gray-700 leading-relaxed text-lg px-18">
-                                        Himpunan Mahasiswa kami adalah organisasi yang berdedikasi untuk mengembangkan 
-                                        potensi mahasiswa melalui berbagai kegiatan akademik dan non-akademik. Kami percaya 
-                                        bahwa setiap mahasiswa memiliki talenta unik yang dapat dikembangkan untuk mencapai 
-                                        kesuksesan.
+                                        Himastat FMIPA Unhas resmi berdiri pada tanggal 23 Oktober 2019. Himastat FMIPA Unhas berasaskan kekeluargaan dan berlandaskan Tri Darma Perguruan Tinggi. Sebagai organisasi kader, Himastat hadir untuk membentuk mahasiswa Statistika yang berintegritas, berwawasan luas, kritis, serta mampu berkontribusi dalam pengembangan ilmu pengetahuan dan masyarakat.
                                     </p>
                                 </div>
                 

@@ -12,7 +12,7 @@ export default function Create() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("visimisi.store"));
+        post(route("admin.visimisi.store"));
     };
 
     return (
@@ -32,7 +32,7 @@ export default function Create() {
                         </p>
                     </div>
                     <Link
-                        href={route("visimisi.index")}
+                        href={route("admin.visimisi.index")}
                         className="inline-flex items-center gap-2 text-gray-600 hover:text-sky-600 transition"
                     >
                         <ArrowLeft size={18} />
