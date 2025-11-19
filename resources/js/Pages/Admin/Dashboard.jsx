@@ -29,25 +29,25 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
             name: "Galeri",
             value: stats.galeri,
             icon: <Image className="w-6 h-6" />,
-            route: "/galeri",
+            route: "admin/galeri",
         },
         {
             name: "Divisi",
             value: stats.divisi,
             icon: <Users className="w-6 h-6" />,
-            route: "/divisi",
+            route: "admin/divisi",
         },
         {
             name: "Proker",
             value: stats.proker,
             icon: <Briefcase className="w-6 h-6" />,
-            route: "/proker",
+            route: "admin/proker",
         },
         {
             name: "Jejak Alumni",
             value: stats.alumniPath,
             icon: <MapPin className="w-6 h-6" />,
-            route: "/alumniPath",
+            route: "admin/alumniPath",
         },
     ];
 

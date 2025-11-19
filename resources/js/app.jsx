@@ -6,7 +6,7 @@ import { createInertiaApp } from "@inertiajs/react";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import axios from "axios";
 
-const appName = import.meta.env.VITE_APP_NAME || "Laravel";
+const appName = import.meta.env.VITE_APP_NAME;
 
 axios.defaults.baseURL = window.location.origin; // Pakai origin dari window (otomatis HTTPS)
 axios.defaults.withCredentials = true;
