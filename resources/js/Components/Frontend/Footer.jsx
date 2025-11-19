@@ -127,7 +127,10 @@ export default function Footer() {
             {/* Copyright */}
             <div className="border-t border-gray-700/60 mt-8 py-4 text-center text-sm text-gray-500 px-4">
                 © {new Date().getFullYear()}{" "}
-                <Link href="/login" className="text-sky-600 font-medium">
+                <Link
+                    href="/admin/dashboard"
+                    className="text-sky-600 font-medium"
+                >
                     Himastat Unhas
                 </Link>
                 . All rights reserved
