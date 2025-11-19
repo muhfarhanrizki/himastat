@@ -8,7 +8,6 @@ import axios from "axios";
 
 const appName = import.meta.env.VITE_APP_NAME || "Laravel";
 
-
 axios.defaults.baseURL = window.location.origin; // Pakai origin dari window (otomatis HTTPS)
 axios.defaults.withCredentials = true;
 axios.defaults.withXSRFToken = true;
@@ -21,8 +20,8 @@ createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) =>
         resolvePageComponent(
-            `./Pages/${name}.tsx`,
-            import.meta.glob("./Pages/**/*.tsx"),
+            `./Pages/${name}.jsx`,
+            import.meta.glob("./Pages/**/*.jsx"),
         ),
     setup({ el, App, props }) {
         const root = createRoot(el);
