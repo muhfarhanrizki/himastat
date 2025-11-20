@@ -38,7 +38,7 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
             {},
             {
                 onSuccess: () => router.visit(route("login")),
-            }
+            },
         );
     };
 
@@ -143,14 +143,14 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
 
     const [openMenu, setOpenMenu] = useState(() => {
         const activeMenu = menuItems.find((item) =>
-            item.submenu?.some((sub) => sub.active)
+            item.submenu?.some((sub) => sub.active),
         );
         return activeMenu ? activeMenu.name : null;
     });
 
     useEffect(() => {
         const activeMenu = menuItems.find((item) =>
-            item.submenu?.some((sub) => sub.active)
+            item.submenu?.some((sub) => sub.active),
         );
         if (activeMenu) setOpenMenu(activeMenu.name);
     }, [route().current()]);
