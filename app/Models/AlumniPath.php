@@ -14,5 +14,6 @@ class AlumniPath extends Model
         'kontak',
         'pesan',
         'image',
+        'tanggal',
     ];
 }

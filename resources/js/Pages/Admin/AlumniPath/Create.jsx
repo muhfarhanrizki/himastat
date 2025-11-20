@@ -10,6 +10,7 @@ export default function Create() {
         pesan: "",
         angkatan: "",
         kontak: "",
+        tanggal: "",
         image: null,
     });
 
@@ -35,7 +36,7 @@ export default function Create() {
 
     return (
         <AuthenticatedLayout>
-            <Head title="Tambah Jejak Alumni" />
+            <Head title="Tambah Pencapaian" />
 
             <div className="p-8 px-8 max-w-full mx-auto">
                 {/* Header */}
@@ -43,10 +44,10 @@ export default function Create() {
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
                             <ImagePlus className="text-gray-600" size={28} />
-                            Tambah Jejak Alumni
+                            Tambah Pencapaian
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
-                            Buat kisah inspiratif dari alumni.
+                            Catat pencapaian terbaik dari anggota himastat.
                         </p>
                     </div>
 
@@ -66,50 +67,14 @@ export default function Create() {
                     {/* Nama */}
                     <div>
                         <label className="block font-medium text-gray-700 mb-2">
-                            Nama Alumni
+                            Nama
                         </label>
                         <input
                             type="text"
                             value={data.nama}
                             onChange={(e) => setData("nama", e.target.value)}
                             className="w-full rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-300 text-sm shadow-sm"
-                            placeholder="Masukkan nama alumni"
-                        />
-                        {errors.nama && (
-                            <p className="text-red-500 text-sm mt-1">
-                                {errors.nama}
-                            </p>
-                        )}
-                    </div>
-                    <div>
-                        <label className="block font-medium text-gray-700 mb-2">
-                            Angkatan
-                        </label>
-                        <input
-                            type="text"
-                            value={data.angkatan}
-                            onChange={(e) =>
-                                setData("angkatan", e.target.value)
-                            }
-                            className="w-full rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-300 text-sm shadow-sm"
-                            placeholder="Masukkan Angkatan alumni"
-                        />
-                        {errors.nama && (
-                            <p className="text-red-500 text-sm mt-1">
-                                {errors.angkatan}
-                            </p>
-                        )}
-                    </div>
-                    <div>
-                        <label className="block font-medium text-gray-700 mb-2">
-                            Kontak Alumni
-                        </label>
-                        <input
-                            type="text"
-                            value={data.kontak}
-                            onChange={(e) => setData("kontak", e.target.value)}
-                            className="w-full rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-300 text-sm shadow-sm"
-                            placeholder="Masukkan kontak alumni"
+                            placeholder="Masukkan nama"
                         />
                         {errors.nama && (
                             <p className="text-red-500 text-sm mt-1">
@@ -118,17 +83,73 @@ export default function Create() {
                         )}
                     </div>
 
-                    {/* Pesan */}
+                    {/* Angkatan */}
                     <div>
                         <label className="block font-medium text-gray-700 mb-2">
-                            Pesan / Cerita
+                            Angkatan
+                        </label>
+                        <input
+                            type="text"
+                            value={data.angkatan}
+                            onChange={(e) => setData("angkatan", e.target.value)}
+                            className="w-full rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-300 text-sm shadow-sm"
+                            placeholder="Masukkan angkatan"
+                        />
+                        {errors.angkatan && (
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.angkatan}
+                            </p>
+                        )}
+                    </div>
+
+                    {/* Kontak */}
+                    <div>
+                        <label className="block font-medium text-gray-700 mb-2">
+                            Kontak
+                        </label>
+                        <input
+                            type="text"
+                            value={data.kontak}
+                            onChange={(e) => setData("kontak", e.target.value)}
+                            className="w-full rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-300 text-sm shadow-sm"
+                            placeholder="Masukkan kontak"
+                        />
+                        {errors.kontak && (
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.kontak}
+                            </p>
+                        )}
+                    </div>
+
+                    {/* Tanggal */}
+                    <div>
+                        <label className="block font-medium text-gray-700 mb-2">
+                            Tanggal Pencapaian
+                        </label>
+                        <input
+                            type="date"
+                            value={data.tanggal}
+                            onChange={(e) => setData("tanggal", e.target.value)}
+                            className="w-full rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-300 text-sm shadow-sm"
+                        />
+                        {errors.tanggal && (
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.tanggal}
+                            </p>
+                        )}
+                    </div>
+
+                    {/* Pencapaian */}
+                    <div>
+                        <label className="block font-medium text-gray-700 mb-2">
+                            Pencapaian
                         </label>
                         <textarea
                             value={data.pesan}
                             onChange={(e) => setData("pesan", e.target.value)}
                             rows="4"
                             className="w-full rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-300 text-sm shadow-sm"
-                            placeholder="Tulis pesan atau cerita singkat..."
+                            placeholder="Tulis pencapaian atau deskripsi kegiatan..."
                         />
                         {errors.pesan && (
                             <p className="text-red-500 text-sm mt-1">
@@ -137,10 +158,10 @@ export default function Create() {
                         )}
                     </div>
 
-                    {/* Upload Gambar Modern */}
+                    {/* Upload Gambar */}
                     <div>
                         <label className="block font-medium text-gray-700 mb-2">
-                            Foto Alumni (opsional)
+                            Foto (opsional)
                         </label>
 
                         {preview ? (
@@ -177,10 +198,7 @@ export default function Create() {
                                 htmlFor="image"
                                 className="flex flex-col items-center justify-center gap-3 border-2 border-dashed border-gray-300 rounded-xl p-8 bg-gray-50 hover:bg-gray-100 cursor-pointer transition text-center"
                             >
-                                <UploadCloud
-                                    className="text-gray-400"
-                                    size={42}
-                                />
+                                <UploadCloud className="text-gray-400" size={42} />
                                 <span className="text-gray-600 font-medium">
                                     Klik untuk upload atau drag gambar ke sini
                                 </span>
@@ -215,7 +233,7 @@ export default function Create() {
                                     : "bg-gray-600 hover:bg-gray-700 text-white"
                             }`}
                         >
-                            <Save size={16} /> Simpan Alumni
+                            <Save size={16} /> Simpan Pencapaian
                         </button>
                     </div>
                 </form>

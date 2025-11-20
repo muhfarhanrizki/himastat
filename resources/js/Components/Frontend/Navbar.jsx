@@ -127,7 +127,7 @@ export default function Navbar() {
                                     className="block px-4 py-2 rounded-lg transition-all duration-300 hover:bg-gradient-to-r hover:from-gray-100 hover:to-gray-300 hover:text-gray-700 hover:translate-x-1"
                                     onClick={() => setOpenDropdown(false)}
                                 >
-                                    Jejak Alumni
+                                    Achievements
                                 </Link>
                             </li>
                         </ul>
@@ -233,7 +233,7 @@ export default function Navbar() {
                                             className="block py-2 transition-all duration-200 hover:text-gray-900 hover:translate-x-1"
                                             onClick={handleLinkClick}
                                         >
-                                            Jejak Alumni
+                                            Achievement
                                         </Link>
                                     </li>
                                 </ul>

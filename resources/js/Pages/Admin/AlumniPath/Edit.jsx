@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link, useForm } from "@inertiajs/react";
-import { ArrowLeft, Save, UploadCloud, X } from "lucide-react";
+import { ArrowLeft, Save, UploadCloud, X, ImagePlus } from "lucide-react";
 import { route } from "ziggy-js";
 
 export default function Edit({ alumniPath }) {
@@ -10,6 +10,7 @@ export default function Edit({ alumniPath }) {
         nama: alumniPath.nama || "",
         angkatan: alumniPath.angkatan || "",
         kontak: alumniPath.kontak || "",
+        tanggal: alumniPath.tanggal || "",
         pesan: alumniPath.pesan || "",
         image: null,
     });
@@ -43,9 +44,13 @@ export default function Edit({ alumniPath }) {
             <div className="p-8 px-8 max-w-full mx-auto">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-10">
-                    <h1 className="text-3xl font-bold text-gray-900">
-                        Edit Jejak Alumni
-                    </h1>
+                    <div>
+                        <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
+                            <ImagePlus className="text-gray-600" size={28} />
+                            Edit Pencapaian
+                        </h1>
+                    </div>
+
                     <Link
                         href={route("admin.alumniPath.index")}
                         className="text-gray-600 hover:text-sky-600 flex items-center gap-1 font-medium"
@@ -57,22 +62,24 @@ export default function Edit({ alumniPath }) {
                 {/* Form */}
                 <form
                     onSubmit={handleSubmit}
-                    className="bg-white shadow-sm rounded-xl p-8 border border-gray-200 space-y-6"
+                    className="bg-white shadow-sm rounded-xl p-8 border border-gray-200 space-y-8"
                 >
                     {/* Nama */}
                     <div>
                         <label className="block font-medium text-gray-700 mb-2">
-                            Nama Alumni
+                            Nama
                         </label>
                         <input
                             type="text"
                             value={data.nama}
                             onChange={(e) => setData("nama", e.target.value)}
                             className="w-full rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-300 text-sm shadow-sm"
-                            placeholder="Masukkan nama alumni"
+                            placeholder="Masukkan nama"
                         />
                         {errors.nama && (
-                            <p className="text-red-500 text-sm mt-1">{errors.nama}</p>
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.nama}
+                            </p>
                         )}
                     </div>
 
@@ -86,78 +93,106 @@ export default function Edit({ alumniPath }) {
                             value={data.angkatan}
                             onChange={(e) => setData("angkatan", e.target.value)}
                             className="w-full rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-300 text-sm shadow-sm"
-                            placeholder="Masukkan Angkatan alumni"
+                            placeholder="Masukkan angkatan"
                         />
                         {errors.angkatan && (
-                            <p className="text-red-500 text-sm mt-1">{errors.angkatan}</p>
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.angkatan}
+                            </p>
                         )}
                     </div>
 
                     {/* Kontak */}
                     <div>
                         <label className="block font-medium text-gray-700 mb-2">
-                            Kontak Alumni
+                            Kontak
                         </label>
                         <input
                             type="text"
                             value={data.kontak}
                             onChange={(e) => setData("kontak", e.target.value)}
                             className="w-full rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-300 text-sm shadow-sm"
-                            placeholder="Masukkan kontak alumni"
+                            placeholder="Masukkan kontak"
                         />
                         {errors.kontak && (
-                            <p className="text-red-500 text-sm mt-1">{errors.kontak}</p>
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.kontak}
+                            </p>
                         )}
                     </div>
 
-                    {/* Pesan */}
+                    {/* Tanggal */}
                     <div>
                         <label className="block font-medium text-gray-700 mb-2">
-                            Pesan / Cerita
+                            Tanggal Pencapaian
+                        </label>
+                        <input
+                            type="date"
+                            value={data.tanggal}
+                            onChange={(e) => setData("tanggal", e.target.value)}
+                            className="w-full rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-300 text-sm shadow-sm"
+                        />
+                        {errors.tanggal && (
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.tanggal}
+                            </p>
+                        )}
+                    </div>
+
+                    {/* Pesan / Cerita */}
+                    <div>
+                        <label className="block font-medium text-gray-700 mb-2">
+                            Pencapaian
                         </label>
                         <textarea
                             value={data.pesan}
                             onChange={(e) => setData("pesan", e.target.value)}
                             rows="4"
                             className="w-full rounded-lg border-gray-300 focus:border-gray-500 focus:ring-gray-300 text-sm shadow-sm"
-                            placeholder="Tulis pesan atau cerita singkat..."
+                            placeholder="Tulis pencapaian atau deskripsi kegiatan..."
                         />
                         {errors.pesan && (
-                            <p className="text-red-500 text-sm mt-1">{errors.pesan}</p>
+                            <p className="text-red-500 text-sm mt-1">
+                                {errors.pesan}
+                            </p>
                         )}
                     </div>
 
                     {/* Upload Gambar */}
                     <div>
                         <label className="block font-medium text-gray-700 mb-2">
-                            Foto Alumni (opsional)
+                            Foto (opsional)
                         </label>
 
                         {preview ? (
-                            <div className="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg p-5 bg-gray-50 hover:bg-gray-100 transition">
-                            {preview ? (
+                            <div className="relative group w-fit mx-auto">
                                 <img
                                     src={preview}
                                     alt="Preview"
-                                    className="w-40 h-40 object-cover rounded-lg mb-3 shadow-sm"
+                                    className="w-64 h-64 object-cover rounded-xl shadow-md border border-gray-200"
                                 />
-                            ) : (
-                                <ImageIcon className="text-gray-400 mb-2" size={40} />
-                            )}
-                            <input
-                                type="file"
-                                accept="image/*"
-                                onChange={handleImageChange}
-                                id="image"
-                                className="hidden"
-                            />
-                            <label
-                                htmlFor="image"
-                                className="cursor-pointer text-sm bg-gray-200 hover:bg-gray-300 text-gray-700 px-3 py-1.5 rounded-md transition"
-                            >
-                                Ganti Gambar
-                            </label>
-                        </div>
+                                <button
+                                    type="button"
+                                    onClick={removeImage}
+                                    className="absolute top-2 right-2 bg-white/90 hover:bg-red-100 text-red-600 rounded-full p-1.5 shadow-sm transition"
+                                    title="Hapus gambar"
+                                >
+                                    <X size={16} />
+                                </button>
+                                <label
+                                    htmlFor="image"
+                                    className="absolute bottom-2 left-1/2 -translate-x-1/2 px-3 py-1.5 text-xs font-medium bg-gray-800 text-white rounded-md opacity-0 group-hover:opacity-100 transition cursor-pointer"
+                                >
+                                    Ubah Gambar
+                                </label>
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={handleImageChange}
+                                    className="hidden"
+                                    id="image"
+                                />
+                            </div>
                         ) : (
                             <label
                                 htmlFor="image"
@@ -181,7 +216,9 @@ export default function Edit({ alumniPath }) {
                         )}
 
                         {errors.image && (
-                            <p className="text-red-500 text-sm mt-2">{errors.image}</p>
+                            <p className="text-red-500 text-sm mt-2">
+                                {errors.image}
+                            </p>
                         )}
                     </div>
 
@@ -196,7 +233,7 @@ export default function Edit({ alumniPath }) {
                                     : "bg-gray-600 hover:bg-gray-700 text-white"
                             }`}
                         >
-                            <Save size={16} /> Perbarui Alumni
+                            <Save size={16} /> Perbarui Pencapaian
                         </button>
                     </div>
                 </form>

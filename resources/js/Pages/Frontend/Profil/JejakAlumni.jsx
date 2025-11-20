@@ -40,7 +40,7 @@ export default function JejakAlumni({ AlumniPath }) {
 
     return (
         <FrontendLayout>
-            <Head title="Jejak Alumni" />
+            <Head title="Achievements" />
 
             {/* Hero Section */}
             <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-36 pb-16 overflow-hidden">
@@ -61,10 +61,10 @@ export default function JejakAlumni({ AlumniPath }) {
                         </motion.div>
 
                         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300 bg-clip-text text-transparent py-2 mb-4">
-                            Jejak Alumni
+                            Achievements
                         </h1>
                         <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                            Pesan dan kesan dari para alumni Himastat.
+                            Catatan pencapaian yang diraih oleh anggota Himastat.
                         </p>
                     </motion.div>
                 </div>
@@ -88,7 +88,7 @@ export default function JejakAlumni({ AlumniPath }) {
 
                                 <input
                                     type="text"
-                                    placeholder="Cari alumni berdasarkan nama atau angkatan..."
+                                    placeholder="Cari pencapaian berdasarkan nama atau angkatan..."
                                     value={searchQuery}
                                     onChange={(e) =>
                                         handleSearch(e.target.value)
@@ -165,6 +165,10 @@ export default function JejakAlumni({ AlumniPath }) {
                                             “{alumni.pesan}”
                                         </p>
 
+                                        <p className="text-gray-700 italic leading-relaxed text-sm line-clamp-3">
+                                            {alumni.tanggal}
+                                        </p>
+
                                         {alumni.kontak && (
                                             <p className="mt-2 text-gray-500 text-sm">
                                                 <span className="font-semibold">
@@ -178,7 +182,7 @@ export default function JejakAlumni({ AlumniPath }) {
                             ))
                         ) : (
                             <div className="col-span-full text-center text-gray-500">
-                                Tidak ada alumni ditemukan.
+                                Tidak ada pencapaian ditemukan.
                             </div>
                         )}
                     </div>
