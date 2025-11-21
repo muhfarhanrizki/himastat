@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Title from Inertia Head -->
-    <title inertia>{{ config('app.name', 'Himastat') }}</title>
+    <title inertia>{{ config('app.name', 'Himpunan Mahasiswa Statistika Unhas') }}</title>
 
     <!-- Default SEO Fallback (halaman yang tidak override Head) -->
     <meta name="description" content="Himpunan Mahasiswa Statistika Unhas - Website Resmi Himastat">

@@ -16,8 +16,8 @@ function KontakContent({ contact }) {
 
     // Lokasi sekretariat - sesuaikan dengan lokasi Anda
     const secretariatLocation = {
-        address: "Gedung Fakultas MIPA, Universitas Indonesia",
-        fullAddress: "Kampus UI Depok, Jawa Barat 16424",
+        address: "LFD. 111 FMIPA Unhas",
+        fullAddress: "Jln. Perintis Kemerdekaan KM. 10 Tamalanrea, Makassar 90245",
         // Ganti dengan koordinat dan embed URL lokasi Anda
         mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.822673977686!2d119.48601289999999!3d-5.132242499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbefb8c3aa414f7%3A0x59585e28c7ee3ebc!2sFakultas%20Matematika%20dan%20Ilmu%20Pengetahuan%20Alam%20UNHAS!5e0!3m2!1sid!2sid!4v1761414022218!5m2!1sid!2sid"
     };
@@ -86,10 +86,10 @@ function KontakContent({ contact }) {
                                     <div className="flex items-center gap-3 text-gray-700">
                                         <div className="w-2 h-2 bg-gray-600 rounded-full"></div>
                                         <a 
-                                            href={`tel:${mainContact.phone || '+6281234567890'}`}
+                                            href={`tel:${mainContact.phone || '+6281210646079'}`}
                                             className="hover:text-gray-900 transition-colors font-medium"
                                         >
-                                            {mainContact.phone || "+62 812-3456-7890"}
+                                            {mainContact.phone || "+62 8121-0646-079"}
                                         </a>
                                     </div>
                                     <p className="text-gray-600 text-sm pl-5">
@@ -171,10 +171,10 @@ function KontakContent({ contact }) {
                                     <div className="flex items-center gap-3 text-gray-700">
                                         <Mail className="w-5 h-5 text-gray-600" />
                                         <a 
-                                            href={`mailto:${mainContact.email || 'hima@university.ac.id'}`}
+                                            href={`mailto:${mainContact.email || 'himastatfmipaunhas@gmail.com'}`}
                                             className="hover:text-gray-900 transition-colors font-medium break-all"
                                         >
-                                            {mainContact.email || "hima@university.ac.id"}
+                                            {mainContact.email || "himastatfmipaunhas@gmail.com"}
                                         </a>
                                     </div>
                                     <p className="text-gray-600 text-sm pl-8">

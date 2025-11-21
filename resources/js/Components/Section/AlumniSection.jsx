@@ -162,7 +162,7 @@ export default function AlumniSection({ data }) {
                 {/* "Lihat Semua Alumni" Button */}
                 <div className="text-center mt-8">
                     <Link
-                        href="/jejak-alumni"
+                        href="/achievements"
                         className="inline-flex items-center gap-2 bg-gradient-to-r from-gray-800 to-gray-900 text-white px-8 py-3.5 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
                     >
                         Lihat Semua Pencapaian

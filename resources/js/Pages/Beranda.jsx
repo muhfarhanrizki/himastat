@@ -23,7 +23,7 @@ export default function Beranda({
     return (
         <FrontendLayout>
             <Head>
-                <title>Beranda — Himastat FMIPA Unhas</title>
+                <title>Beranda</title>
 
                 {/* SEO Meta */}
                 <meta

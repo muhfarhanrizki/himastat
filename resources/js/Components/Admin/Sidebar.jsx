@@ -78,7 +78,7 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
                     active: route().current("visimisi.*"),
                 },
                 {
-                    name: "Pencapaian",
+                    name: "Achievements",
                     icon: <Footprints size={18} />,
                     href: route("admin.alumniPath.index"),
                     active: route().current("alumniPath.*"),

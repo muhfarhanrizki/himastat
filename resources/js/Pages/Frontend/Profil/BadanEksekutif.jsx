@@ -37,7 +37,7 @@ export default function StrukturOrganisasi({ struktur, divisi, pengurusInti }) {
 
     return (
         <FrontendLayout>
-            <Head title="Struktur Organisasi" />
+            <Head title="Badan Eksekutif" />
 
             {/* HERO SECTION */}
             <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-36 pb-16 overflow-hidden">

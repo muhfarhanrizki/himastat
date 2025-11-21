@@ -161,22 +161,13 @@ export default function JejakAlumni({ AlumniPath }) {
                                             Angkatan {alumni.angkatan}
                                         </p>
 
-                                        <p className="text-gray-700 italic leading-relaxed text-sm line-clamp-3">
-                                            “{alumni.pesan}”
+                                        <p className="text-gray-700 font-bold text-lg italic leading-relaxed line-clamp-3">
+                                            {alumni.pesan}
                                         </p>
 
                                         <p className="text-gray-700 italic leading-relaxed text-sm line-clamp-3">
                                             {alumni.tanggal}
                                         </p>
-
-                                        {alumni.kontak && (
-                                            <p className="mt-2 text-gray-500 text-sm">
-                                                <span className="font-semibold">
-                                                    Kontak:
-                                                </span>{" "}
-                                                {alumni.kontak}
-                                            </p>
-                                        )}
                                     </div>
                                 </motion.div>
                             ))
