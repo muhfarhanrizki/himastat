@@ -44,7 +44,7 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
             route: "/admin/proker",
         },
         {
-            name: "Jejak Alumni",
+            name: "Achievements",
             value: stats.alumniPath,
             icon: <MapPin className="w-5 h-5 md:w-6 md:h-6" />,
             route: "/admin/alumniPath",
@@ -85,7 +85,7 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
         ...(latest.alumniPath?.map((a) => ({
             id: `alumni-${a.id}`,
             type: "alumni",
-            title: "Alumni Terdaftar",
+            title: "Pencapaian",
             description: `${a.nama} (Angkatan ${a.angkatan})`,
             created_at: a.created_at,
         })) || []),
@@ -445,7 +445,7 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
                     <div className="flex justify-between items-center mb-4 md:mb-6">
                         <h2 className="font-bold text-base md:text-xl text-gray-800 flex items-center gap-2">
                             <MessageSquare className="w-5 h-5 md:w-6 md:h-6 text-gray-700" />
-                            Jejak Alumni
+                            Achievements
                         </h2>
                         <Link
                             href="/admin/alumniPath"
@@ -495,7 +495,7 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
                                 className="mx-auto text-gray-300 mb-2 md:w-10 md:h-10"
                             />
                             <p className="text-gray-400 text-xs md:text-sm">
-                                Belum ada data alumni
+                                Belum ada data pencapaian
                             </p>
                         </div>
                     )}
