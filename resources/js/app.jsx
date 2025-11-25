@@ -17,7 +17,7 @@ axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 window.axios = axios;
 
 createInertiaApp({
-    title: (title) => `${title} - Himastat`,
+    title: (title) => `${title} - Himastat Unhas`,
     resolve: (name) =>
         resolvePageComponent(
             `./Pages/${name}.jsx`,

@@ -22,7 +22,7 @@ export default function Beranda({
 
     return (
         <FrontendLayout>
-            <Head title="Beranda" />
+            <Head title="Himpunan Mahasiswa Statistika Unhas" />
 
             <JumbotronSection data={mainJumbotron} />
             <AboutSection />
