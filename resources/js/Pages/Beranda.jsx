@@ -23,7 +23,7 @@ export default function Beranda({
     return (
         <FrontendLayout>
             <Head>
-                <title>Beranda</title>
+                <title>Himpunan Mahasiswa Statistika Unhas</title>
 
                 {/* SEO Meta */}
                 <meta

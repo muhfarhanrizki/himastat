@@ -13,7 +13,7 @@ axios.defaults.withCredentials = true;
 axios.defaults.withXSRFToken = true;
 axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
-// Set global axios
+
 window.axios = axios;
 
 createInertiaApp({
@@ -21,7 +21,7 @@ createInertiaApp({
     resolve: (name) =>
         resolvePageComponent(
             `./Pages/${name}.jsx`,
-            import.meta.glob("./Pages/**/*.jsx"),
+            import.meta.glob("./Pages/**/*.jsx")
         ),
     setup({ el, App, props }) {
         const root = createRoot(el);
