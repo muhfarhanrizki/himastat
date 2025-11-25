@@ -31,7 +31,8 @@ Route::get('/divisi/{divisi}/', [ControllersDivisiController::class, 'show'])->n
 
 Route::get('/profil-organisasi', [ProfilController::class, 'profilOrganisasi'])->name('profil-organisasi');
 Route::get('/sejarah', [ProfilController::class, 'sejarah'])->name('sejarah');
-Route::get('/jejak-alumni', [ProfilController::class, 'jejakAlumni'])->name('jejak-alumni');
+Route::get('/achievements', [ProfilController::class, 'jejakAlumni'])->name('achievements');
+
 
 // Struktur Organisasi Routes
 Route::get('/struktur-organisasi', [ProfilController::class, 'strukturOrganisasi'])->name('struktur-organisasi');

@@ -25,7 +25,7 @@ export default function Index() {
 
     return (
         <AuthenticatedLayout>
-            <Head title="Jejak Alumni" />
+            <Head title="Pencapaian" />
 
             <div className="p-8 px-8 max-w-full mx-auto">
                 {/* Header */}
@@ -33,10 +33,10 @@ export default function Index() {
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
                             <User className="text-gray-800" size={28} />
-                            Jejak Alumni
+                            Pencapaian
                         </h1>
                         <p className="text-gray-500 text-sm mt-1">
-                            Cerita dan pesan alumni dari berbagai generasi.
+                            Kumpulan pencapaian yang diraih oleh anggota himastat.
                         </p>
                     </div>
 
@@ -45,7 +45,7 @@ export default function Index() {
                         href={route("admin.alumniPath.create")}
                         className="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-800 text-white px-5 py-2.5 rounded-lg shadow transition"
                     >
-                        <Plus size={18} /> Tambah Alumni
+                        <Plus size={18} /> Tambah Pencapaian
                     </Link>
                 </div>
 
@@ -63,7 +63,7 @@ export default function Index() {
                             type="text"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            placeholder="Cari nama atau pesan alumni..."
+                            placeholder="Cari nama atau tanggal pencapaian..."
                             className="w-full pl-9 pr-3 py-2 border rounded-lg focus:ring focus:ring-gray-200"
                         />
                     </div>
@@ -113,7 +113,11 @@ export default function Index() {
                                             </p>
                                             <p className="text-gray-700 leading-relaxed whitespace-pre-line">
                                                 {alumni.pesan ||
-                                                    "Belum ada pesan dari alumni ini."}
+                                                    "Belum ada pencapaian dari anggota ini."}
+                                            </p>
+                                            <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                                                {alumni.tanggal ||
+                                                    "tanggal pencapaian tidak tersedia."}
                                             </p>
                                             {alumni.kontak && (
                                                 <p className="text-gray-600 text-sm flex items-center gap-1 mt-2">
@@ -158,10 +162,10 @@ export default function Index() {
                             className="mx-auto text-gray-300 mb-4"
                         />
                         <h3 className="text-xl font-semibold text-gray-700 mb-2">
-                            Belum Ada Data Alumni
+                            Belum Ada Data Pencapaian
                         </h3>
                         <p className="text-gray-500">
-                            Tambahkan kisah dan pesan inspiratif dari mereka.
+                            Tambahkan pencapaian yang membanggakan himastat.
                         </p>
                     </div>
                 )}

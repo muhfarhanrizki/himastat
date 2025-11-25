@@ -335,7 +335,7 @@ function SejarahContent() {
 export default function Sejarah() {
     return (
         <FrontendLayout>
-            <Head title="Sejarah - Himpunan Mahasiswa Statistika" />
+            <Head title="Sejarah" />
             <SejarahContent />
         </FrontendLayout>
     );

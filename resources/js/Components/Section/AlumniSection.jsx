@@ -52,11 +52,11 @@ export default function AlumniSection({ data }) {
                 {/* Title */}
                 <div className="text-center mb-12">
                     <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                        Jejak Alumni
+                        Achievements
                     </h2>
                     <div className="w-24 h-1 bg-gradient-to-r from-gray-600 to-gray-800 mx-auto rounded-full mb-6"></div>
                     <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-                        Cerita inspiratif dari para alumni yang telah meraih kesuksesan
+                        Catatan pencapaian yang diraih oleh anggota Himastat.
                     </p>
                 </div>
 
@@ -84,7 +84,7 @@ export default function AlumniSection({ data }) {
                         </button>
                     )}
 
-                    {/* Alumni Cards Carousel */}
+                    {/* Achievements Cards Carousel */}
                     <div
                         ref={scrollContainerRef}
                         onScroll={handleScroll}
@@ -97,22 +97,19 @@ export default function AlumniSection({ data }) {
                         {visibleAlumni.map((item, index) => (
                             <div
                                 key={item.id}
-                                className="group/card flex-shrink-0 w-72 bg-white rounded-2xl shadow-lg hover:scale-105 transition-all duration-500 overflow-hidden"
-                                style={{
-                                    animationDelay: `${index * 100}ms`
-                                }}
+                                className="group/card flex-shrink-0 w-80 bg-white rounded-2xl shadow-md hover:shadow-xl hover:scale-[1.04] transition-all duration-500 overflow-hidden"
+                                style={{ animationDelay: `${index * 100}ms` }}
                             >
-                                {/* Card Header with Gradient */}
-                                <div className="relative h-32 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 overflow-hidden">
-                                    <div className="absolute inset-0 bg-black/10"></div>
+                                {/* Card Header */}
+                                <div className="relative h-32 bg-gradient-to-br from-yellow-600 via-yellow-700 to-yellow-800">
                                     <Quote
                                         size={80}
-                                        className="absolute -right-4 -top-4 text-white/10 transform rotate-12"
+                                        className="absolute -right-4 -top-4 text-white/10 rotate-12"
                                     />
                                 </div>
 
                                 {/* Avatar */}
-                                <div className="relative -mt-16 mb-4 px-8">
+                                <div className="relative -mt-16 mb-3 px-8 flex justify-start">
                                     <div className="relative inline-block">
                                         {item.image ? (
                                             <img
@@ -125,28 +122,36 @@ export default function AlumniSection({ data }) {
                                                 <GraduationCap size={40} />
                                             </div>
                                         )}
-                                        <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-green-500 rounded-full border-4 border-white"></div>
+
+                                        {/* Online dot */}
+                                        <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-green-500 rounded-full border-4 border-white shadow-sm"></div>
                                     </div>
                                 </div>
 
                                 {/* Card Content */}
-                                <div className="px-8 pb-8 text-center">
-                                    {/* Nama Alumni */}
-                                    <h4 className="text-xl font-bold text-gray-900 mb-1">
-                                        {item.nama}
+                                <div className="px-6 pb-6 text-start">
+                                    
+                                    {/* Pesan */}
+                                    <h4 className="text-lg font-bold mt-2 text-gray-800 line-clamp-4 min-h-[72px] leading-relaxed">
+                                        {item.pesan}
                                     </h4>
 
+                                    {/* Nama */}
+                                    <p className="text-md font-bold text-gray-900">
+                                        {item.nama}
+                                    </p>
+
                                     {/* Angkatan */}
-                                    <div className="inline-flex items-center gap-1 px-3 py-1 bg-gray-100 rounded-full mb-4">
+                                    <div className="inline-flex items-center gap-1 px-3 py-1 bg-gray-100 mt-2 mb-2 shadow-sm">
                                         <GraduationCap size={14} className="text-gray-600" />
-                                        <span className="text-gray-600 text-xs font-medium">
+                                        <span className="text-gray-700 text-xs font-medium">
                                             Angkatan {item.angkatan}
                                         </span>
                                     </div>
 
-                                    {/* Pesan */}
-                                    <p className="text-gray-600 italic leading-relaxed text-sm line-clamp-4 min-h-[80px]">
-                                        "{item.pesan}"
+                                    {/* Tanggal */}
+                                    <p className="text-gray-500 italic text-xs">
+                                        {item.tanggal ? item.tanggal : "Tidak ada tanggal"}
                                     </p>
                                 </div>
                             </div>
@@ -157,10 +162,10 @@ export default function AlumniSection({ data }) {
                 {/* "Lihat Semua Alumni" Button */}
                 <div className="text-center mt-8">
                     <Link
-                        href="/jejak-alumni"
+                        href="/achievements"
                         className="inline-flex items-center gap-2 bg-gradient-to-r from-gray-800 to-gray-900 text-white px-8 py-3.5 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
                     >
-                        Lihat Semua Alumni
+                        Lihat Semua Pencapaian
                         <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                     </Link>
                 </div>

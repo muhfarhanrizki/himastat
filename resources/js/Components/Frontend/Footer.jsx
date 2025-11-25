@@ -9,12 +9,10 @@ export default function Footer() {
                 {/* Brand Section - Full width on mobile */}
                 <div className="md:col-span-1">
                     <h2 className="text-2xl font-bold text-white mb-3">
-                        Himastat Unhas
+                        Himastat FMIPA Unhas
                     </h2>
                     <p className="text-gray-400 text-sm leading-relaxed">
-                        Membangun desa dengan semangat kebersamaan dan
-                        transparansi. Bersama menuju masa depan yang lebih maju
-                        dan berdaya saing.
+                        Himastat FMIPA Unhas resmi berdiri pada tanggal 23 Oktober 2019. Himastat FMIPA Unhas berasaskan kekeluargaan dan berlandaskan Tri Darma Perguruan Tinggi.
                     </p>
                 </div>
 
@@ -71,7 +69,7 @@ export default function Footer() {
                                 className="text-indigo-400 flex-shrink-0 mt-0.5"
                             />
                             <span className="break-words">
-                                Jl. Poros Unhas No. 123, Makassar
+                                LFD. 111 FMIPA Unhas. Jln. Perintis Kemerdekaan KM. 10 Tamalanrea Makassar 90245
                             </span>
                         </li>
                         <li className="flex items-center gap-2">
@@ -79,7 +77,7 @@ export default function Footer() {
                                 size={16}
                                 className="text-indigo-400 flex-shrink-0"
                             />
-                            <span>+62 812-3456-7890</span>
+                            <span>+62 812-1064-6079</span>
                         </li>
                         <li className="flex items-start gap-2">
                             <Mail
@@ -87,7 +85,7 @@ export default function Footer() {
                                 className="text-indigo-400 flex-shrink-0 mt-0.5"
                             />
                             <span className="break-all">
-                                himastatfmipaunhas@mail.cpm
+                                himastatfmipaunhas@gmail.com
                             </span>
                         </li>
                     </ul>
@@ -100,21 +98,21 @@ export default function Footer() {
                     </h3>
                     <div className="flex gap-3">
                         <a
-                            href="#"
+                            href="https://www.facebook.com/people/Himastat-FMIPA-Unhas/100078700622061/?locale=id_ID#"
                             aria-label="Facebook"
                             className="bg-gray-700 hover:bg-indigo-600 transition p-2.5 rounded-full"
                         >
                             <Facebook size={18} />
                         </a>
                         <a
-                            href="#"
+                            href="https://www.instagram.com/himastatfmipaunhas/"
                             aria-label="Instagram"
                             className="bg-gray-700 hover:bg-indigo-600 transition p-2.5 rounded-full"
                         >
                             <Instagram size={18} />
                         </a>
                         <a
-                            href="#"
+                            href="https://himastat.sci.unhas.ac.id/"
                             aria-label="Website"
                             className="bg-gray-700 hover:bg-indigo-600 transition p-2.5 rounded-full"
                         >
