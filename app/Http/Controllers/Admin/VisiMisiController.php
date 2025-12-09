@@ -72,7 +72,7 @@ class VisiMisiController extends Controller
     public function update(Request $request, VisiMisi $visimisi)
     {
         $validated = $request->validate([
-            "visi" => "required|string",
+            "visi" => "required|text",
             "misi" => "required|string",
         ]);
 
