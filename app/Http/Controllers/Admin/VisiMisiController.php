@@ -16,8 +16,8 @@ class VisiMisiController extends Controller
     {
         $visimisi = VisiMisi::all();
 
-        return Inertia::render('Admin/VisiMisi/Index', [
-            'visimisi' => $visimisi
+        return Inertia::render("Admin/VisiMisi/Index", [
+            "visimisi" => $visimisi,
         ]);
     }
 
@@ -26,7 +26,7 @@ class VisiMisiController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Admin/VisiMisi/Create');
+        return Inertia::render("Admin/VisiMisi/Create");
     }
 
     /**
@@ -35,13 +35,15 @@ class VisiMisiController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'visi' => 'required|string',
-            'misi' => 'required|string',
+            "visi" => "required|string",
+            "misi" => "required|string",
         ]);
 
         VisiMisi::create($validated);
 
-        return redirect()->route('admin.visimisi.index')->with('success', 'Visi Misi berhasil ditambahkan');
+        return redirect()
+            ->route("admin.visimisi.index")
+            ->with("success", "Visi Misi berhasil ditambahkan");
     }
 
     /**
@@ -49,8 +51,8 @@ class VisiMisiController extends Controller
      */
     public function show(VisiMisi $visimisi)
     {
-        return Inertia::render('Admin/VisiMisi/Show', [
-            'visimisi' => $visimisi
+        return Inertia::render("Admin/VisiMisi/Show", [
+            "visimisi" => $visimisi,
         ]);
     }
 
@@ -59,8 +61,8 @@ class VisiMisiController extends Controller
      */
     public function edit(VisiMisi $visimisi)
     {
-        return Inertia::render('Admin/VisiMisi/Edit', [
-            'visimisi' => $visimisi
+        return Inertia::render("Admin/VisiMisi/Edit", [
+            "visimisi" => $visimisi,
         ]);
     }
 
@@ -70,13 +72,15 @@ class VisiMisiController extends Controller
     public function update(Request $request, VisiMisi $visimisi)
     {
         $validated = $request->validate([
-            'visi' => 'required|string|max:255',
-            'misi' => 'required|string',
+            "visi" => "required|string",
+            "misi" => "required|string",
         ]);
 
         $visimisi->update($validated);
 
-        return redirect()->route('admin.visimisi.index')->with('success', 'Visi Misi berhasil diperbarui');   
+        return redirect()
+            ->route("admin.visimisi.index")
+            ->with("success", "Visi Misi berhasil diperbarui");
     }
 
     /**
@@ -86,6 +90,8 @@ class VisiMisiController extends Controller
     {
         $visimisi->delete();
 
-        return redirect()->route('admin.visimisi.index')->with('success', 'Visi Misi berhasil dihapus');
+        return redirect()
+            ->route("admin.visimisi.index")
+            ->with("success", "Visi Misi berhasil dihapus");
     }
 }
