@@ -8,6 +8,7 @@ export default function Edit({ visimisi }) {
     const { data, setData, put, processing, errors } = useForm({
         visi: visimisi.visi || "",
         misi: visimisi.misi || "",
+        _method: "PUT",
     });
 
     const handleSubmit = (e) => {
