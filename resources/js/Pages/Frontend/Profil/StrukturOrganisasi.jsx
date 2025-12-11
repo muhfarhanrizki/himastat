@@ -23,7 +23,7 @@ export default function StrukturOrganisasi() {
             bgGradient: "from-gray-700 to-gray-900",
         },
         {
-            title: "Dewan",
+            title: "Badan Legislatif",
             description: "Dewan pembina dan pengawas organisasi",
             icon: Award,
             href: "/struktur-organisasi/dewan",

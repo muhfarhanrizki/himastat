@@ -24,48 +24,82 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfilController;
 use App\Models\PengurusInti;
 
-Route::get('/', [PageController::class, 'beranda'])->name('beranda');
-Route::get('/galeri-himpunan', [PageController::class, 'galeris'])->name('galeris');
-Route::get('/kontak', [PageController::class, 'kontak'])->name('kontak');
-Route::get('/divisi/{divisi}/', [ControllersDivisiController::class, 'show'])->name('divisi.show');
+Route::get("/", [PageController::class, "beranda"])->name("beranda");
+Route::get("/galeri-himpunan", [PageController::class, "galeris"])->name(
+    "galeris",
+);
+Route::get("/kontak", [PageController::class, "kontak"])->name("kontak");
+Route::get("/divisi/{divisi}/", [
+    ControllersDivisiController::class,
+    "show",
+])->name("divisi.show");
 
-Route::get('/profil-organisasi', [ProfilController::class, 'profilOrganisasi'])->name('profil-organisasi');
-Route::get('/sejarah', [ProfilController::class, 'sejarah'])->name('sejarah');
-Route::get('/achievements', [ProfilController::class, 'jejakAlumni'])->name('achievements');
-
+Route::get("/profil-organisasi", [
+    ProfilController::class,
+    "profilOrganisasi",
+])->name("profil-organisasi");
+Route::get("/sejarah", [ProfilController::class, "sejarah"])->name("sejarah");
+Route::get("/achievements", [ProfilController::class, "jejakAlumni"])->name(
+    "achievements",
+);
 
 // Struktur Organisasi Routes
-Route::get('/struktur-organisasi', [ProfilController::class, 'strukturOrganisasi'])->name('struktur-organisasi');
-Route::get('/struktur-organisasi/badan-eksekutif', [ProfilController::class, 'badanEksekutif'])->name('badan-eksekutif');
-Route::get('/struktur-organisasi/bagan-struktur', [ProfilController::class, 'baganStruktur'])->name('bagan-struktur');
-Route::get('/struktur-organisasi/dewan', [ProfilController::class, 'dewan'])->name('dewan');
+Route::get("/struktur-organisasi", [
+    ProfilController::class,
+    "strukturOrganisasi",
+])->name("struktur-organisasi");
+Route::get("/struktur-organisasi/badan-eksekutif", [
+    ProfilController::class,
+    "badanEksekutif",
+])->name("badan-eksekutif");
+Route::get("/struktur-organisasi/bagan-struktur", [
+    ProfilController::class,
+    "baganStruktur",
+])->name("bagan-struktur");
+Route::get("/struktur-organisasi/dewan", [
+    ProfilController::class,
+    "dewan",
+])->name("dewan");
 
-Route::get('/pengurus-inti', [ProfilController::class, 'pengurusInti'])->name('pengurus-inti');
+Route::get("/pengurus-inti", [ProfilController::class, "pengurusInti"])->name(
+    "pengurus-inti",
+);
 
-Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
-    Route::resource('divisi', DivisiController::class);
-    Route::resource('alumniPath', AlumniPathController::class);
-    Route::resource('galeri', GaleriController::class);
-    Route::resource('sambutan', SambutanController::class);
-    Route::resource('visimisi', VisiMisiController::class);
-    Route::resource('proker', ProkerController::class);
-    Route::resource('jumbotron', JumbotronController::class);
-    Route::resource('struktur', StrukturController::class);
-    Route::resource('pengurusInti', PengurusIntiController::class);
-    Route::resource('contact', ContactController::class);
-    Route::resource('anggotaDiv', AnggotaDivController::class);
-    Route::resource('baganStruktur', BaganStrukturController::class);
-    Route::resource('dewan', DewanController::class);
-    Route::resource('strukturdewan', StrukturDewanController::class);
+Route::prefix("/admin")
+    ->name("admin.")
+    ->middleware("auth")
+    ->group(function () {
+        Route::get("/dashboard", [DashboardController::class, "index"])->name(
+            "dashboard",
+        );
+        Route::get("/profile", [ProfileController::class, "edit"])->name(
+            "profile.edit",
+        );
+        Route::patch("/profile", [ProfileController::class, "update"])->name(
+            "profile.update",
+        );
+        Route::delete("/profile", [ProfileController::class, "destroy"])->name(
+            "profile.destroy",
+        );
 
-    Route::get('/404', function () {
-        return Inertia::render('Admin/404');
-    })->name('404');
-});
+        Route::resource("divisi", DivisiController::class);
+        Route::resource("alumniPath", AlumniPathController::class);
+        Route::resource("galeri", GaleriController::class);
+        Route::resource("sambutan", SambutanController::class);
+        Route::resource("visimisi", VisiMisiController::class);
+        Route::resource("proker", ProkerController::class);
+        Route::resource("jumbotron", JumbotronController::class);
+        Route::resource("struktur", StrukturController::class);
+        Route::resource("pengurusInti", PengurusIntiController::class);
+        Route::resource("contact", ContactController::class);
+        Route::resource("anggotaDiv", AnggotaDivController::class);
+        Route::resource("baganStruktur", BaganStrukturController::class);
+        Route::resource("dewan", DewanController::class);
+        Route::resource("strukturdewan", StrukturDewanController::class);
 
-require __DIR__.'/auth.php';
+        Route::get("/404", function () {
+            return Inertia::render("Admin/404");
+        })->name("404");
+    });
+
+require __DIR__ . "/auth.php";

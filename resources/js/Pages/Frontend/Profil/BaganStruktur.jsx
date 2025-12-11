@@ -32,7 +32,8 @@ export default function BaganStruktur({ bagan }) {
                                 Bagan Struktur
                             </h1>
                             <p className="text-gray-300 max-w-2xl mx-auto text-base md:text-lg px-4">
-                                Visualisasi hierarki dan alur organisasi secara menyeluruh
+                                Visualisasi hierarki dan alur organisasi secara
+                                menyeluruh
                             </p>
                         </motion.div>
                     </div>
@@ -49,43 +50,52 @@ export default function BaganStruktur({ bagan }) {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.8 }}
                             >
-
                                 {/* Content */}
                                 <div className="relative z-10 p-6 sm:p-8 md:p-10">
-
                                     {bagan.image && (
-                                    <motion.div
-                                        className="relative group"
-                                        initial={{ opacity: 0, scale: 0.95 }}
-                                        whileInView={{ opacity: 1, scale: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.6, delay: 0.2 }}
-                                    >
-                                        {/* Image Container */}
-                                        <div className="relative rounded-xl md:rounded-2xl overflow-hidden border-2 border-gray-200 shadow-lg">
-                                            <img
-                                                src={`/storage/${bagan.image}`}
-                                                alt={bagan.title}
-                                                className="w-full h-auto object-contain bg-white"
-                                            />
-
-                                            {/* Hover Overlay */}
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                        </div>
-
-                                        {/* Download Button */}
-                                        <motion.a
-                                            href={`/storage/${bagan.image}`}
-                                            download
-                                            className="absolute bottom-4 right-4 inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm text-gray-900 rounded-lg font-semibold shadow-lg hover:bg-white transition-all duration-300 opacity-0 group-hover:opacity-100"
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
+                                        <motion.div
+                                            className="relative group"
+                                            initial={{
+                                                opacity: 0,
+                                                scale: 0.95,
+                                            }}
+                                            whileInView={{
+                                                opacity: 1,
+                                                scale: 1,
+                                            }}
+                                            viewport={{ once: true }}
+                                            transition={{
+                                                duration: 0.6,
+                                                delay: 0.2,
+                                            }}
                                         >
-                                            <Download className="w-4 h-4" />
-                                            <span className="text-sm">Download</span>
-                                        </motion.a>
-                                    </motion.div>
-                                )}
+                                            {/* Image Container */}
+                                            <div className="relative rounded-xl md:rounded-2xl overflow-hidden border-2 border-gray-200 shadow-lg">
+                                                <img
+                                                    src={`/storage/${bagan.image}`}
+                                                    alt={bagan.title}
+                                                    className="w-full h-auto object-contain bg-white"
+                                                />
+
+                                                {/* Hover Overlay */}
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                            </div>
+
+                                            {/* Download Button */}
+                                            <motion.a
+                                                href={`/storage/${bagan.image}`}
+                                                download
+                                                className="absolute bottom-4 right-4 inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm text-gray-900 rounded-lg font-semibold shadow-lg hover:bg-white transition-all duration-300 opacity-0 group-hover:opacity-100"
+                                                whileHover={{ scale: 1.05 }}
+                                                whileTap={{ scale: 0.95 }}
+                                            >
+                                                <Download className="w-4 h-4" />
+                                                <span className="text-sm">
+                                                    Download
+                                                </span>
+                                            </motion.a>
+                                        </motion.div>
+                                    )}
                                 </div>
                             </motion.div>
                         ) : (
@@ -100,25 +110,26 @@ export default function BaganStruktur({ bagan }) {
                                     Belum Ada Bagan Struktur
                                 </h3>
                                 <p className="text-gray-600">
-                                    Bagan struktur organisasi akan segera ditambahkan
+                                    Bagan struktur organisasi akan segera
+                                    ditambahkan
                                 </p>
                             </motion.div>
                         )}
 
-                         {/* Title & Description */}
-                                    <div className="text-center mb-8">
-                                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                                            {bagan.title}
-                                        </h2>
+                        {/* Title & Description */}
+                        <div className="text-center mb-8">
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                                {bagan.title}
+                            </h2>
 
-                                        {bagan.description && (
-                                            <div className="relative max-w-3xl mx-auto">
-                                                <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed pl-3 md:pl-4">
-                                                    {bagan.description}
-                                                </p>
-                                            </div>
-                                        )}
-                                    </div>
+                            {bagan.description && (
+                                <div className="relative max-w-3xl mx-auto">
+                                    <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed pl-3 md:pl-4">
+                                        {bagan.description}
+                                    </p>
+                                </div>
+                            )}
+                        </div>
 
                         {/* Bottom Decoration */}
                         <motion.div

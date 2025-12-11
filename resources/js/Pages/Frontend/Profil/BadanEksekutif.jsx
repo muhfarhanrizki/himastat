@@ -1,7 +1,13 @@
 import React, { useRef, useState } from "react";
 import { Head, Link } from "@inertiajs/react";
 import { motion } from "framer-motion";
-import { Users, Building2, Network, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+    Users,
+    Building2,
+    Network,
+    ChevronLeft,
+    ChevronRight,
+} from "lucide-react";
 import FrontendLayout from "@/Layouts/FrontendLayout";
 
 export default function StrukturOrganisasi({ struktur, divisi, pengurusInti }) {
@@ -15,13 +21,14 @@ export default function StrukturOrganisasi({ struktur, divisi, pengurusInti }) {
         if (!container) return;
 
         const scrollAmount = 280; // Lebar card (256px) + gap
-        const newScrollLeft = direction === "left" 
-            ? container.scrollLeft - scrollAmount 
-            : container.scrollLeft + scrollAmount;
+        const newScrollLeft =
+            direction === "left"
+                ? container.scrollLeft - scrollAmount
+                : container.scrollLeft + scrollAmount;
 
         container.scrollTo({
             left: newScrollLeft,
-            behavior: "smooth"
+            behavior: "smooth",
         });
     };
 
@@ -31,7 +38,8 @@ export default function StrukturOrganisasi({ struktur, divisi, pengurusInti }) {
 
         setShowLeftArrow(container.scrollLeft > 10);
         setShowRightArrow(
-            container.scrollLeft < container.scrollWidth - container.clientWidth - 10
+            container.scrollLeft <
+                container.scrollWidth - container.clientWidth - 10,
         );
     };
 
@@ -41,7 +49,6 @@ export default function StrukturOrganisasi({ struktur, divisi, pengurusInti }) {
 
             {/* HERO SECTION */}
             <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-36 pb-16 overflow-hidden">
-
                 {/* Hero Content */}
                 <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
                     <motion.div
@@ -62,7 +69,8 @@ export default function StrukturOrganisasi({ struktur, divisi, pengurusInti }) {
                             Badan Eksekutif
                         </h1>
                         <p className="text-gray-300 max-w-2xl mx-auto text-base md:text-lg px-4">
-                            Mengenal susunan kepengurusan dan pembagian divisi dalam organisasi kami.
+                            Mengenal susunan kepengurusan dan pembagian divisi
+                            dalam organisasi kami.
                         </p>
                     </motion.div>
                 </div>
@@ -82,9 +90,12 @@ export default function StrukturOrganisasi({ struktur, divisi, pengurusInti }) {
                                 <Users className="w-8 h-8 text-gray-700" />
                             </div>
                         </div>
-                        <h2 className="text-3xl font-bold text-gray-800">Pengurus Inti</h2>
+                        <h2 className="text-3xl font-bold text-gray-800">
+                            Badan Eksekutif Himastat FMIPA Unhas
+                        </h2>
                         <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
-                            Inilah tim inti yang menjadi tulang punggung organisasi kami.
+                            Inilah tim inti yang menjadi tulang punggung
+                            organisasi kami.
                         </p>
                     </motion.div>
 
@@ -127,7 +138,10 @@ export default function StrukturOrganisasi({ struktur, divisi, pengurusInti }) {
                                         initial={{ opacity: 0, y: 50 }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
-                                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                                        transition={{
+                                            duration: 0.5,
+                                            delay: index * 0.1,
+                                        }}
                                     >
                                         {/* Gambar Background */}
                                         {person.image ? (
@@ -150,7 +164,9 @@ export default function StrukturOrganisasi({ struktur, divisi, pengurusInti }) {
                                             <h3 className="text-lg font-bold drop-shadow-lg">
                                                 {person.nama}
                                             </h3>
-                                            <p className="text-gray-300 font-medium text-sm">{person.jabatan}</p>
+                                            <p className="text-gray-300 font-medium text-sm">
+                                                {person.jabatan}
+                                            </p>
                                         </div>
                                     </motion.div>
                                 ))}
@@ -165,7 +181,10 @@ export default function StrukturOrganisasi({ struktur, divisi, pengurusInti }) {
                                         className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 opacity-0 group-hover:opacity-100"
                                         aria-label="Scroll left"
                                     >
-                                        <ChevronLeft size={24} className="text-gray-800" />
+                                        <ChevronLeft
+                                            size={24}
+                                            className="text-gray-800"
+                                        />
                                     </button>
                                 )}
 
@@ -176,7 +195,10 @@ export default function StrukturOrganisasi({ struktur, divisi, pengurusInti }) {
                                         className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 opacity-0 group-hover:opacity-100"
                                         aria-label="Scroll right"
                                     >
-                                        <ChevronRight size={24} className="text-gray-800" />
+                                        <ChevronRight
+                                            size={24}
+                                            className="text-gray-800"
+                                        />
                                     </button>
                                 )}
 
@@ -186,8 +208,8 @@ export default function StrukturOrganisasi({ struktur, divisi, pengurusInti }) {
                                     onScroll={handleScroll}
                                     className="flex gap-6 overflow-x-auto pb-8 pt-4 px-4 hide-scrollbar scroll-smooth snap-x snap-mandatory"
                                     style={{
-                                        scrollbarWidth: 'none',
-                                        msOverflowStyle: 'none',
+                                        scrollbarWidth: "none",
+                                        msOverflowStyle: "none",
                                     }}
                                 >
                                     {pengurusInti.map((person, index) => (
@@ -195,7 +217,6 @@ export default function StrukturOrganisasi({ struktur, divisi, pengurusInti }) {
                                             key={person.id}
                                             className="relative group flex-shrink-0 w-64 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-200 transition-all duration-500 snap-center"
                                             viewport={{ once: true }}
-                                         
                                         >
                                             {/* Gambar Background */}
                                             {person.image ? (
@@ -218,7 +239,9 @@ export default function StrukturOrganisasi({ struktur, divisi, pengurusInti }) {
                                                 <h3 className="text-lg font-bold drop-shadow-lg">
                                                     {person.nama}
                                                 </h3>
-                                                <p className="text-gray-300 font-medium text-sm">{person.jabatan}</p>
+                                                <p className="text-gray-300 font-medium text-sm">
+                                                    {person.jabatan}
+                                                </p>
                                             </div>
                                         </motion.div>
                                     ))}
@@ -247,9 +270,12 @@ export default function StrukturOrganisasi({ struktur, divisi, pengurusInti }) {
                                 <Users className="w-8 h-8 text-gray-700" />
                             </div>
                         </div>
-                        <h2 className="text-3xl font-bold text-gray-800">Divisi Organisasi</h2>
+                        <h2 className="text-3xl font-bold text-gray-800">
+                            Divisi Organisasi
+                        </h2>
                         <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
-                            Pembagian bidang kerja dan tanggung jawab di dalam organisasi kami.
+                            Pembagian bidang kerja dan tanggung jawab di dalam
+                            organisasi kami.
                         </p>
                     </motion.div>
 
@@ -295,7 +321,8 @@ export default function StrukturOrganisasi({ struktur, divisi, pengurusInti }) {
                                                     {item.name}
                                                 </h3>
                                                 <p className="text-gray-200 text-sm line-clamp-3">
-                                                    {item.deskripsi || "Belum ada deskripsi untuk divisi ini."}
+                                                    {item.deskripsi ||
+                                                        "Belum ada deskripsi untuk divisi ini."}
                                                 </p>
 
                                                 <div className="mt-4 inline-flex items-center text-sm font-medium text-gray-100 hover:text-white transition">

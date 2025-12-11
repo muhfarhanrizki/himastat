@@ -18,8 +18,8 @@ class PengurusIntiController extends Controller
     {
         $pengurusIntis = PengurusInti::all();
 
-        return Inertia::render('Admin/PengurusInti/Index', [
-            'pengurusIntis' => $pengurusIntis
+        return Inertia::render("Admin/PengurusInti/Index", [
+            "pengurusIntis" => $pengurusIntis,
         ]);
     }
 
@@ -29,10 +29,9 @@ class PengurusIntiController extends Controller
     public function create()
     {
         $structurs = Struktur::all();
-        return Inertia::render('Admin/PengurusInti/Create', [
-            'structurs' => $structurs,
-        ]);;
-        
+        return Inertia::render("Admin/PengurusInti/Create", [
+            "structurs" => $structurs,
+        ]);
     }
 
     /**
@@ -41,19 +40,23 @@ class PengurusIntiController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nama' => 'required|string|max:255',
-            'jabatan' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'deskripsi' => 'nullable|string',
+            "nama" => "required|string|max:255",
+            "jabatan" => "required|string|max:255",
+            "image" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+            "deskripsi" => "nullable|string",
         ]);
 
-        if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('pengurusinti', 'public');
+        if ($request->hasFile("image")) {
+            $validated["image"] = $request
+                ->file("image")
+                ->store("pengurusinti", "public");
         }
 
         PengurusInti::create($validated);
 
-        return redirect()->route('admin.struktur.index')->with('success', 'Pengurus Inti berhasil ditambahkan');
+        return redirect()
+            ->route("admin.struktur.index")
+            ->with("success", "Pengurus Inti berhasil ditambahkan");
     }
 
     /**
@@ -61,8 +64,8 @@ class PengurusIntiController extends Controller
      */
     public function show(PengurusInti $pengurusInti)
     {
-        return Inertia::render('Admin/PengurusInti/Show', [
-            'pengurusInti' => $pengurusInti
+        return Inertia::render("Admin/PengurusInti/Show", [
+            "pengurusInti" => $pengurusInti,
         ]);
     }
 
@@ -71,8 +74,8 @@ class PengurusIntiController extends Controller
      */
     public function edit(PengurusInti $pengurusInti)
     {
-        return Inertia::render('Admin/PengurusInti/Edit', [
-            'pengurusInti' => $pengurusInti
+        return Inertia::render("Admin/PengurusInti/Edit", [
+            "pengurusInti" => $pengurusInti,
         ]);
     }
 
@@ -82,25 +85,32 @@ class PengurusIntiController extends Controller
     public function update(Request $request, PengurusInti $pengurusInti)
     {
         $validated = $request->validate([
-            'nama' => 'required|string|max:255',
-            'jabatan' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'deskripsi' => 'nullable|string',
+            "nama" => "required|string|max:255",
+            "jabatan" => "required|string|max:255",
+            "image" => "nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
+            "deskripsi" => "nullable|string",
         ]);
 
-        if ($request->hasFile('image')) {
-            if ($pengurusInti->image && Storage::disk('public')->exists($pengurusInti->image)) {
-                Storage::disk('public')->delete($pengurusInti->image);
+        if ($request->hasFile("image")) {
+            if (
+                $pengurusInti->image &&
+                Storage::disk("public")->exists($pengurusInti->image)
+            ) {
+                Storage::disk("public")->delete($pengurusInti->image);
             }
 
-            $validated['image'] = $request->file('image')->store('pengurusinti', 'public');
+            $validated["image"] = $request
+                ->file("image")
+                ->store("pengurusinti", "public");
         } else {
-            unset($validated['image']);
+            unset($validated["image"]);
         }
 
         $pengurusInti->update($validated);
 
-        return redirect()->route('admin.struktur.index')->with('success', 'Pengurus Inti berhasil diperbarui');
+        return redirect()
+            ->route("admin.struktur.index")
+            ->with("success", "Pengurus Inti berhasil diperbarui");
     }
 
     /**
@@ -108,12 +118,17 @@ class PengurusIntiController extends Controller
      */
     public function destroy(PengurusInti $pengurusInti)
     {
-        if ($pengurusInti->image && Storage::disk('public')->exists($pengurusInti->image)) {
-            Storage::disk('public')->delete($pengurusInti->image);
+        if (
+            $pengurusInti->image &&
+            Storage::disk("public")->exists($pengurusInti->image)
+        ) {
+            Storage::disk("public")->delete($pengurusInti->image);
         }
 
         $pengurusInti->delete();
 
-        return redirect()->route('admin.struktur.index')->with('success', 'Pengurus Inti berhasil dihapus');
+        return redirect()
+            ->route("admin.struktur.index")
+            ->with("success", "Pengurus Inti berhasil dihapus");
     }
 }
