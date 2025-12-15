@@ -20,56 +20,56 @@ function SejarahContent() {
             year: "2015",
             title: "Pembentukan Himpunan",
             description:
-                "Himpunan Mahasiswa Statistika bermula sebelum adanya kepengurusan mengenai pembentukan Departemen Statistika itu sendiri. Namun saat itu masih berupa perbincangan antara mulut ke mulut dan masih berupa isu yang beredar. Saat itu Mahasiswa Statistika masih berhimpun dalam Himpunan Mahasiswa Matematika kemudian dari situ ada beberapa Mahasiswa Statistika kemudian berinisiatif untuk menghimpun diri sendiri dengan semangat untuk membuat suatu wadah untuk mendukung persiapan.",
+                "Pembentukan Himpunan Mahasiswa Statistika bermula sebelum adanya kesepakatan mengenai pembentukan Departemen Statistika itu sendiri. Namun saat itu masih berupa pembicaraan antara mulut ke mulut dan masih berupa isu yang beredar. Saat itu Mahasiswa Statistika masih berhimpun dalam Himpunan Mahasiswa Matematika kemudian dari itu ada beberapa Mahasiswa Statistika kemudian berinisiatif untuk menghimpun diri sendiri dengan semangat untuk membuat suatu wadah dalam bentuk organisasi kemahasiswaan.",
             icon: <Users className="w-6 h-6" />,
         },
         {
             year: "2015",
             title: "Deklarasi Pembentukan",
             description:
-                "Persiapan kemudian dilakukan yang diinisiasi oleh Kanda Anugrah Ariansyah (Statistika 2015) dan Kanda Nifal Gusri (Statistika 2015) yang kemudian melihatkan beberapa Mahasiswa Lainsa angkatan untuk langsung membahas mengenai persiapan mengenai pembentukan Himpunan ini.",
+                "Persiapan kemudian dilakukan dan diinisiasi oleh Kanda Anugrah Ariansyah (Statistika 2015) dan Kanda Nifal Gusti (Statistika 2015) yang kemudian melibatkan beberapa Mahasiswa Lintas angkatan untuk langsung membahas mengenai persiapan mengenai pembentukan Himpunan ini.",
             icon: <FileText className="w-6 h-6" />,
         },
         {
             year: "2016",
             title: "Pembentukan Struktur Organisasi",
             description:
-                "Kanda Anugrah dan Kanda Nifal melakukan mahasiswa angkatan yang kemudian dikutusi sendiri oleh Kanda Anugrah Ariansyah. Tim pembentuk yang kemudian memilih perangkat untuk mempersiapkan, melakukan deklarasi, dan menyusun aturan dasar organisasi dalam hal ini seperti Mekanisme Tata Tertib, Kerangka-kerangka Anggaran Dasar dan Anggaran Rumah Tangga, Garis-Garis Besar Haluan Organisasi, Logo Himpunan dan juga Bendera Himpunan.",
+                "Kanda Anugrah dan Kanda Nifal dan beberapa mahasiswa lintas angkatan, kemudian menyepakati untuk membuat tim pembentuk Himpunan yang kemudian diketuai sendiri oleh Kanda Anugrah Ariansyah. Tim pembentuk yang disepakati tersebut memiliki tujuan untuk mempersiapkan, melakukan deklarasi, dan menyusun aturan dasar organisasi dalam hal ini seperti Mekanisme Tata Tertib, Kerangka-kerangka Anggaran Dasar dan Anggaran Rumah Tangga, Garis-Garis Besar Haluan Organisasi, Logo Himpunan dan juga Bendera Himpunan.",
             icon: <TrendingUp className="w-6 h-6" />,
         },
         {
             year: "9 Oktober 2016",
             title: "Kerangka Kerja Rumah Tangga",
             description:
-                "Semangat tidak lanjut dari tim pembentukan itu kemudian sampai pada tanggal 9 Oktober 2016 dimana struktur kerangka menegasai anggaran dasar organisasi yang telah dibuat oleh tim pembentuk kemudian dibahas pada pertemuan yang melibatkan Mahasiswa Statistika. Pada saat itu juga sudah terbentak logo Himpunan Mahasiswa Statistika yang didesain oleh Kanda Teguh Fajri Nugraha (Statistika 2013) dan Kak Seto Aprilianto (Statistika 2015).",
+                "Semangat tindak lanjut dari tim pembentukan itu kemudian sampai pada tanggal 9 Oktober 2019, yang dimana susunan kerangka mengenai aturan dasar organisasi yang telah dibuat oleh tim pembentuk kemudian dibahas pada pertemuan yang melibatkan Mahasiswa Statistika. Pada saat ini juga sudah terbentuk logo Himpunan Mahasiswa Statistika yang didesain oleh Kanda Teguh Fajri Nugraha (Statistika 2013) dan Kak Seto Aprilianto (Statistika 2015).",
             icon: <FileText className="w-6 h-6" />,
         },
         {
             year: "23 Oktober 2019",
             title: "Pengesahan Nama Resmi",
             description:
-                "Setelah rampungnya pembahasan mengenai Aturan Dasar, kemudian Tim Pembentuk atas melakukan deklarasi pada tanggal 23 Oktober 2019 bertempat di lantai 4 Departemen Statistika kemudian telah seburah Mahasiswa Statistika yang kemudian dibuatsikan kepada Departemen Statistika dengan nama Mahasiswa Statistika yang kemudian dinamakan nama Mahasiswa Statistika.",
+                "Setelah rampungnya pembahasan mengenai Aturan Dasar, kemudian Tim Pembentuk Himpunan Mahasiswa Statistika melakukan deklarasi pada tanggal 23 Oktober 2019 bertempat di lantai 4 Departemen Statistika yang dihadiri oleh seluruh Mahasiswa Statistika dan ditanda tangani oleh Tim Pembentuk atas nama Mahasiswa Statistika yang kemudian ditembuskan kepada Departemen Statistika.",
             icon: <Award className="w-6 h-6" />,
         },
         {
             year: "2019",
             title: "Pembentukan Struktur Kepengurusan",
             description:
-                "Setelah terbentuknya Himpunan Mahasiswa Statistika yang dilandasi dengan deklarasi, kemudian Himpunan membuat surat pernintaan kepada Majeperva pola saat itu yang diketahui oleh Kanda Muh. Siddiq T dengan tujuan permintaan untuk bergabung dalam KM FMIPA Unhas dan diteredesiasi kepada Departemen Statistika. Kemudian Majeperva memberikan surat bahwa Himpunan Mahasiswa Statistika dalam Keluarga Mahasiswa Fakultas yang secara resmi telah diterima di Universitas Hasanuddin (KM FMIPA Unhas).",
+                "Setelah terbentuknya Himpunan Mahasiswa Statistika yang ditandai dengan deklarasi, kemudian Himpunan membuat surat permintaan kepada Maperwa pada saat itu yang diketuai oleh Kanda Muh. Siddiq T dengan tujuan permintaan untuk bergabung dalam KM FMIPA Unhas dan ditembuskan kepada Departemen Statistika. Kemudian Maperwa membuat surat balasan yang menjadi tanda awal bergabungnya Himpunan Mahasiswa Statistika dalam Keluarga Mahasiswa Fakultas Matematika dan Ilmu Pengetahuan Alam Universitas Hasanuddin (KM FMIPA Unhas).",
             icon: <Handshake className="w-6 h-6" />,
         },
         {
             year: "28 Oktober 2019",
             title: "Pembentukan AD/ART & Musyawarah",
             description:
-                "Semangat itu berlanjut untuk kemudian membuat struktur organisasi dan menetapkan Anggaran Dasar dan Anggaran Rumah Tangga pada Musyawarah Pembentukan Himpunan Pertama mengenai surat permintaan kepada Majeperva pada saat itu yang diketahui oleh Kanda Abdul Rahman (Statistika 2017), Kanda Ainul Fajri (Statistika 2017), Kanda Annisa Miftahul Sakīnah (Statistika 2018), dan Kanda Fadhil Al Anshory (Statistika 2019) sebari setelah deklarasi tejadi sampai pada pencatapanya ditanggal 28 Oktober 2019.",
+                "Semangat ini berlanjut untuk kemudian membuat struktur organisasi dan menetapkan Anggaran Dasar dan Anggaran Rumah Tangga pada Musyawarah Pembentukan Himpunan Mahasiswa Statistika yang dipimpin oleh Presidium Sidang yaitu Kanda Ratmila (Statistika 2016), Kanda Abdul Rahman (Statistika 2017), Kanda Ainul Fajri (Statistika 2017) , Kanda Annisa Miftahul Sakinah (Statistika 2018), dan Kanda Fadhil Al Anshory (Statistika 2018) sehari setelah deklarasi terjadi sampai pada penetapannya ditanggal 28 Oktober 2019.",
             icon: <Vote className="w-6 h-6" />,
         },
         {
             year: "9 November 2019",
             title: "Pembentukan Dewan Pertama",
             description:
-                "Setelah dilakukannya Musyawarah Pembentukan Himpunan Mahasiswa Statistika 2019 Himastat terbentuk untuk membuka anggota. Musyawarah anggota pertama dari Himpunan Mahasiswa Statistika yang dijalankan demi mewujudkan ini terlaksana pada tangga 10 September 2010 dimana terpilihlah Dewan pertama dari Himastat pada tanggal 9 November 2019 yang diketuhui Kanda Fadhil Al Anshory dan Kanda Natasya Maharani.",
+                "Setelah dilakukannya Musyawarah Pembentukan Himpunan Mahasiswa Statistika yang kemudian dari musyawarah itu diamanatkan untuk membuka anggota. Musyawarah anggota pertama dari Himpunan Mahasiswa Statistika sendiri dibuka pada tanggal 4 November 2019. Pada Musyawarah Anggota I ini juga terpilihlah Dewan pertama Himastat pada tanggal 9 November 2019 yang diketuai Kanda Abdul Gafur Darussalam (Statistika 2015) serta anggotanya Kanda Nifal Gusti (Statistika 2015), Kanda Muhammad Aris (Statistika 2015), Kanda Suritman (Statistika 2016), Kanda Fajar Affan (Statistika 2016), dan Kanda Nuralfianingsih Raja (Statistika 2016). Sampai pada akhir dari Musyawarah Anggota I, terpilih lah Kanda Ainul Fajri (Statistika 2017) sebagai Formatur Ketua Umum pertama dari Himpunan Mahasiswa Statistika yang kemudian di lanjutkan untuk melakukan pelantikan di tanggal 20 November 2019 yang menjadikan awal terbentuknya Himpunan Mahasiswa Statistika secara utuh yang memiliki struktural hingga sampai saat ini.",
             icon: <Users className="w-6 h-6" />,
         },
     ];
@@ -153,9 +153,9 @@ function SejarahContent() {
                                         Beberapa persiapan kemudian dilakukan
                                         yang diinisiasi oleh Kanda Anugrah
                                         Ariansyah (Statistika 2015) dan Kanda
-                                        Nifal Gusri (Statistika 2015) yang
-                                        kemudian melibatkan beberapa Mahasiswa
-                                        Lainnya satu angkatan untuk langsung
+                                        Nifal Gusti (Statistika 2015) yang
+                                        kemudian melibatkan beberapa mahasiswa
+                                        lintas angkatan untuk langsung
                                         membahas mengenai persiapan mengenai
                                         pembentukan Himpunan ini. Perjalanan ini
                                         dimulai dengan semangat untuk
@@ -300,8 +300,7 @@ function SejarahContent() {
                             </h2>
                             <p className="text-gray-300 leading-relaxed text-lg text-center max-w-3xl mx-auto">
                                 Dari semangat awal hingga terbentuknya struktur
-                                organisasi yang solid, Himpunan Mahasiswa
-                                Statistika terus berkembang dan berinovasi.
+                                organisasi yang solid, Himastat terus berkembang dan berinovasi.
                                 Setiap langkah dalam perjalanan ini adalah bukti
                                 komitmen mahasiswa Statistika untuk terus
                                 berkarya dan memberikan kontribusi terbaik bagi
