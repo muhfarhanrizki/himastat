@@ -24,6 +24,8 @@ export default function VisiMisiSection({ data }) {
                 >
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                         Visi & Misi
+                        <br/>
+                        Ketua Umum
                     </h2>
                     <div className="w-20 md:w-24 h-1 bg-gradient-to-r from-gray-600 to-gray-800 mx-auto rounded-full"></div>
                     <p className="text-gray-600 mt-4 text-base md:text-lg">
