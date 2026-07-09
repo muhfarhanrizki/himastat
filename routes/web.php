@@ -19,6 +19,8 @@ use App\Http\Controllers\Admin\StrukturController;
 use App\Http\Controllers\Admin\BaganStrukturController;
 use App\Http\Controllers\Admin\DewanController;
 use App\Http\Controllers\Admin\StrukturDewanController;
+use App\Http\Controllers\Admin\ArtikelController as AdminArtikelController;
+use App\Http\Controllers\Admin\BeritaController as AdminBeritaController;
 use App\Http\Controllers\DivisiController as ControllersDivisiController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfilController;
@@ -26,9 +28,15 @@ use App\Models\PengurusInti;
 
 Route::get("/", [PageController::class, "beranda"])->name("beranda");
 Route::get("/galeri-himpunan", [PageController::class, "galeris"])->name(
-    "galeris",
-);
+    "galeris",);
 Route::get("/kontak", [PageController::class, "kontak"])->name("kontak");
+
+Route::get("/artikel", [PageController::class, "artikel"])->name("artikel");
+Route::get("/artikel/{artikel}", [PageController::class, "artikelShow"])->name("artikel.show");
+
+Route::get("/berita", [PageController::class, "berita"])->name("berita");
+Route::get("/berita/{berita}", [PageController::class, "beritaShow"])->name("berita.show");
+
 Route::get("/divisi/{divisi}/", [
     ControllersDivisiController::class,
     "show",
@@ -96,6 +104,8 @@ Route::prefix("/admin")
         Route::resource("baganStruktur", BaganStrukturController::class);
         Route::resource("dewan", DewanController::class);
         Route::resource("strukturdewan", StrukturDewanController::class);
+        Route::resource("artikel", AdminArtikelController::class);
+        Route::resource("berita", AdminBeritaController::class);
 
         Route::get("/404", function () {
             return Inertia::render("Admin/404");
