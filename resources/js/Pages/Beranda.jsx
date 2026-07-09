@@ -8,6 +8,8 @@ import VisiMisiSection from "@/Components/Section/VisiMisiSection";
 import DivisiSection from "@/Components/Section/DivisiSection";
 import AlumniSection from "@/Components/Section/AlumniSection";
 import AboutSection from "@/Components/Section/AboutSection";
+import ArtikelSection from "@/Components/Section/ArtikelSection";
+import BeritaSection from "@/Components/Section/BeritaSection";
 
 export default function Beranda({
     jumbotron,
@@ -15,6 +17,8 @@ export default function Beranda({
     visimisi,
     divisi,
     alumniPath,
+    artikel,
+    berita,
 }) {
     const mainJumbotron = jumbotron?.[0] || {};
     const mainSambutan = sambutan?.[0] || {};
@@ -73,6 +77,8 @@ export default function Beranda({
             <SambutanSection data={mainSambutan} />
             <VisiMisiSection data={mainVisiMisi} />
             <DivisiSection data={divisi} />
+            <ArtikelSection artikel={artikel} />
+            <BeritaSection berita={berita} />
             <AlumniSection data={alumniPath} />
         </FrontendLayout>
     );
