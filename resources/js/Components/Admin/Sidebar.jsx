@@ -14,6 +14,7 @@ import {
     Phone,
     Home,
     BookOpen,
+    Newspaper,
     Columns3,
     ListIcon,
     X,
@@ -108,6 +109,24 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
                     active: route().current("baganStruktur.*"),
                 },
             ],
+        },
+        {
+            name: "Konten",
+            icon: <BookOpen size={20} />,
+            submenu: [
+                {
+                    name: "Artikel",
+                    icon: <BookOpen size={18} />,
+                    href: route("admin.artikel.index"),
+                    active: route().current("artikel.*"),
+                },
+                {
+                    name: "Berita",
+                    icon: <Newspaper size={18} />,
+                    href: route("admin.berita.index"),
+                    active: route().current("berita.*"),
+                },
+    ],
         },
         {
             name: "Divisi & Proker",
