@@ -132,7 +132,22 @@ export default function Navbar() {
                             </li>
                         </ul>
                     </li>
-
+                    <li>
+                        <Link
+                            href="/artikel"
+                            className="hover:text-gray-900 transition"
+                        >
+                            Artikel
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            href="/berita"
+                            className="hover:text-gray-900 transition"
+                        >
+                            Berita
+                        </Link>
+                    </li>
                     <li>
                         <Link
                             href="/galeri-himpunan"
@@ -241,6 +256,24 @@ export default function Navbar() {
                         </li>
 
                         <li>
+                                                <li>
+                            <Link
+                                href="/artikel"
+                                className="block px-3 py-2 rounded-lg hover:bg-gray-200 transition"
+                                onClick={handleLinkClick}
+                            >
+                                Artikel
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                href="/berita"
+                                className="block px-3 py-2 rounded-lg hover:bg-gray-200 transition"
+                                onClick={handleLinkClick}
+                            >
+                                Berita
+                            </Link>
+                        </li>
                             <Link
                                 href="/galeri-himpunan"
                                 className="block px-3 py-2 rounded-lg hover:bg-gray-200 transition"
