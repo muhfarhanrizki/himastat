@@ -59,7 +59,7 @@ export default function Index() {
                             type="text"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            placeholder="Cari nama atau deskripsi galeri..."
+                            placeholder="Cari gambar berdasarkan nama..."
                             className="w-full pl-9 pr-3 py-2 border rounded-lg focus:ring focus:ring-gray-200"
                         />
                     </div>
@@ -103,9 +103,6 @@ export default function Index() {
                                     <h2 className="text-white font-semibold text-lg line-clamp-1">
                                         {galeri.name}
                                     </h2>
-                                    <p className="text-gray-200 text-sm line-clamp-2 mb-2">
-                                        {galeri.description}
-                                    </p>
                                     <div className="flex items-center justify-between text-xs text-gray-300">
                                         <div className="flex items-center gap-1">
                                             <Calendar size={14} />{" "}

@@ -7,7 +7,6 @@ import { route } from "ziggy-js";
 export default function Create() {
     const { data, setData, post, processing, errors } = useForm({
         name: "",
-        description: "",
         tanggal: "",
         image: null,
     });
@@ -76,23 +75,6 @@ export default function Create() {
                         />
                         {errors.name && (
                             <p className="text-red-500 text-sm mt-1">{errors.name}</p>
-                        )}
-                    </div>
-
-                    {/* Deskripsi */}
-                    <div>
-                        <label className="block font-medium text-gray-700 mb-2">
-                            Deskripsi
-                        </label>
-                        <textarea
-                            value={data.description}
-                            onChange={(e) => setData("description", e.target.value)}
-                            rows="3"
-                            placeholder="Tuliskan deskripsi singkat tentang gambar..."
-                            className="w-full border-gray-300 rounded-lg focus:border-gray-400 focus:ring-gray-300 text-sm"
-                        ></textarea>
-                        {errors.description && (
-                            <p className="text-red-500 text-sm mt-1">{errors.description}</p>
                         )}
                     </div>
 
