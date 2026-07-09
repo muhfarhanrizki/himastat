@@ -6,7 +6,7 @@ export default function VisiMisiSection({ data }) {
     if (!data.visi) return null;
 
     return (
-        <section id="profil" className="py-16 md:py-24 bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50 relative overflow-hidden">
+        <section id="profil" className="py-14 pt-24 bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50 relative overflow-hidden">
             {/* Background Decoration */}
             <div className="absolute inset-0 opacity-5">
                 <div className="absolute top-1/4 left-10 w-64 h-64 bg-gray-400 rounded-full blur-3xl"></div>

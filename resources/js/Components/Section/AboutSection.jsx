@@ -6,7 +6,7 @@ export default function AboutSection() {
     return (
         <section
             id="tentang"
-            className="py-16 md:py-24 bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50 relative overflow-hidden"
+            className="py-14 bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50 relative overflow-hidden"
         >
             {/* Background Decoration */}
             <div className="absolute inset-0 opacity-5">

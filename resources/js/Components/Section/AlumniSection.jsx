@@ -40,7 +40,7 @@ export default function AlumniSection({ data }) {
     return (
         <section
             id="alumni"
-            className="pt-24 pb-10 bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50 relative overflow-hidden"
+            className="py-14 bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50 relative overflow-hidden"
         >
             {/* Background Decoration */}
             <div className="absolute inset-0 opacity-5">

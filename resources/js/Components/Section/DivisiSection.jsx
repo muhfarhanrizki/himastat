@@ -38,7 +38,7 @@ export default function DivisiSection({ data }) {
     return (
         <section
             id="divisi"
-            className="py-18 bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50 relative overflow-hidden"
+            className="py-14 bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50 relative overflow-hidden"
         >
             {/* Background Decoration */}
             <div className="absolute inset-0 opacity-5">

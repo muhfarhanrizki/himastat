@@ -6,7 +6,7 @@ export default function SambutanSection({ data }) {
     if (!data.nama) return null;
 
     return (
-        <section className="py-16 md:py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden" id="sambutan">
+        <section className="py-14 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden" id="sambutan">
             {/* Background Decorations */}
             <div className="absolute inset-0 opacity-10">
                 <div className="absolute top-20 left-10 w-96 h-96 bg-gray-600 rounded-full blur-3xl"></div>
