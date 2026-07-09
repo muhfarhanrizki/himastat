@@ -1,8 +1,18 @@
 import React from "react";
-import { Link } from "@inertiajs/react";
-import { Mail, Phone, MapPin, Facebook, Instagram, Globe } from "lucide-react";
+import { Link, usePage } from "@inertiajs/react";
+import { Mail, Phone, MapPin, Globe } from "lucide-react";
+import {
+    FaFacebookF,
+    FaInstagram,
+    FaYoutube,
+    FaXTwitter,
+    FaLinkedin,
+} from "react-icons/fa6";
+
 
 export default function Footer() {
+    const { contact } = usePage().props;
+
     return (
         <footer className="mt-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-300 shadow-inner">
             <div className="max-w-7xl mx-auto px-6 pt-12 pb-5 grid md:grid-cols-4 gap-8 md:gap-10">
@@ -36,6 +46,22 @@ export default function Footer() {
                                 className="hover:text-white transition"
                             >
                                 Profil Organisasi
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                href="/artikel"
+                                className="hover:text-white transition"
+                            >
+                                Artikel
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                href="/berita"
+                                className="hover:text-white transition"
+                            >
+                                Berita
                             </Link>
                         </li>
                         <li>
@@ -77,16 +103,24 @@ export default function Footer() {
                                 size={16}
                                 className="text-indigo-400 flex-shrink-0"
                             />
-                            <span>+62 812-1064-6079</span>
+                            <a 
+                            href={`tel:${contact?.phone ?? "+6281802824234"}`}
+                            className="hover:text-gray-900 transition-colors font-medium"
+                            >
+                            {contact?.phone ?? "+62 818-0282-4234"}
+                            </a>
                         </li>
                         <li className="flex items-start gap-2">
                             <Mail
                                 size={16}
                                 className="text-indigo-400 flex-shrink-0 mt-0.5"
                             />
-                            <span className="break-all">
-                                himastatfmipaunhas@gmail.com
-                            </span>
+                            <a 
+                            href={`mailto:${contact?.email ?? "himastatfmipaunhas@gmail.com"}`}
+                            className="hover:text-gray-900 transition-colors font-medium"
+                            >
+                            {contact?.email ?? "himastatfmipaunhas@gmail.com"}
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -102,14 +136,14 @@ export default function Footer() {
                             aria-label="Facebook"
                             className="bg-gray-700 hover:bg-indigo-600 transition p-2.5 rounded-full"
                         >
-                            <Facebook size={18} />
+                            <FaFacebookF size={18} />
                         </a>
                         <a
                             href="https://www.instagram.com/himastatfmipaunhas/"
                             aria-label="Instagram"
                             className="bg-gray-700 hover:bg-indigo-600 transition p-2.5 rounded-full"
                         >
-                            <Instagram size={18} />
+                            <FaInstagram size={18} />
                         </a>
                         <a
                             href="https://himastat.sci.unhas.ac.id/"
@@ -117,6 +151,27 @@ export default function Footer() {
                             className="bg-gray-700 hover:bg-indigo-600 transition p-2.5 rounded-full"
                         >
                             <Globe size={18} />
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/company/himastat-fmipa-unhas/"
+                            aria-label="Website"
+                            className="bg-gray-700 hover:bg-indigo-600 transition p-2.5 rounded-full"
+                        >
+                            <FaLinkedin size={18} />
+                        </a>
+                        <a
+                            href="https://www.youtube.com/@himastatfmipaunhas"
+                            aria-label="Website"
+                            className="bg-gray-700 hover:bg-indigo-600 transition p-2.5 rounded-full"
+                        >
+                            <FaYoutube size={18} />
+                        </a>
+                        <a
+                            href="https://x.com/himastat_unhas"
+                            aria-label="Website"
+                            className="bg-gray-700 hover:bg-indigo-600 transition p-2.5 rounded-full"
+                        >
+                            <FaXTwitter size={18} />
                         </a>
                     </div>
                 </div>
