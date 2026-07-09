@@ -1,5 +1,5 @@
 import React from "react";
-import { Head } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
 import { motion } from "framer-motion";
 import { 
     Phone, 
@@ -11,8 +11,8 @@ import {
 } from "lucide-react";
 import FrontendLayout from "@/Layouts/FrontendLayout";
 
-function KontakContent({ contact }) {
-    const mainContact = contact?.[0] || {};
+function KontakContent() {
+    const { contact } = usePage().props;
 
     // Lokasi sekretariat - sesuaikan dengan lokasi Anda
     const secretariatLocation = {
@@ -86,10 +86,10 @@ function KontakContent({ contact }) {
                                     <div className="flex items-center gap-3 text-gray-700">
                                         <div className="w-2 h-2 bg-gray-600 rounded-full"></div>
                                         <a 
-                                            href={`tel:${mainContact.phone || '+6281210646079'}`}
+                                            href={`tel:${contact?.phone ?? "+6281802824234"}`}
                                             className="hover:text-gray-900 transition-colors font-medium"
                                         >
-                                            {mainContact.phone || "+62 8121-0646-079"}
+                                            {contact?.phone ?? "+62 818-0282-4234"}
                                         </a>
                                     </div>
                                     <p className="text-gray-600 text-sm pl-5">
@@ -171,10 +171,10 @@ function KontakContent({ contact }) {
                                     <div className="flex items-center gap-3 text-gray-700">
                                         <Mail className="w-5 h-5 text-gray-600" />
                                         <a 
-                                            href={`mailto:${mainContact.email || 'himastatfmipaunhas@gmail.com'}`}
+                                            href={`mailto:${contact?.email ?? "himastatfmipaunhas@gmail.com"}`}
                                             className="hover:text-gray-900 transition-colors font-medium break-all"
                                         >
-                                            {mainContact.email || "himastatfmipaunhas@gmail.com"}
+                                            {contact?.email ?? "himastatfmipaunhas@gmail.com"}
                                         </a>
                                     </div>
                                     <p className="text-gray-600 text-sm pl-8">
