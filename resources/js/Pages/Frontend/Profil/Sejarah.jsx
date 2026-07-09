@@ -17,28 +17,28 @@ import FrontendLayout from "@/Layouts/FrontendLayout";
 function SejarahContent() {
     const timelineData = [
         {
-            year: "2015",
+            year: "2019",
             title: "Pembentukan Himpunan",
             description:
                 "Pembentukan Himpunan Mahasiswa Statistika bermula sebelum adanya kesepakatan mengenai pembentukan Departemen Statistika itu sendiri. Namun saat itu masih berupa pembicaraan antara mulut ke mulut dan masih berupa isu yang beredar. Saat itu Mahasiswa Statistika masih berhimpun dalam Himpunan Mahasiswa Matematika kemudian dari itu ada beberapa Mahasiswa Statistika kemudian berinisiatif untuk menghimpun diri sendiri dengan semangat untuk membuat suatu wadah dalam bentuk organisasi kemahasiswaan.",
             icon: <Users className="w-6 h-6" />,
         },
         {
-            year: "2015",
+            year: "2019",
             title: "Deklarasi Pembentukan",
             description:
                 "Persiapan kemudian dilakukan dan diinisiasi oleh Kanda Anugrah Ariansyah (Statistika 2015) dan Kanda Nifal Gusti (Statistika 2015) yang kemudian melibatkan beberapa Mahasiswa Lintas angkatan untuk langsung membahas mengenai persiapan mengenai pembentukan Himpunan ini.",
             icon: <FileText className="w-6 h-6" />,
         },
         {
-            year: "2016",
+            year: "2019",
             title: "Pembentukan Struktur Organisasi",
             description:
                 "Kanda Anugrah dan Kanda Nifal dan beberapa mahasiswa lintas angkatan, kemudian menyepakati untuk membuat tim pembentuk Himpunan yang kemudian diketuai sendiri oleh Kanda Anugrah Ariansyah. Tim pembentuk yang disepakati tersebut memiliki tujuan untuk mempersiapkan, melakukan deklarasi, dan menyusun aturan dasar organisasi dalam hal ini seperti Mekanisme Tata Tertib, Kerangka-kerangka Anggaran Dasar dan Anggaran Rumah Tangga, Garis-Garis Besar Haluan Organisasi, Logo Himpunan dan juga Bendera Himpunan.",
             icon: <TrendingUp className="w-6 h-6" />,
         },
         {
-            year: "9 Oktober 2016",
+            year: "9 Oktober 2019",
             title: "Kerangka Kerja Rumah Tangga",
             description:
                 "Semangat tindak lanjut dari tim pembentukan itu kemudian sampai pada tanggal 9 Oktober 2019, yang dimana susunan kerangka mengenai aturan dasar organisasi yang telah dibuat oleh tim pembentuk kemudian dibahas pada pertemuan yang melibatkan Mahasiswa Statistika. Pada saat ini juga sudah terbentuk logo Himpunan Mahasiswa Statistika yang didesain oleh Kanda Teguh Fajri Nugraha (Statistika 2013) dan Kak Seto Aprilianto (Statistika 2015).",
