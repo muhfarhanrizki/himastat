@@ -15,8 +15,7 @@ function GaleriContent({ galeri }) {
         if (!searchQuery.trim()) return galeri;
         
         return galeri.filter((item) =>
-            item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            item.description?.toLowerCase().includes(searchQuery.toLowerCase())
+            item.name.toLowerCase().includes(searchQuery.toLowerCase())
         );
     }, [galeri, searchQuery]);
 
@@ -90,7 +89,7 @@ function GaleriContent({ galeri }) {
 
                                 <input
                                     type="text"
-                                    placeholder="Cari galeri berdasarkan judul atau deskripsi..."
+                                    placeholder="Cari galeri berdasarkan judul...."
                                     value={searchQuery}
                                     onChange={(e) => handleSearch(e.target.value)}
                                     className="w-full pl-12 pr-12 py-3 rounded-xl bg-white/60 border border-gray-300/70 
@@ -162,12 +161,6 @@ function GaleriContent({ galeri }) {
                                                 <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors line-clamp-2">
                                                     {item.name}
                                                 </h3>
-                                                
-                                                {item.description && (
-                                                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                                                        {item.description}
-                                                    </p>
-                                                )}
 
                                                 {item.tanggal && (
                                                     <div className="flex items-center text-gray-500 text-sm">
@@ -260,11 +253,6 @@ function GaleriContent({ galeri }) {
                                 <h3 className="text-2xl font-bold text-gray-900 mb-2">
                                     {selectedImage.name}
                                 </h3>
-                                {selectedImage.description && (
-                                    <p className="text-gray-600 mb-4">
-                                        {selectedImage.description}
-                                    </p>
-                                )}
                                 {selectedImage.tanggal && (
                                     <div className="flex items-center text-gray-500">
                                         <Calendar className="w-5 h-5 mr-2" />
