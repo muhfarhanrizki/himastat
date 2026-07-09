@@ -81,7 +81,7 @@ export default function Index({ contacts = [] }) {
                                     <Mail size={22} />
                                 </div>
                                 <h2 className="text-lg font-semibold text-gray-800">
-                                    Email Desa
+                                    Email
                                 </h2>
                             </div>
                             {contact ? (
@@ -90,7 +90,7 @@ export default function Index({ contacts = [] }) {
                                 </p>
                             ) : (
                                 <p className="text-gray-400 italic text-lg">
-                                    Belum ada email desa
+                                    Belum ada email
                                 </p>
                             )}
                         </div>

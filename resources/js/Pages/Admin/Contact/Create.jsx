@@ -18,7 +18,7 @@ export default function Create() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        router.post(route("contact.store"), values, {
+        router.post(route("admin.contact.store"), values, {
             onError: (err) => setErrors(err),
         });
     };
@@ -40,7 +40,7 @@ export default function Create() {
                         </p>
                     </div>
                     <Link
-                        href={route("contact.index")}
+                        href={route("admin.contact.index")}
                         className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-600 transition"
                     >
                         <ArrowLeft size={18} /> Kembali
@@ -67,7 +67,7 @@ export default function Create() {
                                     name="phone"
                                     value={values.phone}
                                     onChange={handleChange}
-                                    placeholder="Contoh: +62 812 3456 7890"
+                                    placeholder="Contoh: +62 818 0282 4234"
                                     className="w-full border-gray-300 rounded-lg focus:ring-gray-500 focus:border-gray-500"
                                 />
                                 {errors.phone && (
