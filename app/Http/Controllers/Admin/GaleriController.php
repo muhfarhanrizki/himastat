@@ -50,13 +50,15 @@ class GaleriController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'description' => 'required|string|max:255',
             'tanggal' => 'required|string|max:255',
         ]);
 
         if ($request->hasFile('image')) {
             $validated['image'] = $request->file('image')->store('galeri', 'public');
         }
+
+        // Auto-fill description, tidak lagi diambil dari form
+        $validated['description'] = $validated['name'];
 
         Galeri::create($validated);
 
@@ -91,7 +93,6 @@ class GaleriController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'description' => 'required|string|',
             'tanggal' => 'required|string|max:255',
         ]);
 
@@ -104,6 +105,9 @@ class GaleriController extends Controller
         } else {
             unset($validated['image']);
         }
+
+        // Auto-fill description, tidak lagi diambil dari form
+        $validated['description'] = $validated['name'];
 
         $galeri->update($validated);
 
