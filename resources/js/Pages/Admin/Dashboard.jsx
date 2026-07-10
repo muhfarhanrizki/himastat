@@ -10,6 +10,9 @@ import {
     Activity,
     MessageSquare,
     ArrowRight,
+    BookOpen,
+    Newspaper,
+    User,
 } from "lucide-react";
 import CountUp from "react-countup";
 import { motion } from "framer-motion";
@@ -48,6 +51,18 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
             value: stats.alumniPath,
             icon: <MapPin className="w-5 h-5 md:w-6 md:h-6" />,
             route: "/admin/alumniPath",
+        },
+        {
+            name: "Artikel",
+            value: stats.artikel,
+            icon: <BookOpen className="w-5 h-5 md:w-6 md:h-6" />,
+            route: "/admin/artikel",
+        },
+        {
+            name: "Berita",
+            value: stats.berita,
+            icon: <Newspaper className="w-5 h-5 md:w-6 md:h-6" />,
+            route: "/admin/berita",
         },
     ];
 
@@ -88,6 +103,20 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
             title: "Pencapaian",
             description: `${a.nama} (Angkatan ${a.angkatan})`,
             created_at: a.created_at,
+        })) || []),
+        ...(latest.artikel?.map((a) => ({
+            id: `artikel-${a.id}`,
+            type: "artikel",
+            title: "Artikel Baru Ditambahkan",
+            description: a.judul,
+            created_at: a.created_at,
+        })) || []),
+        ...(latest.berita?.map((b) => ({
+            id: `berita-${b.id}`,
+            type: "berita",
+            title: "Berita Baru Ditambahkan",
+            description: b.judul,
+            created_at: b.created_at,
         })) || []),
     ]
         .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
@@ -151,7 +180,7 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
                 </motion.div>
 
                 {/* Statistik Cards */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+                <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 md:gap-6">
                     {cards.map((card, index) => (
                         <motion.div
                             key={card.name}
@@ -316,6 +345,167 @@ export default function Dashboard({ stats = {}, latest = {}, auth }) {
                                 />
                                 <p className="text-gray-400 text-xs md:text-sm">
                                     Belum ada divisi
+                                </p>
+                            </div>
+                        )}
+                    </motion.div>
+                </div>
+
+                {/* Artikel & Berita */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+                    {/* Artikel Terbaru */}
+                    <motion.div
+                        className="bg-white p-4 md:p-6 rounded-xl md:rounded-2xl shadow-md border border-gray-100"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                    >
+                        <div className="flex justify-between items-center mb-4 md:mb-6">
+                            <h2 className="font-bold text-base md:text-xl text-gray-800 flex items-center gap-2">
+                                <BookOpen className="w-5 h-5 md:w-6 md:h-6 text-gray-700" />
+                                Artikel Terbaru
+                            </h2>
+                            <Link
+                                href="/admin/artikel"
+                                className="text-gray-700 hover:text-gray-900 text-xs md:text-sm font-medium flex items-center gap-1"
+                            >
+                                <span className="hidden sm:inline">
+                                    Lihat semua
+                                </span>
+                                <ArrowRight
+                                    size={14}
+                                    className="md:w-4 md:h-4"
+                                />
+                            </Link>
+                        </div>
+                        {latest?.artikel?.length ? (
+                            <div className="space-y-2 md:space-y-3 max-h-64 md:max-h-80 overflow-y-auto">
+                                {latest.artikel.map((item) => (
+                                    <Link
+                                        key={item.id}
+                                        href={`/admin/artikel/${item.id}/edit`}
+                                        className="flex items-center gap-3 md:gap-4 p-2 md:p-3 rounded-lg md:rounded-xl border border-gray-100 hover:bg-gray-50 hover:border-gray-300 transition-all group"
+                                    >
+                                        {item.gambar ? (
+                                            <img
+                                                src={`/storage/${item.gambar}`}
+                                                alt={item.judul}
+                                                className="w-10 h-10 md:w-14 md:h-14 object-cover rounded-lg"
+                                            />
+                                        ) : (
+                                            <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-gray-400 to-gray-600 rounded-lg flex items-center justify-center">
+                                                <BookOpen
+                                                    size={20}
+                                                    className="text-white md:w-6 md:h-6"
+                                                />
+                                            </div>
+                                        )}
+                                        <div className="flex-1 min-w-0">
+                                            <p className="font-semibold text-sm md:text-base text-gray-800 group-hover:text-gray-900 line-clamp-1">
+                                                {item.judul}
+                                            </p>
+                                            <div className="flex items-center gap-2 md:gap-3 text-xs text-gray-500 mt-1">
+                                                <span className="flex items-center gap-1">
+                                                    <User size={11} />{" "}
+                                                    {item.penulis}
+                                                </span>
+                                                <span>•</span>
+                                                <span>{item.tanggal}</span>
+                                            </div>
+                                        </div>
+                                        <ArrowRight
+                                            size={16}
+                                            className="text-gray-400 group-hover:text-gray-700 transition md:w-5 md:h-5"
+                                        />
+                                    </Link>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="text-center py-8">
+                                <BookOpen
+                                    size={32}
+                                    className="mx-auto text-gray-300 mb-2 md:w-10 md:h-10"
+                                />
+                                <p className="text-gray-400 text-xs md:text-sm">
+                                    Belum ada artikel
+                                </p>
+                            </div>
+                        )}
+                    </motion.div>
+
+                    {/* Berita Terbaru */}
+                    <motion.div
+                        className="bg-white p-4 md:p-6 rounded-xl md:rounded-2xl shadow-md border border-gray-100"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                    >
+                        <div className="flex justify-between items-center mb-4 md:mb-6">
+                            <h2 className="font-bold text-base md:text-xl text-gray-800 flex items-center gap-2">
+                                <Newspaper className="w-5 h-5 md:w-6 md:h-6 text-gray-700" />
+                                Berita Terbaru
+                            </h2>
+                            <Link
+                                href="/admin/berita"
+                                className="text-gray-700 hover:text-gray-900 text-xs md:text-sm font-medium flex items-center gap-1"
+                            >
+                                <span className="hidden sm:inline">
+                                    Lihat semua
+                                </span>
+                                <ArrowRight
+                                    size={14}
+                                    className="md:w-4 md:h-4"
+                                />
+                            </Link>
+                        </div>
+                        {latest?.berita?.length ? (
+                            <div className="space-y-2 md:space-y-3 max-h-64 md:max-h-80 overflow-y-auto">
+                                {latest.berita.map((item) => (
+                                    <Link
+                                        key={item.id}
+                                        href={`/admin/berita/${item.id}/edit`}
+                                        className="flex items-center gap-3 md:gap-4 p-2 md:p-3 rounded-lg md:rounded-xl border border-gray-100 hover:bg-gray-50 hover:border-gray-300 transition-all group"
+                                    >
+                                        {item.gambar ? (
+                                            <img
+                                                src={`/storage/${item.gambar}`}
+                                                alt={item.judul}
+                                                className="w-10 h-10 md:w-14 md:h-14 object-cover rounded-lg"
+                                            />
+                                        ) : (
+                                            <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-gray-400 to-gray-600 rounded-lg flex items-center justify-center">
+                                                <Newspaper
+                                                    size={20}
+                                                    className="text-white md:w-6 md:h-6"
+                                                />
+                                            </div>
+                                        )}
+                                        <div className="flex-1 min-w-0">
+                                            <p className="font-semibold text-sm md:text-base text-gray-800 group-hover:text-gray-900 line-clamp-1">
+                                                {item.judul}
+                                            </p>
+                                            <div className="flex items-center gap-2 md:gap-3 text-xs text-gray-500 mt-1">
+                                                <span className="flex items-center gap-1">
+                                                    <User size={11} />{" "}
+                                                    {item.penulis}
+                                                </span>
+                                                <span>•</span>
+                                                <span>{item.tanggal}</span>
+                                            </div>
+                                        </div>
+                                        <ArrowRight
+                                            size={16}
+                                            className="text-gray-400 group-hover:text-gray-700 transition md:w-5 md:h-5"
+                                        />
+                                    </Link>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="text-center py-8">
+                                <Newspaper
+                                    size={32}
+                                    className="mx-auto text-gray-300 mb-2 md:w-10 md:h-10"
+                                />
+                                <p className="text-gray-400 text-xs md:text-sm">
+                                    Belum ada berita
                                 </p>
                             </div>
                         )}
