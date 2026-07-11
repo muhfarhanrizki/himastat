@@ -8,12 +8,12 @@ function GaleriContent({ galeri }) {
     const [searchQuery, setSearchQuery] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedImage, setSelectedImage] = useState(null);
-    const itemsPerPage = 6;
+    const itemsPerPage = 9;
 
     // Filter galeri berdasarkan search query
     const filteredGaleri = useMemo(() => {
         if (!searchQuery.trim()) return galeri;
-        
+
         return galeri.filter((item) =>
             item.name.toLowerCase().includes(searchQuery.toLowerCase())
         );
