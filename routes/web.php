@@ -105,7 +105,9 @@ Route::prefix("/admin")
         Route::resource("dewan", DewanController::class);
         Route::resource("strukturdewan", StrukturDewanController::class);
         Route::resource("artikel", AdminArtikelController::class);
-        Route::resource("berita", AdminBeritaController::class);
+        Route::resource("berita", AdminBeritaController::class)->parameters([
+            'berita' => 'berita'
+        ]);
 
         Route::get("/404", function () {
             return Inertia::render("Admin/404");
