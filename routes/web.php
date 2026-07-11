@@ -96,6 +96,7 @@ Route::prefix("/admin")
 
         Route::resource("divisi", DivisiController::class);
         Route::resource("alumniPath", AlumniPathController::class);
+        Route::post("galeri/reorder", [GaleriController::class, "reorder"])->name("galeri.reorder");
         Route::resource("galeri", GaleriController::class);
         Route::resource("sambutan", SambutanController::class);
         Route::resource("visimisi", VisiMisiController::class);

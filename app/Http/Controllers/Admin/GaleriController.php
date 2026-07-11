@@ -22,7 +22,7 @@ class GaleriController extends Controller
                 $query->where('name', 'like', '%' . $search . '%')
                     ->orWhere('description', 'like', '%' . $search . '%');
             })
-            ->orderBy('created_at', 'desc')
+            ->orderBy('position', 'asc')
             ->paginate(9)
             ->withQueryString();
 
@@ -59,6 +59,9 @@ class GaleriController extends Controller
 
         // Auto-fill description, tidak lagi diambil dari form
         $validated['description'] = $validated['name'];
+
+        // Auto-assign position as last item
+        $validated['position'] = Galeri::max('position') + 1;
 
         Galeri::create($validated);
 
@@ -126,5 +129,25 @@ class GaleriController extends Controller
         $galeri->delete();
 
         return redirect()->route('admin.galeri.index')->with('success', 'Galeri berhasil dihapus');
+    }
+
+    /**
+     * Reorder gallery items via drag & drop.
+     */
+    public function reorder(Request $request)
+    {
+        $validated = $request->validate([
+            'orderedIds' => 'required|array',
+            'orderedIds.*' => 'integer|exists:galeris,id',
+            'pageOffset' => 'required|integer|min:0',
+        ]);
+
+        $offset = $validated['pageOffset'];
+
+        foreach ($validated['orderedIds'] as $index => $id) {
+            Galeri::where('id', $id)->update(['position' => $offset + $index]);
+        }
+
+        return back()->with('success', 'Urutan galeri berhasil diperbarui');
     }
 }

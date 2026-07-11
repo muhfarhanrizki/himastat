@@ -35,11 +35,10 @@ class PageController extends Controller
             'berita' => $berita,
         ]);
     }
-
+    
     public function galeris()
     {
-        $galeri = Galeri::orderBy('tanggal', 'desc')
-                        ->orderBy('created_at', 'desc')
+        $galeri = Galeri::orderBy('position', 'asc')
                         ->get();
 
         return Inertia::render('Frontend/Galeri',[
