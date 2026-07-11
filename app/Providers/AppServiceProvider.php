@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
 
         // Force HTTPS in production (behind reverse proxy)
         if (app()->environment('production')) {
-        URL::forceScheme('https');
+            URL::forceScheme('https');
         }
     }
 }
