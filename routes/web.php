@@ -73,6 +73,10 @@ Route::get("/pengurus-inti", [ProfilController::class, "pengurusInti"])->name(
     "pengurus-inti",
 );
 
+Route::get("/404", function () {
+    return Inertia::render("Admin/404");
+})->name("404");
+
 Route::prefix("/admin")
     ->name("admin.")
     ->middleware("auth")
@@ -109,9 +113,6 @@ Route::prefix("/admin")
             'berita' => 'berita'
         ]);
 
-        Route::get("/404", function () {
-            return Inertia::render("Admin/404");
-        })->name("404");
     });
 
 require __DIR__ . "/auth.php";
